@@ -11,13 +11,13 @@ class CharacterViewModel with ChangeNotifier {
     characterItems =
         await CharacterViewModel.characterService.fetchCharacterItems();
 
-    characterItems?.forEach(
+    /* characterItems?.forEach(
       (element) {
         if (element.thumbnail!.path!.contains('image_not_available')) {
           characterItems!.removeAt(element.id!);
         }
       },
-    );
+    ); */
 
     return characterItems!.shuffle();
   }
