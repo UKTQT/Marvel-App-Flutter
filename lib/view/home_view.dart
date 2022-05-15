@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Characters, Comics, Series..',
+                  labelText: 'Characters, Comics, Series...',
                   labelStyle: TextStyle(color: Colors.white60),
                   prefixIcon: Icon(Icons.search),
                   enabledBorder: OutlineInputBorder(
