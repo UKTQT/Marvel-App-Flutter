@@ -256,28 +256,22 @@ class _CharacterViewState extends State<CharacterView> {
                                                             0.35,
                                                     child: FittedBox(
                                                       fit: BoxFit.fill,
-                                                      child: Hero(
-                                                        tag: 'character_image',
-                                                        child:
-                                                            CachedNetworkImage(
-                                                                placeholder:
-                                                                    (context,
-                                                                        index) {
-                                                                  return const CircularProgressIndicator(
-                                                                    color: Colors
-                                                                        .white,
-                                                                  );
-                                                                },
-                                                                imageUrl:
-                                                                    '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
-                                                                errorWidget: (context,
-                                                                        url,
-                                                                        error) =>
-                                                                    const CircularProgressIndicator(
-                                                                      color: Colors
-                                                                          .white,
-                                                                    )),
-                                                      ),
+                                                      child: CachedNetworkImage(
+                                                          placeholder:
+                                                              (context, index) {
+                                                            return const CircularProgressIndicator(
+                                                              color:
+                                                                  Colors.white,
+                                                            );
+                                                          },
+                                                          imageUrl:
+                                                              '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
+                                                          errorWidget: (context,
+                                                                  url, error) =>
+                                                              const CircularProgressIndicator(
+                                                                color: Colors
+                                                                    .white,
+                                                              )),
                                                     ),
                                                   ),
                                                 ),
@@ -392,24 +386,19 @@ class _CharacterViewState extends State<CharacterView> {
                                                             0.35,
                                                     child: FittedBox(
                                                       fit: BoxFit.fill,
-                                                      child: Hero(
-                                                        tag: 'character_image',
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          placeholder:
-                                                              (context, index) {
-                                                            return const CircularProgressIndicator(
-                                                              color:
-                                                                  Colors.white,
-                                                            );
-                                                          },
-                                                          imageUrl:
-                                                              '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              const CircularProgressIndicator(
+                                                      child: CachedNetworkImage(
+                                                        placeholder:
+                                                            (context, index) {
+                                                          return const CircularProgressIndicator(
                                                             color: Colors.white,
-                                                          ),
+                                                          );
+                                                        },
+                                                        imageUrl:
+                                                            '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            const CircularProgressIndicator(
+                                                          color: Colors.white,
                                                         ),
                                                       ),
                                                     ),
