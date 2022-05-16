@@ -137,18 +137,23 @@ class _HomeViewState extends State<HomeView> {
                                                             .thumbnail
                                                             ?.path !=
                                                         null
-                                                    ? CachedNetworkImage(
-                                                        imageUrl:
-                                                            '${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.extension}',
-                                                        placeholder: (context,
-                                                                url) =>
-                                                            const CircularProgressIndicator(
-                                                          color: Colors.red,
+                                                    ? Hero(
+                                                        tag:
+                                                            '${CharacterViewModel.characterItems?.elementAt(index).id}',
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          imageUrl:
+                                                              '${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.extension}',
+                                                          placeholder: (context,
+                                                                  url) =>
+                                                              const CircularProgressIndicator(
+                                                            color: Colors.red,
+                                                          ),
+                                                          errorWidget: (context,
+                                                                  url, error) =>
+                                                              const Icon(
+                                                                  Icons.error),
                                                         ),
-                                                        errorWidget: (context,
-                                                                url, error) =>
-                                                            const Icon(
-                                                                Icons.error),
                                                       )
                                                     : const CircularProgressIndicator(
                                                         color: Colors.red,
@@ -338,17 +343,22 @@ class _HomeViewState extends State<HomeView> {
                                           0.35,
                                       child: FittedBox(
                                         fit: BoxFit.fill,
-                                        child: CachedNetworkImage(
-                                          placeholder: (context, index) {
-                                            return const CircularProgressIndicator(
+                                        child: Hero(
+                                          tag:
+                                              '${ComicViewModel.comicItems?.elementAt(index).id}',
+                                          child: CachedNetworkImage(
+                                            placeholder: (context, index) {
+                                              return const CircularProgressIndicator(
+                                                color: Colors.white,
+                                              );
+                                            },
+                                            imageUrl:
+                                                '${ComicViewModel.comicItems?.elementAt(index).thumbnail!.path}.${ComicViewModel.comicItems?.elementAt(index).thumbnail!.extension}',
+                                            errorWidget: (context, url,
+                                                    error) =>
+                                                const CircularProgressIndicator(
                                               color: Colors.white,
-                                            );
-                                          },
-                                          imageUrl:
-                                              '${ComicViewModel.comicItems?.elementAt(index).thumbnail!.path}.${ComicViewModel.comicItems?.elementAt(index).thumbnail!.extension}',
-                                          errorWidget: (context, url, error) =>
-                                              const CircularProgressIndicator(
-                                            color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),

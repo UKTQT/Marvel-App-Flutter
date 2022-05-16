@@ -25,14 +25,17 @@ class _ComicViewState extends State<ComicView> {
               width: MediaQuery.of(context).size.width,
               child: FittedBox(
                 fit: BoxFit.fill,
-                child: CachedNetworkImage(
-                    placeholder: (context, index) {
-                      return const CircularProgressIndicator();
-                    },
-                    imageUrl:
-                        '${comicAllItems!.thumbnail!.path}.${comicAllItems.thumbnail!.extension}',
-                    errorWidget: (context, url, error) =>
-                        const CircularProgressIndicator()),
+                child: Hero(
+                  tag: '${comicAllItems?.id}',
+                  child: CachedNetworkImage(
+                      placeholder: (context, index) {
+                        return const CircularProgressIndicator();
+                      },
+                      imageUrl:
+                          '${comicAllItems!.thumbnail!.path}.${comicAllItems.thumbnail!.extension}',
+                      errorWidget: (context, url, error) =>
+                          const CircularProgressIndicator()),
+                ),
               ),
             ),
             Container(

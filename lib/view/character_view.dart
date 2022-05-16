@@ -33,14 +33,17 @@ class _CharacterViewState extends State<CharacterView> {
                     width: double.maxFinite,
                     child: FittedBox(
                       fit: BoxFit.cover,
-                      child: CachedNetworkImage(
-                          placeholder: (context, index) {
-                            return const CircularProgressIndicator();
-                          },
-                          imageUrl:
-                              '${characterAllItems.thumbnail!.path}.${characterAllItems.thumbnail!.extension}',
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.add)),
+                      child: Hero(
+                        tag: '${characterAllItems.id}',
+                        child: CachedNetworkImage(
+                            placeholder: (context, index) {
+                              return const CircularProgressIndicator();
+                            },
+                            imageUrl:
+                                '${characterAllItems.thumbnail!.path}.${characterAllItems.thumbnail!.extension}',
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.add)),
+                      ),
                     ),
                   ),
                   Row(
