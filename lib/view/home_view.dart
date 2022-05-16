@@ -131,33 +131,28 @@ class _HomeViewState extends State<HomeView> {
                                                   0.35,
                                               child: FittedBox(
                                                 fit: BoxFit.fill,
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
-                                                  imageBuilder: (context,
-                                                          imageProvider) =>
-                                                      Container(
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                          image: imageProvider,
-                                                          fit: BoxFit.cover,
-                                                          colorFilter:
-                                                              ColorFilter.mode(
-                                                                  Colors.red,
-                                                                  BlendMode
-                                                                      .colorBurn)),
-                                                    ),
-                                                  ),
-                                                  placeholder:
-                                                      (context, index) {
-                                                    return const CircularProgressIndicator(
-                                                      color: Colors.red,
-                                                    );
-                                                  },
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      const Icon(Icons.error),
-                                                ),
+                                                child: CharacterViewModel
+                                                            .characterItems
+                                                            ?.elementAt(index)
+                                                            .thumbnail
+                                                            ?.path !=
+                                                        null
+                                                    ? CachedNetworkImage(
+                                                        imageUrl:
+                                                            '${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.extension}',
+                                                        placeholder: (context,
+                                                                url) =>
+                                                            const CircularProgressIndicator(
+                                                          color: Colors.red,
+                                                        ),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            const Icon(
+                                                                Icons.error),
+                                                      )
+                                                    : const CircularProgressIndicator(
+                                                        color: Colors.red,
+                                                      ),
                                               ),
                                             ),
                                           ),
