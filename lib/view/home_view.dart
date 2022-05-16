@@ -132,19 +132,31 @@ class _HomeViewState extends State<HomeView> {
                                               child: FittedBox(
                                                 fit: BoxFit.fill,
                                                 child: CachedNetworkImage(
+                                                  imageUrl:
+                                                      '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
+                                                  imageBuilder: (context,
+                                                          imageProvider) =>
+                                                      Container(
+                                                    decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                          image: imageProvider,
+                                                          fit: BoxFit.cover,
+                                                          colorFilter:
+                                                              ColorFilter.mode(
+                                                                  Colors.red,
+                                                                  BlendMode
+                                                                      .colorBurn)),
+                                                    ),
+                                                  ),
                                                   placeholder:
                                                       (context, index) {
                                                     return const CircularProgressIndicator(
                                                       color: Colors.red,
                                                     );
                                                   },
-                                                  imageUrl:
-                                                      '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
                                                   errorWidget: (context, url,
                                                           error) =>
-                                                      const CircularProgressIndicator(
-                                                    color: Colors.red,
-                                                  ),
+                                                      const Icon(Icons.error),
                                                 ),
                                               ),
                                             ),
