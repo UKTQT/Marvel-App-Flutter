@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../view_model/character_view_model.dart';
 import '../extension/padding_extension.dart';
+import '../view_model/comic_view_model.dart';
 
 class CharacterView extends StatefulWidget {
   const CharacterView({Key? key}) : super(key: key);
@@ -206,102 +207,47 @@ class _CharacterViewState extends State<CharacterView> {
                                   width: double.maxFinite,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: CharacterViewModel
-                                        .characterItems?.length,
+                                    itemCount: 20,
                                     itemBuilder: (context, index) {
                                       return Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: context.lowWidthPadding,
-                                            vertical:
-                                                context.lowHeightPadding2),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0, vertical: 10.0),
                                         child: GestureDetector(
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/characterView',
-                                                arguments: {
-                                                  'characterId':
-                                                      CharacterViewModel
-                                                          .characterItems
-                                                          ?.elementAt(index)
-                                                          .id,
-                                                });
+                                            /*  Navigator.pushNamed(context, '/comicView',
+                                          arguments: {
+                                            'comicId': ComicViewModel
+                                                .comicItems!
+                                                .elementAt(index)
+                                                .id,
+                                          }); */
                                           },
                                           child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                            ),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
                                                 0.35,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  color: Colors.black26,
-                                                  width: 2,
+                                            child: FittedBox(
+                                              fit: BoxFit.fill,
+                                              child: CachedNetworkImage(
+                                                placeholder: (context, index) {
+                                                  return const CircularProgressIndicator(
+                                                    color: Colors.white,
+                                                  );
+                                                },
+                                                imageUrl:
+                                                    '${ComicViewModel.comicItems?.elementAt(index).thumbnail!.path}.${ComicViewModel.comicItems?.elementAt(index).thumbnail!.extension}',
+                                                errorWidget: (context, url,
+                                                        error) =>
+                                                    const CircularProgressIndicator(
+                                                  color: Colors.white,
                                                 ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(15.0),
-                                                  bottomRight:
-                                                      Radius.circular(15.0),
-                                                ),
-                                                color: Colors.white),
-                                            child: Column(
-                                              children: [
-                                                Expanded(
-                                                  flex: 9,
-                                                  child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.35,
-                                                    child: FittedBox(
-                                                      fit: BoxFit.fill,
-                                                      child: CachedNetworkImage(
-                                                          placeholder:
-                                                              (context, index) {
-                                                            return const CircularProgressIndicator(
-                                                              color:
-                                                                  Colors.white,
-                                                            );
-                                                          },
-                                                          imageUrl:
-                                                              '${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail!.extension}',
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              const CircularProgressIndicator(
-                                                                color: Colors
-                                                                    .white,
-                                                              )),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  flex: 2,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.symmetric(
-                                                        horizontal: context
-                                                            .lowWidthPadding2),
-                                                    child: Container(
-                                                      width: double.maxFinite,
-                                                      child: Center(
-                                                        child: Text(
-                                                          CharacterViewModel
-                                                                  .characterItems
-                                                                  ?.elementAt(
-                                                                      index)
-                                                                  .name ??
-                                                              '',
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyText1,
-                                                          softWrap: false,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                              ),
                                             ),
                                           ),
                                         ),
