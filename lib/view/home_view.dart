@@ -153,6 +153,10 @@ class _HomeViewState extends State<HomeView> {
                                                                   url, error) =>
                                                               const Icon(
                                                                   Icons.error),
+                                                          /*  progressIndicatorBuilder:
+                                                              (context, url,
+                                                                      error) =>
+                                                                  CircularProgressIndicator(), */
                                                         ),
                                                       )
                                                     : const CircularProgressIndicator(
