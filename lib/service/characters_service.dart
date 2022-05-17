@@ -6,9 +6,7 @@ import 'package:dio/dio.dart';
 import '../model/characters_model.dart';
 import 'config.dart';
 
-enum _ServicePaths {
-  characters,
-}
+enum _ServicePaths { characters }
 
 abstract class ICharacterService {
   Future<List<Result>?> fetchCharacterItems();
