@@ -58,7 +58,7 @@ class Data {
   final int? limit;
   final int? total;
   final int? count;
-  final List<Result>? results;
+  final List<CharacterResult>? results;
 
   factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
 
@@ -69,8 +69,8 @@ class Data {
         limit: json["limit"],
         total: json["total"],
         count: json["count"],
-        results:
-            List<Result>.from(json["results"].map((x) => Result.fromMap(x))),
+        results: List<CharacterResult>.from(
+            json["results"].map((x) => CharacterResult.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -82,8 +82,8 @@ class Data {
       };
 }
 
-class Result {
-  Result({
+class CharacterResult {
+  CharacterResult({
     this.id,
     this.name,
     this.description,
@@ -109,11 +109,12 @@ class Result {
   final Comics? events;
   final Comics? series;
 
-  factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
+  factory CharacterResult.fromJson(String str) =>
+      CharacterResult.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
+  factory CharacterResult.fromMap(Map<String, dynamic> json) => CharacterResult(
         id: json["id"],
         name: json["name"],
         description: json["description"],

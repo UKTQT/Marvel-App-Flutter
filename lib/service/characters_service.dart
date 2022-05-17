@@ -9,7 +9,7 @@ import 'config.dart';
 enum _ServicePaths { characters }
 
 abstract class ICharacterService {
-  Future<List<Result>?> fetchCharacterItems();
+  Future<List<CharacterResult>?> fetchCharacterItems();
 }
 
 class CharacterService implements ICharacterService {
@@ -20,7 +20,7 @@ class CharacterService implements ICharacterService {
             Dio(BaseOptions(baseUrl: 'http://gateway.marvel.com/v1/public/'));
 
   @override
-  Future<List<Result>?> fetchCharacterItems() async {
+  Future<List<CharacterResult>?> fetchCharacterItems() async {
     try {
       var rndOffset = Random().nextInt(1000);
       final response = await _dio.get(

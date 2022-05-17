@@ -5,7 +5,7 @@ import '../service/characters_service.dart' as _characterService;
 import '../service/comics_service.dart' as _comicService;
 
 class CharacterViewModel with ChangeNotifier {
-  static List<Result>? characterItems;
+  static List<CharacterResult>? characterItems;
   // static List<Result>? characterComicsItems;
 
   static final _characterService.CharacterService characterService =
