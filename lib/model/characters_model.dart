@@ -16,7 +16,7 @@ class CharactersModel {
   final String? copyright;
   final String? attributionText;
   final String? attributionHtml;
-  final Data? data;
+  final CharacterData? data;
   final String? etag;
 
   factory CharactersModel.fromJson(String str) =>
@@ -30,7 +30,7 @@ class CharactersModel {
         copyright: json["copyright"],
         attributionText: json["attributionText"],
         attributionHtml: json["attributionHTML"],
-        data: Data.fromMap(json["data"]),
+        data: CharacterData.fromMap(json["data"]),
         etag: json["etag"],
       );
 
@@ -45,8 +45,8 @@ class CharactersModel {
       };
 }
 
-class Data {
-  Data({
+class CharacterData {
+  CharacterData({
     this.offset,
     this.limit,
     this.total,
@@ -60,11 +60,12 @@ class Data {
   final int? count;
   final List<CharacterResult>? results;
 
-  factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+  factory CharacterData.fromJson(String str) =>
+      CharacterData.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Data.fromMap(Map<String, dynamic> json) => Data(
+  factory CharacterData.fromMap(Map<String, dynamic> json) => CharacterData(
         offset: json["offset"],
         limit: json["limit"],
         total: json["total"],

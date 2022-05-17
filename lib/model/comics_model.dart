@@ -16,7 +16,7 @@ class ComicsModel {
   final String? copyright;
   final String? attributionText;
   final String? attributionHtml;
-  final Data? data;
+  final ComicData? data;
   final String? etag;
 
   factory ComicsModel.fromJson(String str) =>
@@ -30,7 +30,7 @@ class ComicsModel {
         copyright: json["copyright"],
         attributionText: json["attributionText"],
         attributionHtml: json["attributionHTML"],
-        data: Data.fromMap(json["data"]),
+        data: ComicData.fromMap(json["data"]),
         etag: json["etag"],
       );
 
@@ -45,8 +45,8 @@ class ComicsModel {
       };
 }
 
-class Data {
-  Data({
+class ComicData {
+  ComicData({
     this.offset,
     this.limit,
     this.total,
@@ -60,11 +60,11 @@ class Data {
   final int? count;
   final List<ComicResult>? results;
 
-  factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+  factory ComicData.fromJson(String str) => ComicData.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Data.fromMap(Map<String, dynamic> json) => Data(
+  factory ComicData.fromMap(Map<String, dynamic> json) => ComicData(
         offset: json["offset"],
         limit: json["limit"],
         total: json["total"],
