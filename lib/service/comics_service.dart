@@ -8,8 +8,8 @@ import 'config.dart';
 enum _ServicePaths { comics, characters }
 
 abstract class IComicService {
-  Future<List<Result>?> fetchComicItems();
-  Future<List<Result>?> fetchCharacterComics({int? id});
+  Future<List<ComicResult>?> fetchComicItems();
+  Future<List<ComicResult>?> fetchCharacterComics({int? id});
 }
 
 class ComicService implements IComicService {
@@ -20,7 +20,7 @@ class ComicService implements IComicService {
             Dio(BaseOptions(baseUrl: 'http://gateway.marvel.com/v1/public/'));
 
   @override
-  Future<List<Result>?> fetchComicItems() async {
+  Future<List<ComicResult>?> fetchComicItems() async {
     try {
       final response = await _dio.get(
         _ServicePaths.comics.name,
@@ -45,7 +45,7 @@ class ComicService implements IComicService {
   }
 
   @override
-  Future<List<Result>?> fetchCharacterComics({int? id}) async {
+  Future<List<ComicResult>?> fetchCharacterComics({int? id}) async {
     try {
       final response = await _dio.get(
         _ServicePaths.characters.name +
