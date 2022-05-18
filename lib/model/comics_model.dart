@@ -87,7 +87,7 @@ class ComicResult {
     this.id,
     this.digitalId,
     this.title,
-    this.issueNumber,
+    //this.issueNumber,
     this.variantDescription,
     this.description,
     this.modified,
@@ -118,13 +118,13 @@ class ComicResult {
   final int? id;
   final int? digitalId;
   final String? title;
-  final int? issueNumber;
+  // final double? issueNumber;
   final String? variantDescription;
   final String? description;
   final String? modified;
   final String? isbn;
   final String? upc;
-  final String? diamondCode;
+  final dynamic diamondCode;
   final String? ean;
   final String? issn;
   final String? format;
@@ -154,7 +154,7 @@ class ComicResult {
         id: json["id"],
         digitalId: json["digitalId"],
         title: json["title"],
-        issueNumber: json["issueNumber"],
+        //  issueNumber: json["issueNumber"],
         variantDescription: json["variantDescription"],
         description: json["description"],
         modified: json["modified"],
@@ -191,7 +191,7 @@ class ComicResult {
         "id": id,
         "digitalId": digitalId,
         "title": title,
-        "issueNumber": issueNumber,
+        //"issueNumber": issueNumber,
         "variantDescription": variantDescription,
         "description": description,
         "modified": modified,

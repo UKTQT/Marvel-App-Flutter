@@ -38,21 +38,16 @@ class _CharacterViewState extends State<CharacterView> {
                     child: FittedBox(
                       fit: BoxFit.cover,
                       child: Hero(
-                        tag: '${args['characterId']}',
-                        child: Image(
-                          image: NetworkImage(
-                              '${characterAllItems.thumbnail?.path}.${characterAllItems.thumbnail?.extension}'),
-                        ),
-
-                        /* CachedNetworkImage(
+                        tag: '${characterAllItems.id}',
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              '${characterAllItems.thumbnail?.path}.${characterAllItems.thumbnail?.extension}',
                           placeholder: (context, index) {
                             return const CircularProgressIndicator();
                           },
-                          imageUrl:
-                              '${characterAllItems.thumbnail!.path}.${characterAllItems.thumbnail!.extension}',
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.add),
-                        ), */
+                        ),
                       ),
                     ),
                   ),
@@ -138,7 +133,6 @@ class _CharacterViewState extends State<CharacterView> {
                         ),
                       ),
                       Expanded(
-                        // Description --------------------------------------------
                         flex: 5,
                         child: SingleChildScrollView(
                           child: Padding(
@@ -245,12 +239,7 @@ class _CharacterViewState extends State<CharacterView> {
                                                 0.35,
                                             child: FittedBox(
                                               fit: BoxFit.fill,
-                                              child: Text(
-                                                  'ewq'), /* Image(
-                                                  image: NetworkImage(
-                                                      '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}'))
-
-                                              /* CachedNetworkImage(
+                                              child: CachedNetworkImage(
                                                 placeholder: (context, index) {
                                                   return const CircularProgressIndicator(
                                                     color: Colors.white,
@@ -263,8 +252,7 @@ class _CharacterViewState extends State<CharacterView> {
                                                     const CircularProgressIndicator(
                                                   color: Colors.white,
                                                 ),
-                                              ) */
-                                              , */
+                                              ),
                                             ),
                                           ),
                                         ),

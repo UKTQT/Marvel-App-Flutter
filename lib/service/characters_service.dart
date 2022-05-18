@@ -52,22 +52,24 @@ class CharacterService implements ICharacterService {
   @override
   Future<List<ComicResult>?> fetchCharacterComics({int? id}) async {
     try {
-      final response = await _dio.get(
+      print('try çalıştı');
+
+      final response2 = await _dio.get(
         _ServicePaths.characters.name +
             '/' +
             id.toString() +
             '/' +
             _ServicePaths.comics.name,
         queryParameters: {
-          'apiKey': Config.publicKey,
+          'apikey': Config.publicKey,
           'ts': Config.timeStamp,
           'hash': Config.md5Hash,
         },
       );
+      print(response2.statusCode);
+      if (response2.statusCode == HttpStatus.ok) {
+        final _datas = response2.data;
 
-      if (response.statusCode == HttpStatus.ok) {
-        final _datas = response.data;
-        print(_datas);
         if (_datas is Map<String, dynamic>) {
           return ComicData.fromMap(_datas['data']).results;
         }
