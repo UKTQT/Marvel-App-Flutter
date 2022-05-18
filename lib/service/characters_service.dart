@@ -43,9 +43,7 @@ class CharacterService implements ICharacterService {
           return CharacterData.fromMap(_datas['data']).results;
         }
       }
-    } on DioError catch (e) {
-      print(e);
-    }
+    } on DioError catch (e) {}
     return null;
   }
 

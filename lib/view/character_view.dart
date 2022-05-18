@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import '../view_model/character_view_model.dart';
 import '../extension/padding_extension.dart';
 import '../view_model/comic_view_model.dart';
@@ -246,8 +247,7 @@ class _CharacterViewState extends State<CharacterView> {
                                                   );
                                                 },
                                                 imageUrl:
-                                                    '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}' ??
-                                                        '',
+                                                    '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}',
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     const CircularProgressIndicator(
