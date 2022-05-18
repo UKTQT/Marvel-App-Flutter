@@ -15,8 +15,11 @@ class _CharacterViewState extends State<CharacterView> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Map;
+
     final characterAllItems = CharacterViewModel.characterItems
         ?.firstWhere((element) => element.id == args['characterId']);
+
+    CharacterViewModel.fetchCharacterComicsItems(args['characterId']);
 
     var characterDate = DateTime.parse('${characterAllItems!.modified}')
         .toString()
@@ -35,15 +38,21 @@ class _CharacterViewState extends State<CharacterView> {
                     child: FittedBox(
                       fit: BoxFit.cover,
                       child: Hero(
-                        tag: '${characterAllItems.id}',
-                        child: CachedNetworkImage(
-                            placeholder: (context, index) {
-                              return const CircularProgressIndicator();
-                            },
-                            imageUrl:
-                                '${characterAllItems.thumbnail!.path}.${characterAllItems.thumbnail!.extension}',
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.add)),
+                        tag: '${args['characterId']}',
+                        child: Image(
+                          image: NetworkImage(
+                              '${characterAllItems.thumbnail?.path}.${characterAllItems.thumbnail?.extension}'),
+                        ),
+
+                        /* CachedNetworkImage(
+                          placeholder: (context, index) {
+                            return const CircularProgressIndicator();
+                          },
+                          imageUrl:
+                              '${characterAllItems.thumbnail!.path}.${characterAllItems.thumbnail!.extension}',
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.add),
+                        ), */
                       ),
                     ),
                   ),
@@ -207,7 +216,9 @@ class _CharacterViewState extends State<CharacterView> {
                                   width: double.maxFinite,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: 20,
+                                    itemCount: CharacterViewModel
+                                            .characterComicsItems?.length ??
+                                        1,
                                     itemBuilder: (context, index) {
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -234,20 +245,26 @@ class _CharacterViewState extends State<CharacterView> {
                                                 0.35,
                                             child: FittedBox(
                                               fit: BoxFit.fill,
-                                              child: CachedNetworkImage(
+                                              child: Text(
+                                                  'ewq'), /* Image(
+                                                  image: NetworkImage(
+                                                      '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}'))
+
+                                              /* CachedNetworkImage(
                                                 placeholder: (context, index) {
                                                   return const CircularProgressIndicator(
                                                     color: Colors.white,
                                                   );
                                                 },
                                                 imageUrl:
-                                                    '${ComicViewModel.comicItems?.elementAt(index).thumbnail!.path}.${ComicViewModel.comicItems?.elementAt(index).thumbnail!.extension}',
+                                                    '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}',
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     const CircularProgressIndicator(
                                                   color: Colors.white,
                                                 ),
-                                              ),
+                                              ) */
+                                              , */
                                             ),
                                           ),
                                         ),
