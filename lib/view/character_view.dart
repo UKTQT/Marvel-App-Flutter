@@ -19,7 +19,7 @@ class _CharacterViewState extends State<CharacterView> {
     final characterAllItems = CharacterViewModel.characterItems
         ?.firstWhere((element) => element.id == args['characterId']);
 
-    CharacterViewModel.fetchCharacterComicsItems(args['characterId']);
+    CharacterViewModel().fetchCharacterComicsItems(args['characterId']);
 
     var characterDate = DateTime.parse('${characterAllItems!.modified}')
         .toString()
@@ -246,7 +246,8 @@ class _CharacterViewState extends State<CharacterView> {
                                                   );
                                                 },
                                                 imageUrl:
-                                                    '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}',
+                                                    '${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterComicsItems?.elementAt(index).thumbnail?.extension}' ??
+                                                        '',
                                                 errorWidget: (context, url,
                                                         error) =>
                                                     const CircularProgressIndicator(

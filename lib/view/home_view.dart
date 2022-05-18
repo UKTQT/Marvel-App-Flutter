@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import '../extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
 import '../view_model/character_view_model.dart';
@@ -16,7 +17,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    CharacterViewModel.fetchCharacterItems();
+    CharacterViewModel().fetchCharacterItems();
     ComicViewModel.fetchComicItems();
     SeriesViewModel.fetchSeriesItems();
     super.initState();
@@ -76,11 +77,9 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 Expanded(
-                  child: FutureBuilder(
-                    future: CharacterViewModel.characterService
-                        .fetchCharacterItems(),
-                    builder: (context, snapshot) {
-                      return !snapshot.hasData
+                  child: Observer(
+                    builder: (_) {
+                      return !CharacterViewModel.isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
                                 color: Colors.red,
@@ -142,8 +141,15 @@ class _HomeViewState extends State<HomeView> {
                                                             '${CharacterViewModel.characterItems?.elementAt(index).id}',
                                                         child:
                                                             CachedNetworkImage(
-                                                          imageUrl:
-                                                              '${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.extension}',
+                                                          imageUrl: CharacterViewModel
+                                                                      .characterItems
+                                                                      ?.elementAt(
+                                                                          index)
+                                                                      .thumbnail
+                                                                      ?.path !=
+                                                                  null
+                                                              ? '${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.path}.${CharacterViewModel.characterItems?.elementAt(index).thumbnail?.extension}'
+                                                              : '',
                                                           placeholder: (context,
                                                                   url) =>
                                                               const CircularProgressIndicator(
@@ -153,10 +159,6 @@ class _HomeViewState extends State<HomeView> {
                                                                   url, error) =>
                                                               const Icon(
                                                                   Icons.error),
-                                                          /*  progressIndicatorBuilder:
-                                                              (context, url,
-                                                                      error) =>
-                                                                  CircularProgressIndicator(), */
                                                         ),
                                                       )
                                                     : const CircularProgressIndicator(
