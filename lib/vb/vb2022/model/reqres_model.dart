@@ -2,6 +2,8 @@
 //
 //     final reqresModel = reqresModelFromMap(jsonString);
 
+//TODO json serializable ------------------
+
 import 'dart:convert';
 
 class ReqresModel {

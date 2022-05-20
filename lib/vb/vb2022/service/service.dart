@@ -16,8 +16,7 @@ class ReqresService extends IReqresService {
 
   @override
   Future<List<ReqresModel>?> fetchResourceItem() async {
-    final response =
-        await dio.get('https://jsonplaceholder.typicode.com/posts');
+    final response = await dio.get('posts');
 
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;
