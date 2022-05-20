@@ -16,9 +16,11 @@ class SeriesService implements ISeriesService {
   late final Dio _dio;
 
   SeriesService()
-      : _dio = Dio(BaseOptions(
-          baseUrl: 'http://gateway.marvel.com/v1/public/',
-        ));
+      : _dio = Dio(
+          BaseOptions(
+            baseUrl: 'http://gateway.marvel.com/v1/public/',
+          ),
+        );
 
   @override
   Future<List<Result>?> fetchSeriesItems() async {

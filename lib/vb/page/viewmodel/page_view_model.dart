@@ -1,3 +1,4 @@
+import 'package:marvel/vb/network/network_manager.dart';
 import 'package:mobx/mobx.dart';
 
 part 'page_view_model.g.dart';
@@ -11,5 +12,9 @@ abstract class _PageViewModelBase with Store {
   @action
   void incrementNumber() {
     number++;
+  }
+
+  void getDeneme() {
+    //NetworkManager.instance.dioGet('ewq', model);
   }
 }
