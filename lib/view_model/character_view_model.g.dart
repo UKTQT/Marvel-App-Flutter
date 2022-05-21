@@ -92,6 +92,23 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
     });
   }
 
+  late final _$characterEventsItemsAtom = Atom(
+      name: '_CharacterViewModelBase.characterEventsItems', context: context);
+
+  @override
+  List<EventResult>? get characterEventsItems {
+    _$characterEventsItemsAtom.reportRead();
+    return super.characterEventsItems;
+  }
+
+  @override
+  set characterEventsItems(List<EventResult>? value) {
+    _$characterEventsItemsAtom.reportWrite(value, super.characterEventsItems,
+        () {
+      super.characterEventsItems = value;
+    });
+  }
+
   late final _$fetchCharacterItemsAsyncAction = AsyncAction(
       '_CharacterViewModelBase.fetchCharacterItems',
       context: context);
@@ -124,6 +141,17 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
         .run(() => super.fetchCharacterSeriesItems(characterId: characterId));
   }
 
+  late final _$fetchCharacterEventsItemsAsyncAction = AsyncAction(
+      '_CharacterViewModelBase.fetchCharacterEventsItems',
+      context: context);
+
+  @override
+  Future<List<EventResult>?> fetchCharacterEventsItems(
+      {required int characterId}) {
+    return _$fetchCharacterEventsItemsAsyncAction
+        .run(() => super.fetchCharacterEventsItems(characterId: characterId));
+  }
+
   late final _$_CharacterViewModelBaseActionController =
       ActionController(name: '_CharacterViewModelBase', context: context);
 
@@ -145,7 +173,8 @@ isLoading: ${isLoading},
 characterItems: ${characterItems},
 singleCharacterItems: ${singleCharacterItems},
 characterComicsItems: ${characterComicsItems},
-characterSeriesItems: ${characterSeriesItems}
+characterSeriesItems: ${characterSeriesItems},
+characterEventsItems: ${characterEventsItems}
     ''';
   }
 }

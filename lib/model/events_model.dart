@@ -1,40 +1,40 @@
-// To parse required this JSON data, do
+// To parse this JSON data, do
 //
-//     final eventsModals = eventsModalsFromMap(jsonString);
+//     final eventModel = eventModelFromMap(jsonString);
 
 import 'dart:convert';
 
-class EventsModals {
-  EventsModals({
-    required this.code,
-    required this.status,
-    required this.copyright,
-    required this.attributionText,
-    required this.attributionHtml,
-    required this.data,
-    required this.etag,
+class EventModel {
+  EventModel({
+    this.code,
+    this.status,
+    this.copyright,
+    this.attributionText,
+    this.attributionHtml,
+    this.data,
+    this.etag,
   });
 
-  final String code;
-  final String status;
-  final String copyright;
-  final String attributionText;
-  final String attributionHtml;
-  final Data data;
-  final String etag;
+  final int? code;
+  final String? status;
+  final String? copyright;
+  final String? attributionText;
+  final String? attributionHtml;
+  final EventData? data;
+  final String? etag;
 
-  factory EventsModals.fromJson(String str) =>
-      EventsModals.fromMap(json.decode(str));
+  factory EventModel.fromJson(String str) =>
+      EventModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory EventsModals.fromMap(Map<String, dynamic> json) => EventsModals(
+  factory EventModel.fromMap(Map<String, dynamic> json) => EventModel(
         code: json["code"],
         status: json["status"],
         copyright: json["copyright"],
         attributionText: json["attributionText"],
         attributionHtml: json["attributionHTML"],
-        data: Data.fromMap(json["data"]),
+        data: EventData.fromMap(json["data"]),
         etag: json["etag"],
       );
 
@@ -44,37 +44,37 @@ class EventsModals {
         "copyright": copyright,
         "attributionText": attributionText,
         "attributionHTML": attributionHtml,
-        "data": data.toMap(),
+        "data": data!.toMap(),
         "etag": etag,
       };
 }
 
-class Data {
-  Data({
-    required this.offset,
-    required this.limit,
-    required this.total,
-    required this.count,
-    required this.results,
+class EventData {
+  EventData({
+    this.offset,
+    this.limit,
+    this.total,
+    this.count,
+    this.results,
   });
 
-  final String offset;
-  final String limit;
-  final String total;
-  final String count;
-  final List<Result> results;
+  final int? offset;
+  final int? limit;
+  final int? total;
+  final int? count;
+  final List<EventResult>? results;
 
-  factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+  factory EventData.fromJson(String str) => EventData.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Data.fromMap(Map<String, dynamic> json) => Data(
+  factory EventData.fromMap(Map<String, dynamic> json) => EventData(
         offset: json["offset"],
         limit: json["limit"],
         total: json["total"],
         count: json["count"],
-        results:
-            List<Result>.from(json["results"].map((x) => Result.fromMap(x))),
+        results: List<EventResult>.from(
+            json["results"].map((x) => EventResult.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -82,52 +82,53 @@ class Data {
         "limit": limit,
         "total": total,
         "count": count,
-        "results": List<dynamic>.from(results.map((x) => x.toMap())),
+        "results": List<dynamic>.from(results!.map((x) => x.toMap())),
       };
 }
 
-class Result {
-  Result({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.resourceUri,
-    required this.urls,
-    required this.modified,
-    required this.start,
-    required this.end,
-    required this.thumbnail,
-    required this.comics,
-    required this.stories,
-    required this.series,
-    required this.characters,
-    required this.creators,
-    required this.next,
-    required this.previous,
+class EventResult {
+  EventResult({
+    this.id,
+    this.title,
+    this.description,
+    this.resourceUri,
+    this.urls,
+    this.modified,
+    this.start,
+    this.end,
+    this.thumbnail,
+    this.comics,
+    this.stories,
+    this.series,
+    this.characters,
+    this.creators,
+    this.next,
+    this.previous,
   });
 
-  final String id;
-  final String title;
-  final String description;
-  final String resourceUri;
-  final List<Url> urls;
-  final String modified;
-  final String start;
-  final String end;
-  final Thumbnail thumbnail;
-  final Comics comics;
-  final Stories stories;
-  final Comics series;
-  final Characters characters;
-  final Characters creators;
-  final Next next;
-  final Next previous;
+  final int? id;
+  final String? title;
+  final String? description;
+  final String? resourceUri;
+  final List<Url>? urls;
+  final String? modified;
+  final String? start;
+  final String? end;
+  final Thumbnail? thumbnail;
+  final Comics? comics;
+  final Stories? stories;
+  final Comics? series;
+  final Characters? characters;
+  final Characters? creators;
+  final Next? next;
+  final Next? previous;
 
-  factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
+  factory EventResult.fromJson(String str) =>
+      EventResult.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
+  factory EventResult.fromMap(Map<String, dynamic> json) => EventResult(
         id: json["id"],
         title: json["title"],
         description: json["description"],
@@ -151,33 +152,33 @@ class Result {
         "title": title,
         "description": description,
         "resourceURI": resourceUri,
-        "urls": List<dynamic>.from(urls.map((x) => x.toMap())),
+        "urls": List<dynamic>.from(urls!.map((x) => x.toMap())),
         "modified": modified,
         "start": start,
         "end": end,
-        "thumbnail": thumbnail.toMap(),
-        "comics": comics.toMap(),
-        "stories": stories.toMap(),
-        "series": series.toMap(),
-        "characters": characters.toMap(),
-        "creators": creators.toMap(),
-        "next": next.toMap(),
-        "previous": previous.toMap(),
+        "thumbnail": thumbnail!.toMap(),
+        "comics": comics!.toMap(),
+        "stories": stories!.toMap(),
+        "series": series!.toMap(),
+        "characters": characters!.toMap(),
+        "creators": creators!.toMap(),
+        "next": next!.toMap(),
+        "previous": previous!.toMap(),
       };
 }
 
 class Characters {
   Characters({
-    required this.available,
-    required this.returned,
-    required this.collectionUri,
-    required this.items,
+    this.available,
+    this.returned,
+    this.collectionUri,
+    this.items,
   });
 
-  final String available;
-  final String returned;
-  final String collectionUri;
-  final List<CharactersItem> items;
+  final int? available;
+  final int? returned;
+  final String? collectionUri;
+  final List<CharactersItem>? items;
 
   factory Characters.fromJson(String str) =>
       Characters.fromMap(json.decode(str));
@@ -196,20 +197,20 @@ class Characters {
         "available": available,
         "returned": returned,
         "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items.map((x) => x.toMap())),
+        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
 class CharactersItem {
   CharactersItem({
-    required this.resourceUri,
-    required this.name,
-    required this.role,
+    this.resourceUri,
+    this.name,
+    this.role,
   });
 
-  final String resourceUri;
-  final String name;
-  final String role;
+  final String? resourceUri;
+  final String? name;
+  final String? role;
 
   factory CharactersItem.fromJson(String str) =>
       CharactersItem.fromMap(json.decode(str));
@@ -231,16 +232,16 @@ class CharactersItem {
 
 class Comics {
   Comics({
-    required this.available,
-    required this.returned,
-    required this.collectionUri,
-    required this.items,
+    this.available,
+    this.returned,
+    this.collectionUri,
+    this.items,
   });
 
-  final String available;
-  final String returned;
-  final String collectionUri;
-  final List<Next> items;
+  final int? available;
+  final int? returned;
+  final String? collectionUri;
+  final List<Next>? items;
 
   factory Comics.fromJson(String str) => Comics.fromMap(json.decode(str));
 
@@ -257,18 +258,18 @@ class Comics {
         "available": available,
         "returned": returned,
         "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items.map((x) => x.toMap())),
+        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
 class Next {
   Next({
-    required this.resourceUri,
-    required this.name,
+    this.resourceUri,
+    this.name,
   });
 
-  final String resourceUri;
-  final String name;
+  final String? resourceUri;
+  final String? name;
 
   factory Next.fromJson(String str) => Next.fromMap(json.decode(str));
 
@@ -287,16 +288,16 @@ class Next {
 
 class Stories {
   Stories({
-    required this.available,
-    required this.returned,
-    required this.collectionUri,
-    required this.items,
+    this.available,
+    this.returned,
+    this.collectionUri,
+    this.items,
   });
 
-  final String available;
-  final String returned;
-  final String collectionUri;
-  final List<StoriesItem> items;
+  final int? available;
+  final int? returned;
+  final String? collectionUri;
+  final List<StoriesItem>? items;
 
   factory Stories.fromJson(String str) => Stories.fromMap(json.decode(str));
 
@@ -314,20 +315,20 @@ class Stories {
         "available": available,
         "returned": returned,
         "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items.map((x) => x.toMap())),
+        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
 class StoriesItem {
   StoriesItem({
-    required this.resourceUri,
-    required this.name,
-    required this.type,
+    this.resourceUri,
+    this.name,
+    this.type,
   });
 
-  final String resourceUri;
-  final String name;
-  final String type;
+  final String? resourceUri;
+  final String? name;
+  final String? type;
 
   factory StoriesItem.fromJson(String str) =>
       StoriesItem.fromMap(json.decode(str));
@@ -349,12 +350,12 @@ class StoriesItem {
 
 class Thumbnail {
   Thumbnail({
-    required this.path,
-    required this.extension,
+    this.path,
+    this.extension,
   });
 
-  final String path;
-  final String extension;
+  final String? path;
+  final String? extension;
 
   factory Thumbnail.fromJson(String str) => Thumbnail.fromMap(json.decode(str));
 
@@ -373,12 +374,12 @@ class Thumbnail {
 
 class Url {
   Url({
-    required this.type,
-    required this.url,
+    this.type,
+    this.url,
   });
 
-  final String type;
-  final String url;
+  final String? type;
+  final String? url;
 
   factory Url.fromJson(String str) => Url.fromMap(json.decode(str));
 

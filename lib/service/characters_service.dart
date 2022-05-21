@@ -5,10 +5,11 @@ import 'package:dio/dio.dart';
 
 import '../model/characters_model.dart';
 import '../model/comics_model.dart';
+import '../model/events_model.dart';
 import '../model/series_model.dart';
 import 'config.dart';
 
-enum _ServicePaths { characters, comics, series }
+enum _ServicePaths { characters, comics, series, events }
 
 abstract class ICharacterService {
   late final Dio _dio;
@@ -21,6 +22,7 @@ abstract class ICharacterService {
   // Future<List<CharacterResult>?> fetchSingleCharacterItems({int? id});
   Future<List<ComicResult>?> fetchCharacterComics({required int id});
   Future<List<SeriesResult>?> fetchCharacterSeries({required int id});
+  Future<List<EventResult>?> fetchCharacterEvents({required int id});
 }
 
 class CharacterService extends ICharacterService {
@@ -127,6 +129,35 @@ class CharacterService extends ICharacterService {
 
         if (_datas is Map<String, dynamic>) {
           return SeriesData.fromMap(_datas['data']).results;
+        }
+      }
+    } on DioError catch (e) {
+      //
+    }
+    return null;
+  }
+
+  @override
+  Future<List<EventResult>?> fetchCharacterEvents({required int id}) async {
+    try {
+      final response = await _dio.get(
+        _ServicePaths.characters.name +
+            '/' +
+            id.toString() +
+            '/' +
+            _ServicePaths.events.name,
+        queryParameters: {
+          'apikey': Config.publicKey,
+          'ts': Config.timeStamp,
+          'hash': Config.md5Hash,
+        },
+      );
+
+      if (response.statusCode == HttpStatus.ok) {
+        final _datas = response.data;
+
+        if (_datas is Map<String, dynamic>) {
+          return EventData.fromMap(_datas['data']).results;
         }
       }
     } on DioError catch (e) {

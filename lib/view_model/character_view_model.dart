@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 
 import '../model/characters_model.dart';
 import '../model/comics_model.dart';
+import '../model/events_model.dart';
 import '../model/series_model.dart';
 import '../service/characters_service.dart';
 import '../view/character_view.dart';
@@ -29,6 +30,9 @@ abstract class _CharacterViewModelBase with Store {
 
   @observable
   List<SeriesResult>? characterSeriesItems = [];
+
+  @observable
+  List<EventResult>? characterEventsItems = [];
 
   @action //Ekrana haber verecek
   void changeLoading() {
@@ -60,5 +64,12 @@ abstract class _CharacterViewModelBase with Store {
       {required int characterId}) async {
     characterSeriesItems =
         await characterService.fetchCharacterSeries(id: characterId) ?? [];
+  }
+
+  @action
+  Future<List<EventResult>?> fetchCharacterEventsItems(
+      {required int characterId}) async {
+    characterEventsItems =
+        await characterService.fetchCharacterEvents(id: characterId) ?? [];
   }
 }

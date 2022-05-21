@@ -21,7 +21,6 @@ class _CharacterViewState extends State<CharacterView> {
   @override
   void initState() {
     _characterViewModel = CharacterViewModel();
-
     super.initState();
   }
 
@@ -32,6 +31,8 @@ class _CharacterViewState extends State<CharacterView> {
     _characterViewModel.fetchCharacterComicsItems(
         characterId: args['characterId']);
     _characterViewModel.fetchCharacterSeriesItems(
+        characterId: args['characterId']);
+    _characterViewModel.fetchCharacterEventsItems(
         characterId: args['characterId']);
 
     return Scaffold(
@@ -403,34 +404,6 @@ class _CharacterViewState extends State<CharacterView> {
                                                               ),
                                                             ),
                                                           ),
-                                                          /*  Expanded(
-                                                            flex: 4,
-                                                            child: Padding(
-                                                              padding: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          context
-                                                                              .lowWidthPadding2),
-                                                              child: Container(
-                                                                width: double
-                                                                    .maxFinite,
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    _characterViewModel
-                                                                            .characterItems?[index]
-                                                                            .name ??
-                                                                        '',
-                                                                    style: Theme.of(
-                                                                            context)
-                                                                        .textTheme
-                                                                        .bodyText1,
-                                                                    softWrap:
-                                                                        false,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ), */
                                                         ],
                                                       ),
                                                     ),
@@ -438,59 +411,6 @@ class _CharacterViewState extends State<CharacterView> {
                                                 );
                                               },
                                             );
-                                    },
-                                  ),
-                                ),
-                                /*
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: context.lowHeightPadding2,
-                                    left: context.highWidthPadding,
-                                    right: context.highWidthPadding,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Stories',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline6
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                              color: const Color(0xffd32f2f),
-                                            ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.15,
-                                  width: double.maxFinite,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10.0, vertical: 10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                          ),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.4,
-                                          child: ListTile(
-                                            title: const Text('ewq'),
-                                            leading: Container(
-                                                child: const Text('ewq')),
-                                          ),
-                                        ),
-                                      );
                                     },
                                   ),
                                 ),
@@ -517,35 +437,110 @@ class _CharacterViewState extends State<CharacterView> {
                                 ),
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.15,
+                                      MediaQuery.of(context).size.height * 0.30,
                                   width: double.maxFinite,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10.0, vertical: 10.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                          ),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.4,
-                                          child: ListTile(
-                                            title: const Text('ewq'),
-                                            leading: Container(
-                                                child: const Text('ewq')),
-                                          ),
-                                        ),
-                                      );
+                                  child: Observer(
+                                    builder: (_) {
+                                      return _characterViewModel
+                                              .characterEventsItems!.isEmpty
+                                          ? const CircularProgressIndicator(
+                                              color: Colors.red,
+                                            )
+                                          : ListView.builder(
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: _characterViewModel
+                                                      .characterEventsItems
+                                                      ?.length ??
+                                                  1,
+                                              itemBuilder: (context, index) {
+                                                return Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: context
+                                                          .lowWidthPadding,
+                                                      vertical: context
+                                                          .lowHeightPadding2),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      /* Navigator.pushNamed(
+                                                          context,
+                                                          '/characterView',
+                                                          arguments: {
+                                                            'characterId':
+                                                                _characterViewModel
+                                                                    .characterItems?[
+                                                                        index]
+                                                                    .id,
+                                                          }); */
+                                                    },
+                                                    child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.35,
+                                                      decoration: BoxDecoration(
+                                                          border: Border.all(
+                                                            color:
+                                                                Colors.black26,
+                                                            width: 2,
+                                                          ),
+                                                          borderRadius:
+                                                              const BorderRadius
+                                                                  .only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                          ),
+                                                          color: Colors.white),
+                                                      child: Column(
+                                                        children: [
+                                                          Expanded(
+                                                            flex: 9,
+                                                            child: Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.35,
+                                                              child: FittedBox(
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                                child:
+                                                                    CachedNetworkImage(
+                                                                  placeholder:
+                                                                      (context,
+                                                                          index) {
+                                                                    return const CircularProgressIndicator(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    );
+                                                                  },
+                                                                  imageUrl:
+                                                                      '${_characterViewModel.characterEventsItems?[index].thumbnail!.path}.${_characterViewModel.characterEventsItems?[index].thumbnail!.extension}',
+                                                                  errorWidget: (context,
+                                                                          url,
+                                                                          error) =>
+                                                                      const CircularProgressIndicator(
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
                                     },
                                   ),
-                                ), */
+                                ),
                               ],
                             ),
                           ),
