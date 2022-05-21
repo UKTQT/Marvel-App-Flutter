@@ -9,23 +9,24 @@ import 'config.dart';
 enum _ServicePaths { series }
 
 abstract class ISeriesService {
+  late final Dio _dio;
+
+  ISeriesService() {
+    _dio = Dio(
+      BaseOptions(
+        baseUrl: 'http://gateway.marvel.com/v1/public/',
+      ),
+    );
+  }
+
   Future<List<Result>?> fetchSeriesItems();
 }
 
-class SeriesService implements ISeriesService {
-  late final Dio _dio;
-
-  SeriesService()
-      : _dio = Dio(
-          BaseOptions(
-            baseUrl: 'http://gateway.marvel.com/v1/public/',
-          ),
-        );
-
+class SeriesService extends ISeriesService {
   @override
   Future<List<Result>?> fetchSeriesItems() async {
     try {
-      var rndOffset = Random().nextInt(1000);
+      var rndOffset = Random().nextInt(8000);
       final response =
           await _dio.get(_ServicePaths.series.name, queryParameters: {
         'apikey': Config.publicKey,

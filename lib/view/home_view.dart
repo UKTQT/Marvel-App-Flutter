@@ -21,10 +21,12 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final _characterViewModel = CharacterViewModel();
   final _comicViewModel = ComicViewModel();
+  final _seriesViewModel = SeriesViewModel();
 
-  fetchItems() {
-    _characterViewModel.fetchCharacterItems();
-    _comicViewModel.fetchComicItems();
+  fetchItems() async {
+    await _characterViewModel.fetchCharacterItems();
+    await _comicViewModel.fetchComicItems();
+    await _seriesViewModel.fetchSeriesItems();
   }
 
   @override
@@ -235,10 +237,9 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 Expanded(
-                  child: FutureBuilder(
-                    future: SeriesViewModel.seriesService.fetchSeriesItems(),
-                    builder: (context, snapshot) {
-                      return !snapshot.hasData
+                  child: Observer(
+                    builder: (_) {
+                      return !_seriesViewModel.isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
                                 color: Colors.red,
@@ -246,7 +247,10 @@ class _HomeViewState extends State<HomeView> {
                             )
                           : ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 20,
+                              itemCount:
+                                  _seriesViewModel.seriesItems!.isNotEmpty
+                                      ? 20
+                                      : 0,
                               itemBuilder: (context, index) {
                                 return Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -259,30 +263,18 @@ class _HomeViewState extends State<HomeView> {
                                         MediaQuery.of(context).size.width * 0.5,
                                     child: FittedBox(
                                       fit: BoxFit.fill,
-                                      child: Observer(
-                                        builder: (_) {
-                                          return _characterViewModel
-                                                      .characterItems
-                                                      ?.elementAt(index)
-                                                      .thumbnail !=
-                                                  null
-                                              ? CachedNetworkImage(
-                                                  placeholder:
-                                                      (context, index) {
-                                                    return const CircularProgressIndicator(
-                                                      color: Colors.white,
-                                                    );
-                                                  },
-                                                  imageUrl:
-                                                      '${SeriesViewModel.seriesItems?.elementAt(index).thumbnail!.path}.${SeriesViewModel.seriesItems?.elementAt(index).thumbnail!.extension}',
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      const CircularProgressIndicator(
-                                                    color: Colors.white,
-                                                  ),
-                                                )
-                                              : CircularProgressIndicator();
+                                      child: CachedNetworkImage(
+                                        placeholder: (context, index) {
+                                          return const CircularProgressIndicator(
+                                            color: Colors.white,
+                                          );
                                         },
+                                        imageUrl:
+                                            '${_seriesViewModel.seriesItems![index].thumbnail!.path}.${_seriesViewModel.seriesItems![index].thumbnail!.extension}',
+                                        errorWidget: (context, url, error) =>
+                                            const CircularProgressIndicator(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
