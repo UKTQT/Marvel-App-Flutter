@@ -1,32 +1,41 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import '../model/characters_model.dart';
 import '../model/comics_model.dart';
 import '../service/characters_service.dart';
+import '../view/character_view.dart';
+import '../view/home_view.dart';
 
-class CharacterViewModel with Store {
-  static List<CharacterResult>? characterItems;
+abstract class CharacterViewModel extends State<HomeView> {
+  late final CharacterService characterService;
 
-  static List<ComicResult>? characterComicsItems;
+  bool isLoading = false;
 
-  static final CharacterService characterService = CharacterService();
+  List<CharacterResult>? characterItems = [];
 
-  @observable
-  static bool isLoading = false;
+  List<ComicResult>? characterComicsItems = [];
 
   void changeLoading() {
-    isLoading = !isLoading;
+    setState(() {
+      isLoading = !isLoading;
+    });
   }
 
-  @action
-  Future<void> fetchCharacterItems() async {
+  @override
+  void initState() {
+    super.initState();
+    characterService = CharacterService();
+    fetchCharacterItems(); // Character get
+  }
+
+  fetchCharacterItems() async {
     changeLoading();
-    characterItems = await characterService.fetchCharacterItems();
+    characterItems = await characterService.fetchCharacterItems() ?? [];
     changeLoading();
   }
 
-  @action
-  Future<void> fetchCharacterComicsItems(int id) async {
+  fetchCharacterComicsItems(int id) async {
     characterComicsItems = await characterService.fetchCharacterComics(id: id);
   }
 }

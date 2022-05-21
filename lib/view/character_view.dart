@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+/* import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../view_model/character_view_model.dart';
@@ -510,3 +510,4 @@ class _CharacterViewState extends State<CharacterView> {
     );
   }
 }
+ */

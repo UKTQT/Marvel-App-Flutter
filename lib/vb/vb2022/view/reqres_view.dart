@@ -13,12 +13,8 @@ class ReqResView extends StatefulWidget {
   State<ReqResView> createState() => _ReqResViewState();
 }
 
-class _ReqResViewState extends State<ReqResView> {
+class _ReqResViewState extends ReqResViewModel {
   //extends ReqResViewModel
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

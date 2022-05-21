@@ -10,17 +10,17 @@ import 'config.dart';
 enum _ServicePaths { characters, comics }
 
 abstract class ICharacterService {
+  late final Dio _dio;
+
+  ICharacterService() {
+    _dio = Dio(BaseOptions(baseUrl: 'http://gateway.marvel.com/v1/public/'));
+  }
+
   Future<List<CharacterResult>?> fetchCharacterItems();
   Future<List<ComicResult>?> fetchCharacterComics({int? id});
 }
 
-class CharacterService implements ICharacterService {
-  late final Dio _dio;
-
-  CharacterService()
-      : _dio =
-            Dio(BaseOptions(baseUrl: 'http://gateway.marvel.com/v1/public/'));
-
+class CharacterService extends ICharacterService {
   @override
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     try {
@@ -43,15 +43,15 @@ class CharacterService implements ICharacterService {
           return CharacterData.fromMap(_datas['data']).results;
         }
       }
-    } on DioError catch (e) {}
+    } on DioError catch (e) {
+      //
+    }
     return null;
   }
 
   @override
   Future<List<ComicResult>?> fetchCharacterComics({int? id}) async {
     try {
-      print('try çalıştı');
-
       final response2 = await _dio.get(
         _ServicePaths.characters.name +
             '/' +
@@ -73,7 +73,7 @@ class CharacterService implements ICharacterService {
         }
       }
     } on DioError catch (e) {
-      print(e);
+      //
     }
     return null;
   }
