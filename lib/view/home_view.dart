@@ -53,6 +53,9 @@ class _HomeViewState extends State<HomeView> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: TextFormField(
+                onChanged: (String searchValue) {
+                  print(searchValue);
+                },
                 decoration: const InputDecoration(
                   labelText: 'Characters, Comics, Series...',
                   labelStyle: TextStyle(color: Colors.white60),
