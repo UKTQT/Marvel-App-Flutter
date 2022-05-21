@@ -1,11 +1,28 @@
+import 'package:mobx/mobx.dart';
+
 import '../model/comics_model.dart';
 import '../service/comics_service.dart';
 
-class ComicViewModel {
-  static List<ComicResult>? comicItems;
-  static final ComicService comicService = ComicService();
+part 'comic_view_model.g.dart';
 
-  static Future<void> fetchComicItems() async {
-    comicItems = await comicService.fetchComicItems();
+class ComicViewModel = _ComicViewModelBase with _$ComicViewModel;
+
+abstract class _ComicViewModelBase with Store {
+  final ComicService comicService = ComicService();
+
+  @observable //Değişebilir
+  bool isLoading = false;
+
+  @observable
+  List<ComicResult>? comicItems = [];
+
+  @action //Ekrana haber verecek
+  void changeLoading() {
+    isLoading = !isLoading;
+  }
+
+  Future<List<ComicResult>?> fetchComicItems() async {
+    changeLoading();
+    comicItems = await comicService.fetchComicItems() ?? [];
   }
 }

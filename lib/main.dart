@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MainApp(),
         //'/characterView': (context) => const CharacterView(),
-        '/comicView': (context) => const ComicView(),
+        //'/comicView': (context) => const ComicView(),
       },
     );
   }

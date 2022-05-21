@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:marvel/view/comic_view.dart';
 
 import '../extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
@@ -19,14 +20,16 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final _characterViewModel = CharacterViewModel();
+  final _comicViewModel = ComicViewModel();
 
-  fetchCharacterItems() async {
-    await _characterViewModel.fetchCharacterItems();
+  fetchItems() {
+    _characterViewModel.fetchCharacterItems();
+    _comicViewModel.fetchComicItems();
   }
 
   @override
   void initState() {
-    fetchCharacterItems();
+    fetchItems();
     super.initState();
   }
 
@@ -82,11 +85,6 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ],
                   ),
-                ),
-                FloatingActionButton(
-                  onPressed: () {
-                    _characterViewModel.fetchCharacterItems();
-                  },
                 ),
                 Expanded(child: Observer(
                   builder: (_) {
@@ -326,10 +324,9 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 Expanded(
-                  child: FutureBuilder(
-                    future: ComicViewModel.comicService.fetchComicItems(),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      return !snapshot.hasData
+                  child: Observer(
+                    builder: (_) {
+                      return !_comicViewModel.isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
                                 color: Colors.red,
@@ -337,7 +334,9 @@ class _HomeViewState extends State<HomeView> {
                             )
                           : ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 20,
+                              itemCount: _comicViewModel.comicItems!.isNotEmpty
+                                  ? 20
+                                  : 0,
                               itemBuilder: (context, index) {
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -346,10 +345,8 @@ class _HomeViewState extends State<HomeView> {
                                     onTap: () {
                                       Navigator.pushNamed(context, '/comicView',
                                           arguments: {
-                                            'comicId': ComicViewModel
-                                                .comicItems!
-                                                .elementAt(index)
-                                                .id,
+                                            'comicId': _comicViewModel
+                                                .comicItems![index].id,
                                           });
                                     },
                                     child: Container(
@@ -364,7 +361,7 @@ class _HomeViewState extends State<HomeView> {
                                         fit: BoxFit.fill,
                                         child: Hero(
                                           tag:
-                                              '${ComicViewModel.comicItems?.elementAt(index).id}',
+                                              '${_comicViewModel.comicItems![index].id}',
                                           child: CachedNetworkImage(
                                             placeholder: (context, index) {
                                               return const CircularProgressIndicator(
@@ -372,7 +369,7 @@ class _HomeViewState extends State<HomeView> {
                                               );
                                             },
                                             imageUrl:
-                                                '${ComicViewModel.comicItems?.elementAt(index).thumbnail!.path}.${ComicViewModel.comicItems?.elementAt(index).thumbnail!.extension}',
+                                                '${_comicViewModel.comicItems![index].thumbnail!.path}.${_comicViewModel.comicItems![index].thumbnail!.extension}',
                                             errorWidget: (context, url,
                                                     error) =>
                                                 const CircularProgressIndicator(

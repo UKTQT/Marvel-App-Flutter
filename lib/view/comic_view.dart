@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+/* import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../view_model/comic_view_model.dart';
 import '../extension/padding_extension.dart';
@@ -66,3 +66,4 @@ class _ComicViewState extends State<ComicView> {
     );
   }
 }
+ */

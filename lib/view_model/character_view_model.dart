@@ -14,9 +14,6 @@ class CharacterViewModel = _CharacterViewModelBase with _$CharacterViewModel;
 abstract class _CharacterViewModelBase with Store {
   final CharacterService characterService = CharacterService();
 
-  @observable
-  PageState pageState = PageState.NORMAL;
-
   @observable //Değişebilir
   bool isLoading = false;
 
@@ -30,11 +27,6 @@ abstract class _CharacterViewModelBase with Store {
     isLoading = !isLoading;
   }
 
-  @override
-  void init() {
-    fetchCharacterItems();
-  }
-
   @action
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
@@ -45,5 +37,3 @@ abstract class _CharacterViewModelBase with Store {
     characterComicsItems = await characterService.fetchCharacterComics(id: id);
   }
 }
-
-enum PageState { LOADING, ERROR, SUCCESS, NORMAL }
