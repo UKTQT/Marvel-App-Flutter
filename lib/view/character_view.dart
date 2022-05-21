@@ -29,27 +29,10 @@ class _CharacterViewState extends State<CharacterView> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Map;
 
-    void deneme(int id) {
-      _characterViewModel.fetchCharacterComicsItems(characterId: id);
-    }
-
-    deneme(args['characterId']);
-    /* if (args.isNotEmpty) {
-      _characterViewModel.fetchSingleCharacterItems(
-        characterId: args['characterId'],
-      );
-    } */
-    /* @observable
-    final characterAllItems = _characterViewModel.characterItems!.firstWhere(
-      (element) => element.id == args['characterId'],
-    ); */
-
-    //CharacterViewModel().fetchCharacterComicsItems(args['characterId']);
-
-    /* var characterDate = DateTime.parse(
-            '${_characterViewModel.singleCharacterItems?.first.modified ?? '0000-00-0000:00:00-0000'}')
-        .toString()
-        .substring(0, 10); */
+    _characterViewModel.fetchCharacterComicsItems(
+        characterId: args['characterId']);
+    _characterViewModel.fetchCharacterSeriesItems(
+        characterId: args['characterId']);
 
     return Scaffold(
       body: SafeArea(
@@ -231,10 +214,11 @@ class _CharacterViewState extends State<CharacterView> {
                                 ),
                                 SizedBox(height: context.lowHeightPadding),
                                 Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.28,
-                                    width: double.maxFinite,
-                                    child: Observer(builder: (_) {
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.28,
+                                  width: double.maxFinite,
+                                  child: Observer(
+                                    builder: (_) {
                                       return _characterViewModel
                                               .characterComicsItems!.isEmpty
                                           ? const CircularProgressIndicator(
@@ -299,8 +283,10 @@ class _CharacterViewState extends State<CharacterView> {
                                                 );
                                               },
                                             );
-                                    })),
-                                /* Padding(
+                                    },
+                                  ),
+                                ),
+                                Padding(
                                   padding: EdgeInsets.only(
                                     top: context.lowHeightPadding2,
                                     left: context.highWidthPadding,
@@ -325,109 +311,137 @@ class _CharacterViewState extends State<CharacterView> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.30,
                                   width: double.maxFinite,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: _characterViewModel
-                                        .characterItems?.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: context.lowWidthPadding,
-                                            vertical:
-                                                context.lowHeightPadding2),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/characterView',
-                                                arguments: {
-                                                  'characterId':
-                                                      _characterViewModel
-                                                          .characterItems?[
-                                                              index]
-                                                          .id,
-                                                });
-                                          },
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.35,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  color: Colors.black26,
-                                                  width: 2,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(15.0),
-                                                  bottomRight:
-                                                      Radius.circular(15.0),
-                                                ),
-                                                color: Colors.white),
-                                            child: Column(
-                                              children: [
-                                                Expanded(
-                                                  flex: 9,
-                                                  child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.35,
-                                                    child: FittedBox(
-                                                      fit: BoxFit.fill,
-                                                      child: CachedNetworkImage(
-                                                        placeholder:
-                                                            (context, index) {
-                                                          return const CircularProgressIndicator(
-                                                            color: Colors.white,
-                                                          );
-                                                        },
-                                                        imageUrl:
-                                                            '${_characterViewModel.characterItems?[index].thumbnail!.path}.${_characterViewModel.characterItems?[index].thumbnail!.extension}',
-                                                        errorWidget: (context,
-                                                                url, error) =>
-                                                            const CircularProgressIndicator(
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  flex: 4,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.symmetric(
-                                                        horizontal: context
-                                                            .lowWidthPadding2),
+                                  child: Observer(
+                                    builder: (_) {
+                                      return _characterViewModel
+                                              .characterSeriesItems!.isEmpty
+                                          ? const CircularProgressIndicator(
+                                              color: Colors.red,
+                                            )
+                                          : ListView.builder(
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: _characterViewModel
+                                                      .characterSeriesItems
+                                                      ?.length ??
+                                                  1,
+                                              itemBuilder: (context, index) {
+                                                return Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: context
+                                                          .lowWidthPadding,
+                                                      vertical: context
+                                                          .lowHeightPadding2),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      /* Navigator.pushNamed(
+                                                          context,
+                                                          '/characterView',
+                                                          arguments: {
+                                                            'characterId':
+                                                                _characterViewModel
+                                                                    .characterItems?[
+                                                                        index]
+                                                                    .id,
+                                                          }); */
+                                                    },
                                                     child: Container(
-                                                      width: double.maxFinite,
-                                                      child: Center(
-                                                        child: Text(
-                                                          _characterViewModel
-                                                                  .characterItems?[
-                                                                      index]
-                                                                  .name ??
-                                                              '',
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyText1,
-                                                          softWrap: false,
-                                                        ),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.35,
+                                                      decoration: BoxDecoration(
+                                                          border: Border.all(
+                                                            color:
+                                                                Colors.black26,
+                                                            width: 2,
+                                                          ),
+                                                          borderRadius:
+                                                              const BorderRadius
+                                                                  .only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                          ),
+                                                          color: Colors.white),
+                                                      child: Column(
+                                                        children: [
+                                                          Expanded(
+                                                            flex: 9,
+                                                            child: Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.35,
+                                                              child: FittedBox(
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                                child:
+                                                                    CachedNetworkImage(
+                                                                  placeholder:
+                                                                      (context,
+                                                                          index) {
+                                                                    return const CircularProgressIndicator(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    );
+                                                                  },
+                                                                  imageUrl:
+                                                                      '${_characterViewModel.characterSeriesItems?[index].thumbnail!.path}.${_characterViewModel.characterSeriesItems?[index].thumbnail!.extension}',
+                                                                  errorWidget: (context,
+                                                                          url,
+                                                                          error) =>
+                                                                      const CircularProgressIndicator(
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          /*  Expanded(
+                                                            flex: 4,
+                                                            child: Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          context
+                                                                              .lowWidthPadding2),
+                                                              child: Container(
+                                                                width: double
+                                                                    .maxFinite,
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    _characterViewModel
+                                                                            .characterItems?[index]
+                                                                            .name ??
+                                                                        '',
+                                                                    style: Theme.of(
+                                                                            context)
+                                                                        .textTheme
+                                                                        .bodyText1,
+                                                                    softWrap:
+                                                                        false,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ), */
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
+                                                );
+                                              },
+                                            );
                                     },
                                   ),
                                 ),
+                                /*
                                 Padding(
                                   padding: EdgeInsets.only(
                                     top: context.lowHeightPadding2,

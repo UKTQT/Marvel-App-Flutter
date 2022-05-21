@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 
 import '../model/characters_model.dart';
 import '../model/comics_model.dart';
+import '../model/series_model.dart';
 import '../service/characters_service.dart';
 import '../view/character_view.dart';
 import '../view/home_view.dart';
@@ -26,6 +27,9 @@ abstract class _CharacterViewModelBase with Store {
   @observable
   List<ComicResult>? characterComicsItems = [];
 
+  @observable
+  List<SeriesResult>? characterSeriesItems = [];
+
   @action //Ekrana haber verecek
   void changeLoading() {
     isLoading = !isLoading;
@@ -37,17 +41,24 @@ abstract class _CharacterViewModelBase with Store {
     characterItems = await characterService.fetchCharacterItems() ?? [];
   }
 
-  @action
+  /*  @action
   Future<List<CharacterResult>?> fetchSingleCharacterItems(
       {required int characterId}) async {
     singleCharacterItems =
         await characterService.fetchSingleCharacterItems(id: characterId) ?? [];
-  }
+  } */
 
   @action
   Future<List<ComicResult>?> fetchCharacterComicsItems(
       {required int characterId}) async {
     characterComicsItems =
         await characterService.fetchCharacterComics(id: characterId) ?? [];
+  }
+
+  @action
+  Future<List<SeriesResult>?> fetchCharacterSeriesItems(
+      {required int characterId}) async {
+    characterSeriesItems =
+        await characterService.fetchCharacterSeries(id: characterId) ?? [];
   }
 }

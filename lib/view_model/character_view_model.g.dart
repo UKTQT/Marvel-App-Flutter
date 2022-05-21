@@ -75,6 +75,23 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
     });
   }
 
+  late final _$characterSeriesItemsAtom = Atom(
+      name: '_CharacterViewModelBase.characterSeriesItems', context: context);
+
+  @override
+  List<SeriesResult>? get characterSeriesItems {
+    _$characterSeriesItemsAtom.reportRead();
+    return super.characterSeriesItems;
+  }
+
+  @override
+  set characterSeriesItems(List<SeriesResult>? value) {
+    _$characterSeriesItemsAtom.reportWrite(value, super.characterSeriesItems,
+        () {
+      super.characterSeriesItems = value;
+    });
+  }
+
   late final _$fetchCharacterItemsAsyncAction = AsyncAction(
       '_CharacterViewModelBase.fetchCharacterItems',
       context: context);
@@ -83,17 +100,6 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
   Future<List<CharacterResult>?> fetchCharacterItems() {
     return _$fetchCharacterItemsAsyncAction
         .run(() => super.fetchCharacterItems());
-  }
-
-  late final _$fetchSingleCharacterItemsAsyncAction = AsyncAction(
-      '_CharacterViewModelBase.fetchSingleCharacterItems',
-      context: context);
-
-  @override
-  Future<List<CharacterResult>?> fetchSingleCharacterItems(
-      {required int characterId}) {
-    return _$fetchSingleCharacterItemsAsyncAction
-        .run(() => super.fetchSingleCharacterItems(characterId: characterId));
   }
 
   late final _$fetchCharacterComicsItemsAsyncAction = AsyncAction(
@@ -105,6 +111,17 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
       {required int characterId}) {
     return _$fetchCharacterComicsItemsAsyncAction
         .run(() => super.fetchCharacterComicsItems(characterId: characterId));
+  }
+
+  late final _$fetchCharacterSeriesItemsAsyncAction = AsyncAction(
+      '_CharacterViewModelBase.fetchCharacterSeriesItems',
+      context: context);
+
+  @override
+  Future<List<SeriesResult>?> fetchCharacterSeriesItems(
+      {required int characterId}) {
+    return _$fetchCharacterSeriesItemsAsyncAction
+        .run(() => super.fetchCharacterSeriesItems(characterId: characterId));
   }
 
   late final _$_CharacterViewModelBaseActionController =
@@ -127,7 +144,8 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
 isLoading: ${isLoading},
 characterItems: ${characterItems},
 singleCharacterItems: ${singleCharacterItems},
-characterComicsItems: ${characterComicsItems}
+characterComicsItems: ${characterComicsItems},
+characterSeriesItems: ${characterSeriesItems}
     ''';
   }
 }

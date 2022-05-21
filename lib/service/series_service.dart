@@ -19,12 +19,12 @@ abstract class ISeriesService {
     );
   }
 
-  Future<List<Result>?> fetchSeriesItems();
+  Future<List<SeriesResult>?> fetchSeriesItems();
 }
 
 class SeriesService extends ISeriesService {
   @override
-  Future<List<Result>?> fetchSeriesItems() async {
+  Future<List<SeriesResult>?> fetchSeriesItems() async {
     try {
       var rndOffset = Random().nextInt(8000);
       final response =
@@ -40,7 +40,7 @@ class SeriesService extends ISeriesService {
         final _datas = response.data;
 
         if (_datas is Map<String, dynamic>) {
-          return Data.fromMap(_datas['data']).results;
+          return SeriesData.fromMap(_datas['data']).results;
         }
       }
     } on DioError catch (e) {}

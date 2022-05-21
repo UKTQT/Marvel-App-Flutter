@@ -20,7 +20,7 @@ class SeriesModel {
   final String? copyright;
   final String? attributionText;
   final String? attributionHtml;
-  final Data? data;
+  final SeriesData? data;
   final String? etag;
 
   factory SeriesModel.fromJson(String str) =>
@@ -34,7 +34,7 @@ class SeriesModel {
         copyright: json["copyright"],
         attributionText: json["attributionText"],
         attributionHtml: json["attributionHTML"],
-        data: Data.fromMap(json["data"]),
+        data: SeriesData.fromMap(json["data"]),
         etag: json["etag"],
       );
 
@@ -49,8 +49,8 @@ class SeriesModel {
       };
 }
 
-class Data {
-  Data({
+class SeriesData {
+  SeriesData({
     this.offset,
     this.limit,
     this.total,
@@ -62,19 +62,20 @@ class Data {
   final int? limit;
   final int? total;
   final int? count;
-  final List<Result>? results;
+  final List<SeriesResult>? results;
 
-  factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+  factory SeriesData.fromJson(String str) =>
+      SeriesData.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Data.fromMap(Map<String, dynamic> json) => Data(
+  factory SeriesData.fromMap(Map<String, dynamic> json) => SeriesData(
         offset: json["offset"],
         limit: json["limit"],
         total: json["total"],
         count: json["count"],
-        results:
-            List<Result>.from(json["results"].map((x) => Result.fromMap(x))),
+        results: List<SeriesResult>.from(
+            json["results"].map((x) => SeriesResult.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -86,8 +87,8 @@ class Data {
       };
 }
 
-class Result {
-  Result({
+class SeriesResult {
+  SeriesResult({
     this.id,
     this.title,
     this.description,
@@ -125,11 +126,12 @@ class Result {
   /*  final dynamic next;
   final dynamic previous; */
 
-  factory Result.fromJson(String str) => Result.fromMap(json.decode(str));
+  factory SeriesResult.fromJson(String str) =>
+      SeriesResult.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
+  factory SeriesResult.fromMap(Map<String, dynamic> json) => SeriesResult(
         id: json["id"],
         title: json["title"],
         description: json["description"],

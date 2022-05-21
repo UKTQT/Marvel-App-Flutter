@@ -14,7 +14,7 @@ abstract class _SeriesViewModelBase with Store {
   bool isLoading = false;
 
   @observable
-  List<Result>? seriesItems = [];
+  List<SeriesResult>? seriesItems = [];
 
   @action //Ekrana haber verecek
   void changeLoading() {
@@ -22,7 +22,7 @@ abstract class _SeriesViewModelBase with Store {
   }
 
   @action
-  Future<List<Result>?> fetchSeriesItems() async {
+  Future<List<SeriesResult>?> fetchSeriesItems() async {
     changeLoading();
     seriesItems = await seriesService.fetchSeriesItems() ?? [];
   }
