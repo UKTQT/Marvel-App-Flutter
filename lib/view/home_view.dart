@@ -126,8 +126,13 @@ class _HomeViewState extends State<HomeView> {
                                             .characterItems![index].name,
                                         'characterDescription':
                                             _characterViewModel
-                                                .characterItems![index]
-                                                .description,
+                                                    .characterItems![index]
+                                                    .description!
+                                                    .isEmpty
+                                                ? 'Description not available'
+                                                : _characterViewModel
+                                                    .characterItems![index]
+                                                    .description,
                                         'characterModified': _characterViewModel
                                             .characterItems![index].modified,
                                         'characterPath': _characterViewModel

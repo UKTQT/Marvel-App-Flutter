@@ -18,7 +18,7 @@ abstract class ICharacterService {
 
   Future<List<CharacterResult>?> fetchCharacterItems();
   Future<List<CharacterResult>?> fetchSingleCharacterItems({int? id});
-  Future<List<ComicResult>?> fetchCharacterComics({int? id});
+  Future<List<ComicResult>?> fetchCharacterComics({required int id});
 }
 
 class CharacterService extends ICharacterService {
@@ -76,7 +76,8 @@ class CharacterService extends ICharacterService {
   }
 
   @override
-  Future<List<ComicResult>?> fetchCharacterComics({int? id}) async {
+  Future<List<ComicResult>?> fetchCharacterComics({required int id}) async {
+    print(id);
     try {
       final response = await _dio.get(
         _ServicePaths.characters.name +

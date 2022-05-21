@@ -20,10 +20,8 @@ class _CharacterViewState extends State<CharacterView> {
 
   @override
   void initState() {
-    final args = ModalRoute.of(context)!.settings.arguments as Map;
     _characterViewModel = CharacterViewModel();
-    _characterViewModel.fetchCharacterComicsItems(
-        characterId: args['characterId']);
+
     super.initState();
   }
 
@@ -31,6 +29,11 @@ class _CharacterViewState extends State<CharacterView> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Map;
 
+    void deneme(int id) {
+      _characterViewModel.fetchCharacterComicsItems(characterId: id);
+    }
+
+    deneme(args['characterId']);
     /* if (args.isNotEmpty) {
       _characterViewModel.fetchSingleCharacterItems(
         characterId: args['characterId'],
@@ -196,8 +199,7 @@ class _CharacterViewState extends State<CharacterView> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          args['characterDescription'] ??
-                                              'Description not available',
+                                          args['characterDescription'],
                                           style: Theme.of(context)
                                               .textTheme
                                               .subtitle1
@@ -235,7 +237,7 @@ class _CharacterViewState extends State<CharacterView> {
                                     child: Observer(builder: (_) {
                                       return _characterViewModel
                                               .characterComicsItems!.isEmpty
-                                          ? CircularProgressIndicator(
+                                          ? const CircularProgressIndicator(
                                               color: Colors.red,
                                             )
                                           : ListView.builder(

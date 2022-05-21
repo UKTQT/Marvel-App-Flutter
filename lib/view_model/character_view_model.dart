@@ -48,6 +48,6 @@ abstract class _CharacterViewModelBase with Store {
   Future<List<ComicResult>?> fetchCharacterComicsItems(
       {required int characterId}) async {
     characterComicsItems =
-        await characterService.fetchCharacterComics(id: characterId);
+        await characterService.fetchCharacterComics(id: characterId) ?? [];
   }
 }
