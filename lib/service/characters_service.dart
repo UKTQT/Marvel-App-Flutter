@@ -78,7 +78,7 @@ class CharacterService extends ICharacterService {
   @override
   Future<List<ComicResult>?> fetchCharacterComics({int? id}) async {
     try {
-      final response2 = await _dio.get(
+      final response = await _dio.get(
         _ServicePaths.characters.name +
             '/' +
             id.toString() +
@@ -91,8 +91,8 @@ class CharacterService extends ICharacterService {
         },
       );
 
-      if (response2.statusCode == HttpStatus.ok) {
-        final _datas = response2.data;
+      if (response.statusCode == HttpStatus.ok) {
+        final _datas = response.data;
 
         if (_datas is Map<String, dynamic>) {
           return ComicData.fromMap(_datas['data']).results;

@@ -19,19 +19,26 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final _characterViewModel = CharacterViewModel();
-  final _comicViewModel = ComicViewModel();
-  final _seriesViewModel = SeriesViewModel();
+  late CharacterViewModel _characterViewModel;
+  late ComicViewModel _comicViewModel;
+  late SeriesViewModel _seriesViewModel;
 
-  fetchItems() async {
+  /* fetchItems() async {
     await _characterViewModel.fetchCharacterItems();
     await _seriesViewModel.fetchSeriesItems();
     await _comicViewModel.fetchComicItems();
-  }
+  } */
 
   @override
   void initState() {
-    fetchItems();
+    _characterViewModel = CharacterViewModel();
+    _characterViewModel.fetchCharacterItems();
+
+    _seriesViewModel = SeriesViewModel();
+    _seriesViewModel.fetchSeriesItems();
+
+    _comicViewModel = ComicViewModel();
+    _comicViewModel.fetchComicItems();
     super.initState();
   }
 
@@ -115,6 +122,38 @@ class _HomeViewState extends State<HomeView> {
                                       arguments: {
                                         'characterId': _characterViewModel
                                             .characterItems![index].id,
+                                        'characterName': _characterViewModel
+                                            .characterItems![index].name,
+                                        'characterDescription':
+                                            _characterViewModel
+                                                .characterItems![index]
+                                                .description,
+                                        'characterModified': _characterViewModel
+                                            .characterItems![index].modified,
+                                        'characterPath': _characterViewModel
+                                            .characterItems![index]
+                                            .thumbnail
+                                            ?.path,
+                                        'characterExt': _characterViewModel
+                                            .characterItems![index]
+                                            .thumbnail
+                                            ?.extension,
+                                        'characterComics': _characterViewModel
+                                            .characterItems![index]
+                                            .comics
+                                            ?.collectionUri,
+                                        'characterSeries': _characterViewModel
+                                            .characterItems![index]
+                                            .series
+                                            ?.collectionUri,
+                                        'characterStories': _characterViewModel
+                                            .characterItems![index]
+                                            .stories
+                                            ?.collectionUri,
+                                        'characterEvents': _characterViewModel
+                                            .characterItems![index]
+                                            .events
+                                            ?.collectionUri,
                                       },
                                     );
                                   },
