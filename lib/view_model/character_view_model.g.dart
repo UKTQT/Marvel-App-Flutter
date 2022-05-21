@@ -41,6 +41,23 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
     });
   }
 
+  late final _$singleCharacterItemsAtom = Atom(
+      name: '_CharacterViewModelBase.singleCharacterItems', context: context);
+
+  @override
+  List<CharacterResult>? get singleCharacterItems {
+    _$singleCharacterItemsAtom.reportRead();
+    return super.singleCharacterItems;
+  }
+
+  @override
+  set singleCharacterItems(List<CharacterResult>? value) {
+    _$singleCharacterItemsAtom.reportWrite(value, super.singleCharacterItems,
+        () {
+      super.singleCharacterItems = value;
+    });
+  }
+
   late final _$fetchCharacterItemsAsyncAction = AsyncAction(
       '_CharacterViewModelBase.fetchCharacterItems',
       context: context);
@@ -49,6 +66,17 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
   Future<List<CharacterResult>?> fetchCharacterItems() {
     return _$fetchCharacterItemsAsyncAction
         .run(() => super.fetchCharacterItems());
+  }
+
+  late final _$fetchSingleCharacterItemsAsyncAction = AsyncAction(
+      '_CharacterViewModelBase.fetchSingleCharacterItems',
+      context: context);
+
+  @override
+  Future<List<CharacterResult>?> fetchSingleCharacterItems(
+      {required int characterId}) {
+    return _$fetchSingleCharacterItemsAsyncAction
+        .run(() => super.fetchSingleCharacterItems(characterId: characterId));
   }
 
   late final _$_CharacterViewModelBaseActionController =
@@ -69,7 +97,8 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-characterItems: ${characterItems}
+characterItems: ${characterItems},
+singleCharacterItems: ${singleCharacterItems}
     ''';
   }
 }

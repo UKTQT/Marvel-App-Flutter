@@ -25,8 +25,8 @@ class _HomeViewState extends State<HomeView> {
 
   fetchItems() async {
     await _characterViewModel.fetchCharacterItems();
-    await _comicViewModel.fetchComicItems();
     await _seriesViewModel.fetchSeriesItems();
+    await _comicViewModel.fetchComicItems();
   }
 
   @override
@@ -103,8 +103,6 @@ class _HomeViewState extends State<HomeView> {
                                     ? 20
                                     : 0,
                             itemBuilder: (context, index) {
-                              inspect(
-                                  _characterViewModel.characterItems![index]);
                               return Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: context.lowWidthPadding,

@@ -20,6 +20,9 @@ abstract class _CharacterViewModelBase with Store {
   @observable
   List<CharacterResult>? characterItems = [];
 
+  @observable
+  List<CharacterResult>? singleCharacterItems = [];
+
   List<ComicResult>? characterComicsItems = [];
 
   @action //Ekrana haber verecek
@@ -31,6 +34,13 @@ abstract class _CharacterViewModelBase with Store {
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
     characterItems = await characterService.fetchCharacterItems() ?? [];
+  }
+
+  @action
+  Future<List<CharacterResult>?> fetchSingleCharacterItems(
+      {required int characterId}) async {
+    singleCharacterItems =
+        await characterService.fetchSingleCharacterItems(id: characterId) ?? [];
   }
 
   fetchCharacterComicsItems(int id) async {
