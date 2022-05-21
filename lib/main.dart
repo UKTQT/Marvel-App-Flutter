@@ -93,7 +93,7 @@ class _MainAppState extends State<MainApp> {
       physics: const NeverScrollableScrollPhysics(),
       controller: _pageController,
       children: [
-        const HomeView(),
+        HomeView(),
         Container(),
         Container(),
       ],

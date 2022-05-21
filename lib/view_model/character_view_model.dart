@@ -7,35 +7,43 @@ import '../service/characters_service.dart';
 import '../view/character_view.dart';
 import '../view/home_view.dart';
 
-abstract class CharacterViewModel extends State<HomeView> {
-  late final CharacterService characterService;
+part 'character_view_model.g.dart';
 
+class CharacterViewModel = _CharacterViewModelBase with _$CharacterViewModel;
+
+abstract class _CharacterViewModelBase with Store {
+  final CharacterService characterService = CharacterService();
+
+  @observable
+  PageState pageState = PageState.NORMAL;
+
+  @observable //Değişebilir
   bool isLoading = false;
 
+  @observable
   List<CharacterResult>? characterItems = [];
 
   List<ComicResult>? characterComicsItems = [];
 
+  @action //Ekrana haber verecek
   void changeLoading() {
-    setState(() {
-      isLoading = !isLoading;
-    });
+    isLoading = !isLoading;
   }
 
   @override
-  void initState() {
-    super.initState();
-    characterService = CharacterService();
-    fetchCharacterItems(); // Character get
+  void init() {
+    fetchCharacterItems();
   }
 
-  fetchCharacterItems() async {
+  @action
+  Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
     characterItems = await characterService.fetchCharacterItems() ?? [];
-    changeLoading();
   }
 
   fetchCharacterComicsItems(int id) async {
     characterComicsItems = await characterService.fetchCharacterComics(id: id);
   }
 }
+
+enum PageState { LOADING, ERROR, SUCCESS, NORMAL }
