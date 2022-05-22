@@ -28,7 +28,7 @@ dependencies:
 
 
 flutter_icons:
-  image_path: "lib/assets/icon/icon.png"
+  image_path: "assets/icon/icon.png"
   android: true
   ios: true
   macos: true
@@ -44,7 +44,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-      - lib/assets/images/
+      - assets/images/
 
   
   

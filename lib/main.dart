@@ -72,7 +72,7 @@ class _MainAppState extends State<MainApp> {
       elevation: 5,
       title: Image(
         image: const AssetImage(
-          'lib/assets/images/marvel-logo.png',
+          'assets/images/marvel-logo.png',
         ),
         width: MediaQuery.of(context).size.width * 0.35,
       ),
