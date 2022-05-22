@@ -1,4 +1,4 @@
-# Marvel App - Dart / Flutter
+# Custom Marvel App - Dart / Flutter
 
 
 ## Project Status ( Continues - Devam Ediyor)
@@ -14,10 +14,10 @@
 ## Project Description
 
 ### Tr
-Marvel projesi, <a href="https://www.marvel.com"> Marvel Entertainment </a> şirketinin https://developer.marvel.com adresinden açtığı API kullanılarak kodlanmış bir projedir. Ticari amacı yoktur. İçeriğinde  Flutter Mobx, Provider, Dio, Cached_Network_Image, Crypto, Intl paketleri kullanılmıştır. 
+Custom Marvel App projesi, <a href="https://www.marvel.com"> Marvel Entertainment </a> şirketinin https://developer.marvel.com adresinden açtığı API kullanılarak kodlanmış bir projedir. Ticari amacı yoktur. İçeriğinde  Flutter Mobx, Provider, Dio, Cached_Network_Image, Crypto, Intl paketleri kullanılmıştır. 
 </br>
 ### En
-The Marvel project is a project coded using the API opened by the <a href="https://www.marvel.com"> Marvel Entertainment </a> company at https://developer.marvel.com. It has no commercial purpose. Flutter Mobx, Provider, Dio, Cached_Network_Image, Crypto, Intl packages are used in its content.
+The Custom Marvel App project is a project coded using the API opened by the <a href="https://www.marvel.com"> Marvel Entertainment </a> company at https://developer.marvel.com. It has no commercial purpose. Flutter Mobx, Provider, Dio, Cached_Network_Image, Crypto, Intl packages are used in its content.
 
 
 
@@ -26,7 +26,6 @@ The Marvel project is a project coded using the API opened by the <a href="https
 
 ## Project Feature
 
-#### Flutter Firebase Service ✓
 #### Responsive Screen ✓
 #### Clean Code ✓
 
@@ -35,12 +34,12 @@ The Marvel project is a project coded using the API opened by the <a href="https
 
 ## Project Package
 
-#### date_picker_timeline
-#### cloud_firestore
-#### firebase_core
+#### mobx
+#### provider
+#### dio
+#### cached_network_image
+#### crypto
 #### intl
-#### flutter_slidable
-#### localization
 
 
 </br>
@@ -53,30 +52,17 @@ The Marvel project is a project coded using the API opened by the <a href="https
    $ flutter packages get
 ```
 
-#### Import it. Now in your Dart code, you can use:
+#### Add tokens from Marvel to your code:
 ```js
-   $ import 'package:cloud_firestore/cloud_firestore.dart';  
-   $ import 'package:firebase_core/firebase_core.dart';
-   $ import 'package:date_picker_timeline/date_picker_timeline.dart';
-   $ import 'package:flutter_localizations/flutter_localizations.dart'; 
-   $ import 'package:flutter_slidable/flutter_slidable.dart'; 
-   $ import 'package:intl/intl.dart';
-   $ import 'package:intl/date_symbol_data_local.dart';
-   $ import 'package:localization/localization.dart';
-```
+  class Config {
+  static const publicKey = 'YOUR_PUBLIC_KEY';
+  static const privateKey = 'YOUR_PRIVATE_KEY';
+  static dynamic timeStamp = 1.toString();
 
-#### Basic database design:
-```js
-   {
-      "task":{
-       "id" : {
-         "date" : "31/03/2022",
-         "finished" : true,
-         "task" : "Görev İçeriği",
-         "title" : "Görev Başlığı"
-       },
-     }
-   }
+  static String md5Hash =
+      md5.convert(utf8.encode(timeStamp + privateKey + publicKey)).toString();
+}
+
 ```
 
 </br>
