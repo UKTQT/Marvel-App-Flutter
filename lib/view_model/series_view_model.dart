@@ -10,6 +10,10 @@ class SeriesViewModel = _SeriesViewModelBase with _$SeriesViewModel;
 abstract class _SeriesViewModelBase with Store {
   final SeriesService seriesService = SeriesService();
 
+  _SeriesViewModelBase() {
+    fetchSeriesItems();
+  }
+
   @observable //Değişebilir
   bool isLoading = false;
 

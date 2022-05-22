@@ -16,6 +16,10 @@ class CharacterViewModel = _CharacterViewModelBase with _$CharacterViewModel;
 abstract class _CharacterViewModelBase with Store {
   final CharacterService characterService = CharacterService();
 
+  _CharacterViewModelBase() {
+    fetchCharacterItems();
+  }
+
   @observable //Değişebilir
   bool isLoading = false;
 

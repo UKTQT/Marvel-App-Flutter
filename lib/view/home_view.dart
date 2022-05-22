@@ -12,6 +12,11 @@ import '../view_model/comic_view_model.dart';
 import '../view_model/home_view_model.dart';
 import '../view_model/series_view_model.dart';
 
+final HomeViewModel _homeViewModel = HomeViewModel();
+final CharacterViewModel _characterViewModel = CharacterViewModel();
+final SeriesViewModel _seriesViewModel = SeriesViewModel();
+final ComicViewModel _comicViewModel = ComicViewModel();
+
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -20,10 +25,10 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late HomeViewModel _homeViewModel;
-  late CharacterViewModel _characterViewModel;
-  late ComicViewModel _comicViewModel;
-  late SeriesViewModel _seriesViewModel;
+  // late HomeViewModel _homeViewModel;
+  // late CharacterViewModel _characterViewModel;
+  //late ComicViewModel _comicViewModel;
+  //late SeriesViewModel _seriesViewModel;
 
   /* fetchItems() async {
     await _characterViewModel.fetchCharacterItems();
@@ -33,16 +38,16 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    _homeViewModel = HomeViewModel();
+    /*  _homeViewModel = HomeViewModel(); */
 
-    _characterViewModel = CharacterViewModel();
-    _characterViewModel.fetchCharacterItems();
+    /* _characterViewModel = CharacterViewModel();
+    _characterViewModel.fetchCharacterItems(); */
 
-    _seriesViewModel = SeriesViewModel();
-    _seriesViewModel.fetchSeriesItems();
+    /*  _seriesViewModel = SeriesViewModel();
+    _seriesViewModel.fetchSeriesItems(); */
 
-    _comicViewModel = ComicViewModel();
-    _comicViewModel.fetchComicItems();
+    /* _comicViewModel = ComicViewModel();
+    _comicViewModel.fetchComicItems(); */
     super.initState();
   }
 

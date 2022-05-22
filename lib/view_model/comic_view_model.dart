@@ -10,6 +10,10 @@ class ComicViewModel = _ComicViewModelBase with _$ComicViewModel;
 abstract class _ComicViewModelBase with Store {
   final ComicService comicService = ComicService();
 
+  _ComicViewModelBase() {
+    fetchComicItems();
+  }
+
   @observable //Değişebilir
   bool isLoading = false;
 
