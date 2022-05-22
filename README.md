@@ -1,5 +1,6 @@
 # Marvel App - Dart / Flutter
 
+
 ## Project Status ( Continues - Devam Ediyor)
 
 <table>
@@ -13,10 +14,10 @@
 ## Project Description
 
 ### Tr
-Hayat Yöneticisi projesi, flutter'da daha fazla tecrübe kazanmak amacıyla yazılmış, istediğiniz güne görev ekleyebildiğiniz, görevi tamamlandı olarak işaretleyebildiğiniz bir görev yöneticisi uygulamasıdır. İçeriğinde firebase veritabanı ve tarih kullanımı için date_picker_timeline paketi kullanışmıştır. 
+Marvel projesi, <a href="https://www.marvel.com"> Marvel Entertainment </a> şirketinin https://developer.marvel.com adresinden açtığı API kullanılarak kodlanmış bir projedir. Ticari amacı yoktur. İçeriğinde  Flutter Mobx, Provider, Dio, Cached_Network_Image, Crypto, Intl paketleri kullanılmıştır. 
 </br>
 ### En
-Life Manager project was written to gain more experience in flutter, It is a task manager application where you can add tasks to the day you want, mark the task as completed. The date_picker_timeline package is used for firebase database and date usage in its content.
+The Marvel project is a project coded using the API opened by the <a href="https://www.marvel.com"> Marvel Entertainment </a> company at https://developer.marvel.com. It has no commercial purpose. Flutter Mobx, Provider, Dio, Cached_Network_Image, Crypto, Intl packages are used in its content.
 
 
 
