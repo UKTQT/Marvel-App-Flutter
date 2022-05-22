@@ -55,13 +55,12 @@ The Custom Marvel App project is a project coded using the API opened by the <a 
 #### Add tokens from Marvel to your code:
 ```js
   class Config {
-  static const publicKey = 'YOUR_PUBLIC_KEY';
-  static const privateKey = 'YOUR_PRIVATE_KEY';
-  static dynamic timeStamp = 1.toString();
+    static const publicKey = 'YOUR_PUBLIC_KEY';
+    static const privateKey = 'YOUR_PRIVATE_KEY';
+    static dynamic timeStamp = 1.toString();
 
-  static String md5Hash =
-      md5.convert(utf8.encode(timeStamp + privateKey + publicKey)).toString();
-}
+    static String md5Hash = md5.convert(utf8.encode(timeStamp + privateKey + publicKey)).toString();
+  }
 
 ```
 
