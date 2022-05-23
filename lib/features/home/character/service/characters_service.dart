@@ -7,7 +7,7 @@ import '../model/characters_model.dart';
 import '../../comic/model/comics_model.dart';
 import '../../../../model/events_model.dart';
 import '../../series/model/series_model.dart';
-import '../../../../service/config.dart';
+import '../../../../core/init/network/config.dart';
 
 enum _ServicePaths { characters, comics, series, events }
 

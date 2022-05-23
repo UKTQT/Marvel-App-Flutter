@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:dio/dio.dart';
 
 import '../model/series_model.dart';
-import '../../../../service/config.dart';
+import '../../../../core/init/network/config.dart';
 
 enum _ServicePaths { series }
 
