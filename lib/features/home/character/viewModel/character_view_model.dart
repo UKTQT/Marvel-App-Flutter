@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../model/characters_model.dart';
-import '../model/comics_model.dart';
-import '../model/events_model.dart';
-import '../model/series_model.dart';
+import '../../../../model/characters_model.dart';
+import '../../../../model/comics_model.dart';
+import '../../../../model/events_model.dart';
+import '../../../../model/series_model.dart';
 import '../service/characters_service.dart';
 import '../view/character_view.dart';
-import '../view/home_view.dart';
+import '../../../../view/home_view.dart';
 
 part 'character_view_model.g.dart';
 

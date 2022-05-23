@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
-import '../model/characters_model.dart';
-import '../view_model/character_view_model.dart';
-import '../extension/padding_extension.dart';
-import '../view_model/comic_view_model.dart';
+import '../../../../model/characters_model.dart';
+import '../viewModel/character_view_model.dart';
+import '../../../../extension/padding_extension.dart';
+import '../../../../view_model/comic_view_model.dart';
 
 class CharacterView extends StatefulWidget {
   const CharacterView({Key? key}) : super(key: key);

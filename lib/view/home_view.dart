@@ -7,7 +7,7 @@ import 'package:marvel/view/comic_view.dart';
 
 import '../extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
-import '../view_model/character_view_model.dart';
+import '../features/home/character/viewModel/character_view_model.dart';
 import '../view_model/comic_view_model.dart';
 import '../view_model/home_view_model.dart';
 import '../view_model/series_view_model.dart';
