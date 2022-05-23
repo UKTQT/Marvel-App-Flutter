@@ -68,7 +68,7 @@ class _HomeViewState extends State<HomeView> {
                   });
                 },
                 decoration: const InputDecoration(
-                  labelText: 'Characters, Comics, Series...',
+                  labelText: 'Characters, Comics, Series....',
                   labelStyle: TextStyle(color: Colors.white60),
                   prefixIcon: Icon(Icons.search),
                   enabledBorder: OutlineInputBorder(
