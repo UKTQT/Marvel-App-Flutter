@@ -5,12 +5,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:marvel/features/home/comic/view/comic_view.dart';
 
-import '../extension/padding_extension.dart';
+import '../../../../extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
-import '../features/home/character/viewModel/character_view_model.dart';
-import '../features/home/comic/viewModel/comic_view_model.dart';
-import '../view_model/home_view_model.dart';
-import '../view_model/series_view_model.dart';
+import '../../character/viewModel/character_view_model.dart';
+import '../../comic/viewModel/comic_view_model.dart';
+import '../viewModel/home_view_model.dart';
+import '../../series/viewModel/series_view_model.dart';
 
 final HomeViewModel _homeViewModel = HomeViewModel();
 final CharacterViewModel _characterViewModel = CharacterViewModel();

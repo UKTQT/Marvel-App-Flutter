@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'extension/padding_extension.dart';
 import 'features/home/comic/view/comic_view.dart';
 import 'features/home/character/view/character_view.dart';
-import 'view/home_view.dart';
+import 'features/home/home/view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
