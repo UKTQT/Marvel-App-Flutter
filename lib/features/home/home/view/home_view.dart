@@ -35,14 +35,14 @@ class _HomeViewState extends State<HomeView> {
           SizedBox(height: context.highHeightPadding2),
           AspectRatio(
             aspectRatio: 16 / 2,
-            child: homeSearch(homeViewModel: _homeViewModel),
+            child: homeSearch(context: context, homeViewModel: _homeViewModel),
           ),
           SizedBox(height: context.highHeightPadding2),
           Observer(
             builder: (_) {
               return _homeViewModel.searchItems.isNotEmpty
                   ? const Text('ewq')
-                  : Wrap(
+                  : Column(
                       children: [
                         AspectRatio(
                           aspectRatio: 16 / 10,

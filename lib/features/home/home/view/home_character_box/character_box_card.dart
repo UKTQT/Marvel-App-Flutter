@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/app/app_constant.dart';
 import '../../../../../core/extensions/padding_extension/padding_extension.dart';
+import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../../character/viewModel/character_view_model.dart';
 
 Padding characterCard(
@@ -43,64 +44,65 @@ Padding characterCard(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.35,
         decoration: BoxDecoration(
-            border: Border.all(
+            /* border: Border.all(
               color: Colors.black26,
               width: 2,
-            ),
+            ), */
             borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(15.0),
-              bottomRight: Radius.circular(15.0),
-            ),
-            color: Color(0xff202020)),
+                bottomLeft: Radius.circular(15.0),
+                bottomRight: Radius.circular(15.0)),
+            color: context.characterBoxCardColor),
         child: Column(
           children: [
             Expanded(
               flex: 9,
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.35,
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: Hero(
-                    tag: '${characterViewModel.characterItems![index].id}',
-                    child:
-                        characterViewModel.characterItems![index].thumbnail !=
-                                null
-                            ? CachedNetworkImage(
-                                imageUrl:
-                                    '${characterViewModel.characterItems![index].thumbnail?.path}.${characterViewModel.characterItems![index].thumbnail?.extension}',
-                                placeholder: (context, url) =>
-                                    const CircularProgressIndicator(
-                                  color: Colors.red,
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                              )
-                            : const CircularProgressIndicator(),
-                  ),
-                ),
-              ),
+              child: characterImage(context, characterViewModel, index),
             ),
             Expanded(
               flex: 4,
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: context.lowWidthPadding2),
-                child: Container(
-                  width: double.maxFinite,
-                  child: Center(
-                    child: Text(
-                      characterViewModel.characterItems![index].name ?? '',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(color: Colors.white),
-                      softWrap: false,
-                    ),
-                  ),
-                ),
-              ),
+              child: characterTitle(context, characterViewModel, index),
             ),
           ],
+        ),
+      ),
+    ),
+  );
+}
+
+SizedBox characterImage(
+    BuildContext context, CharacterViewModel characterViewModel, int index) {
+  return SizedBox(
+    width: MediaQuery.of(context).size.width * 0.35,
+    child: FittedBox(
+      fit: BoxFit.fill,
+      child: Hero(
+        tag: '${characterViewModel.characterItems![index].id}',
+        child: characterViewModel.characterItems![index].thumbnail != null
+            ? CachedNetworkImage(
+                imageUrl:
+                    '${characterViewModel.characterItems![index].thumbnail?.path}.${characterViewModel.characterItems![index].thumbnail?.extension}',
+                placeholder: (context, url) =>
+                    CircularProgressIndicator(color: context.marvelRed),
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.error, color: context.marvelRed),
+              )
+            : const CircularProgressIndicator(),
+      ),
+    ),
+  );
+}
+
+Padding characterTitle(
+    BuildContext context, CharacterViewModel characterViewModel, int index) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: context.lowWidthPadding2),
+    child: SizedBox(
+      width: double.maxFinite,
+      child: Center(
+        child: Text(
+          characterViewModel.characterItems![index].name ?? '',
+          style: Theme.of(context).textTheme.bodyText1,
+          softWrap: false,
         ),
       ),
     ),

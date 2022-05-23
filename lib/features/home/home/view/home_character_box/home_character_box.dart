@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:marvel/core/constants/app/app_constant.dart';
+
+import '../../../../../core/extensions/color_extension/color_extension.dart';
 
 import '../../../character/viewModel/character_view_model.dart';
+
 import 'character_box_card.dart';
 import 'character_box_title.dart';
 
@@ -16,9 +18,9 @@ Column homeCharacter(
         child: Observer(
           builder: (_) {
             return !characterViewModel.isLoading
-                ? const Center(
+                ? Center(
                     child: CircularProgressIndicator(
-                      color: Colors.red,
+                      color: context.redColor,
                     ),
                   )
                 : ListView.builder(

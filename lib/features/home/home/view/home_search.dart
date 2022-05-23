@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/constants/app/app_constant.dart';
+import '../../../../../core/extensions/color_extension/color_extension.dart';
+
 import '../viewModel/home_view_model.dart';
 
-Padding homeSearch({required HomeViewModel homeViewModel}) {
+Padding homeSearch(
+    {required BuildContext context, required HomeViewModel homeViewModel}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 30.0),
     child: TextFormField(
@@ -11,15 +15,15 @@ Padding homeSearch({required HomeViewModel homeViewModel}) {
           homeViewModel.searchItems = searchValue;
         });
       },
-      decoration: const InputDecoration(
-        labelText: 'Characters, Comics, Series....',
-        labelStyle: TextStyle(color: Colors.white60),
-        prefixIcon: Icon(Icons.search),
+      decoration: InputDecoration(
+        labelText: AppConstant.instance!.HOME_VIEW_SEARCH_INPUT_TEXT,
+        labelStyle: TextStyle(color: context.homePageSearchInputTextColor),
+        prefixIcon: const Icon(Icons.search),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 2),
+          borderSide: BorderSide(color: context.whiteColor, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 2),
+          borderSide: BorderSide(color: context.whiteColor, width: 2),
         ),
       ),
     ),
