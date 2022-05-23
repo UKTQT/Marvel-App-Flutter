@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../viewModel/home_view_model.dart';
@@ -39,19 +38,30 @@ class _HomeViewState extends State<HomeView> {
             child: HomeSearchWidget(homeViewModel: _homeViewModel),
           ),
           SizedBox(height: context.highHeightPadding2),
-          AspectRatio(
-            aspectRatio: 16 / 10,
-            child: HomeCharacter(characterViewModel: _characterViewModel),
-          ),
-          SizedBox(height: context.mediumHeightPadding2),
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: HomeSeries(seriesViewModel: _seriesViewModel),
-          ),
-          SizedBox(height: context.mediumHeightPadding2),
-          AspectRatio(
-            aspectRatio: 16 / 10,
-            child: HomeComic(comicViewModel: _comicViewModel),
+          Observer(
+            builder: (_) {
+              return _homeViewModel.searchItems.isNotEmpty
+                  ? const Text('ewq')
+                  : Wrap(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 16 / 10,
+                          child: HomeCharacter(
+                              characterViewModel: _characterViewModel),
+                        ),
+                        SizedBox(height: context.mediumHeightPadding2),
+                        AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: HomeSeries(seriesViewModel: _seriesViewModel),
+                        ),
+                        SizedBox(height: context.mediumHeightPadding2),
+                        AspectRatio(
+                          aspectRatio: 16 / 10,
+                          child: HomeComic(comicViewModel: _comicViewModel),
+                        ),
+                      ],
+                    );
+            },
           ),
           SizedBox(height: context.highHeightPadding),
         ],
