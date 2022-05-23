@@ -20,7 +20,7 @@ Column homeCharacter(
             return !characterViewModel.isLoading
                 ? Center(
                     child: CircularProgressIndicator(
-                      color: context.redColor,
+                      color: context.marvelRed,
                     ),
                   )
                 : ListView.builder(

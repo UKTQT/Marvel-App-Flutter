@@ -17,28 +17,7 @@ Padding characterCard(
         Navigator.pushNamed(
           context,
           '/characterView',
-          arguments: {
-            'characterId': characterViewModel.characterItems![index].id,
-            'characterName': characterViewModel.characterItems![index].name,
-            'characterDescription':
-                characterViewModel.characterItems![index].description!.isEmpty
-                    ? 'Description not available'
-                    : characterViewModel.characterItems![index].description,
-            'characterModified':
-                characterViewModel.characterItems![index].modified,
-            'characterPath':
-                characterViewModel.characterItems![index].thumbnail?.path,
-            'characterExt':
-                characterViewModel.characterItems![index].thumbnail?.extension,
-            'characterComics':
-                characterViewModel.characterItems![index].comics?.collectionUri,
-            'characterSeries':
-                characterViewModel.characterItems![index].series?.collectionUri,
-            'characterStories': characterViewModel
-                .characterItems![index].stories?.collectionUri,
-            'characterEvents':
-                characterViewModel.characterItems![index].events?.collectionUri,
-          },
+          arguments: characterNavigatorArguments(characterViewModel, index),
         );
       },
       child: Container(
@@ -69,6 +48,30 @@ Padding characterCard(
   );
 }
 
+Map<String, Object?> characterNavigatorArguments(
+    CharacterViewModel characterViewModel, int index) {
+  return {
+    'characterId': characterViewModel.characterItems![index].id,
+    'characterName': characterViewModel.characterItems![index].name,
+    'characterDescription':
+        characterViewModel.characterItems![index].description!.isEmpty
+            ? 'Description not available'
+            : characterViewModel.characterItems![index].description,
+    'characterModified': characterViewModel.characterItems![index].modified,
+    'characterPath': characterViewModel.characterItems![index].thumbnail?.path,
+    'characterExt':
+        characterViewModel.characterItems![index].thumbnail?.extension,
+    'characterComics':
+        characterViewModel.characterItems![index].comics?.collectionUri,
+    'characterSeries':
+        characterViewModel.characterItems![index].series?.collectionUri,
+    'characterStories':
+        characterViewModel.characterItems![index].stories?.collectionUri,
+    'characterEvents':
+        characterViewModel.characterItems![index].events?.collectionUri,
+  };
+}
+
 SizedBox characterImage(
     BuildContext context, CharacterViewModel characterViewModel, int index) {
   return SizedBox(
@@ -81,8 +84,7 @@ SizedBox characterImage(
             ? CachedNetworkImage(
                 imageUrl:
                     '${characterViewModel.characterItems![index].thumbnail?.path}.${characterViewModel.characterItems![index].thumbnail?.extension}',
-                placeholder: (context, url) =>
-                    CircularProgressIndicator(color: context.marvelRed),
+                placeholder: (context, url) => const Placeholder(),
                 errorWidget: (context, url, error) =>
                     Icon(Icons.error, color: context.marvelRed),
               )
