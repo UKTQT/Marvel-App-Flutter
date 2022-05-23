@@ -29,13 +29,13 @@ mixin _$SeriesViewModel on _SeriesViewModelBase, Store {
       Atom(name: '_SeriesViewModelBase.seriesItems', context: context);
 
   @override
-  List<dynamic>? get seriesItems {
+  List<SeriesResult>? get seriesItems {
     _$seriesItemsAtom.reportRead();
     return super.seriesItems;
   }
 
   @override
-  set seriesItems(List<dynamic>? value) {
+  set seriesItems(List<SeriesResult>? value) {
     _$seriesItemsAtom.reportWrite(value, super.seriesItems, () {
       super.seriesItems = value;
     });
@@ -45,7 +45,7 @@ mixin _$SeriesViewModel on _SeriesViewModelBase, Store {
       AsyncAction('_SeriesViewModelBase.fetchSeriesItems', context: context);
 
   @override
-  Future<List<dynamic>?> fetchSeriesItems() {
+  Future<List<SeriesResult>?> fetchSeriesItems() {
     return _$fetchSeriesItemsAsyncAction.run(() => super.fetchSeriesItems());
   }
 

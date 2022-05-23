@@ -5,7 +5,7 @@ import 'package:mobx/mobx.dart';
 
 import '../model/characters_model.dart';
 import '../viewModel/character_view_model.dart';
-import '../../../../extension/padding_extension.dart';
+import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../comic/viewModel/comic_view_model.dart';
 
 class CharacterView extends StatefulWidget {

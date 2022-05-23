@@ -79,13 +79,13 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
       name: '_CharacterViewModelBase.characterSeriesItems', context: context);
 
   @override
-  List<dynamic>? get characterSeriesItems {
+  List<SeriesResult>? get characterSeriesItems {
     _$characterSeriesItemsAtom.reportRead();
     return super.characterSeriesItems;
   }
 
   @override
-  set characterSeriesItems(List<dynamic>? value) {
+  set characterSeriesItems(List<SeriesResult>? value) {
     _$characterSeriesItemsAtom.reportWrite(value, super.characterSeriesItems,
         () {
       super.characterSeriesItems = value;
@@ -135,7 +135,8 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
       context: context);
 
   @override
-  Future<List<dynamic>?> fetchCharacterSeriesItems({required int characterId}) {
+  Future<List<SeriesResult>?> fetchCharacterSeriesItems(
+      {required int characterId}) {
     return _$fetchCharacterSeriesItemsAsyncAction
         .run(() => super.fetchCharacterSeriesItems(characterId: characterId));
   }
