@@ -1,65 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:marvel/core/constants/app/app_constant.dart';
+import 'package:flutter/material.dart';
 
-import '../../../../core/extensions/padding_extension/padding_extension.dart';
-import '../../character/viewModel/character_view_model.dart';
-
-Column homeCharacter(
-    {required BuildContext context,
-    required CharacterViewModel characterViewModel}) {
-  return Column(
-    children: [
-      characterBoxTitle(context),
-      Expanded(
-        child: Observer(
-          builder: (_) {
-            return !characterViewModel.isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.red,
-                    ),
-                  )
-                : ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount:
-                        characterViewModel.characterItems!.isNotEmpty ? 20 : 0,
-                    itemBuilder: (context, index) {
-                      return characterCard(context, characterViewModel, index);
-                    },
-                  );
-          },
-        ),
-      ),
-    ],
-  );
-}
-
-Padding characterBoxTitle(BuildContext context) {
-  return Padding(
-    padding: EdgeInsets.symmetric(horizontal: context.mediumWidthPadding2),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          AppConstant.instance!.HOME_VIEW_CHARACTER_BOX_TITLE,
-          style: Theme.of(context)
-              .textTheme
-              .headline6
-              ?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        GestureDetector(
-          onTap: () {},
-          child: Text(
-            AppConstant.instance!.HOME_VIEW_CHARACTER_BOX_TITLE2,
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-        ),
-      ],
-    ),
-  );
-}
+import '../../../../../core/constants/app/app_constant.dart';
+import '../../../../../core/extensions/padding_extension/padding_extension.dart';
+import '../../../character/viewModel/character_view_model.dart';
 
 Padding characterCard(
     BuildContext context, CharacterViewModel characterViewModel, int index) {
