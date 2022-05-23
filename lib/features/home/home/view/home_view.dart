@@ -9,7 +9,7 @@ import '../../comic/viewModel/comic_view_model.dart';
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
 
-import 'home_character_box/home_character.dart';
+import 'home_character_box/home_character_box.dart';
 import 'home_comic.dart';
 import 'home_search.dart';
 import 'home_series.dart';
