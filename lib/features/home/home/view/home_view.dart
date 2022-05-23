@@ -10,7 +10,7 @@ import '../../../../core/extensions/padding_extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
 
 import 'home_character_box/home_character_box.dart';
-import 'home_comic.dart';
+import 'home_comic_box/home_comic_box.dart';
 import 'home_search.dart';
 import 'home_series.dart';
 
@@ -52,17 +52,17 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         SizedBox(height: context.mediumHeightPadding2),
                         AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: homeSeries(
-                              context: context,
-                              seriesViewModel: _seriesViewModel),
-                        ),
-                        SizedBox(height: context.mediumHeightPadding2),
-                        AspectRatio(
                           aspectRatio: 16 / 10,
                           child: homeComic(
                               context: context,
                               comicViewModel: _comicViewModel),
+                        ),
+                        SizedBox(height: context.mediumHeightPadding2),
+                        AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: homeSeries(
+                              context: context,
+                              seriesViewModel: _seriesViewModel),
                         ),
                       ],
                     );
