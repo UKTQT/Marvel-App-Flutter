@@ -10,7 +10,7 @@ Padding comicBoxTitle(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Comics',
+          AppConstant.instance!.HOME_VIEW_COMIC_BOX_TITLE,
           style: Theme.of(context)
               .textTheme
               .headline6
@@ -19,7 +19,7 @@ Padding comicBoxTitle(BuildContext context) {
         GestureDetector(
           onTap: () {},
           child: Text(
-            'All Comics >>',
+            AppConstant.instance!.HOME_VIEW_COMIC_BOX_TITLE2,
             style: Theme.of(context).textTheme.bodyText1,
           ),
         ),

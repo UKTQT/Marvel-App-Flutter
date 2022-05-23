@@ -14,7 +14,6 @@ import 'home_comic_box/home_comic_box.dart';
 import 'home_search.dart';
 import 'home_series.dart';
 
-final HomeViewModel _homeViewModel = HomeViewModel();
 final CharacterViewModel _characterViewModel = CharacterViewModel();
 final SeriesViewModel _seriesViewModel = SeriesViewModel();
 final ComicViewModel _comicViewModel = ComicViewModel();
@@ -27,6 +26,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final HomeViewModel _homeViewModel = HomeViewModel();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

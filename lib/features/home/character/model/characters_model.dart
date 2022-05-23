@@ -25,13 +25,13 @@ class CharactersModel {
   String toJson() => json.encode(toMap());
 
   factory CharactersModel.fromMap(Map<String, dynamic> json) => CharactersModel(
-        code: json["code"],
-        status: json["status"],
-        copyright: json["copyright"],
-        attributionText: json["attributionText"],
-        attributionHtml: json["attributionHTML"],
-        data: CharacterData.fromMap(json["data"]),
-        etag: json["etag"],
+        code: json['code'],
+        status: json['status'],
+        copyright: json['copyright'],
+        attributionText: json['attributionText'],
+        attributionHtml: json['attributionHTML'],
+        data: CharacterData.fromMap(json['data']),
+        etag: json['etag'],
       );
 
   Map<String, dynamic> toMap() => {

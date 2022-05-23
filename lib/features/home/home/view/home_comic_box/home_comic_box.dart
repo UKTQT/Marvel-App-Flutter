@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../../../../../core/extensions/padding_extension/padding_extension.dart';
+import '../../../../../core/extensions/color_extension/color_extension.dart';
 
 import '../../../comic/viewModel/comic_view_model.dart';
 
@@ -17,9 +17,9 @@ Column homeComic(
         child: Observer(
           builder: (_) {
             return !comicViewModel.isLoading
-                ? const Center(
+                ? Center(
                     child: CircularProgressIndicator(
-                      color: Colors.red,
+                      color: context.marvelRed,
                     ),
                   )
                 : ListView.builder(
