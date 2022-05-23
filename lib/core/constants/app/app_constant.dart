@@ -6,4 +6,8 @@ class AppConstant {
   }
 
   AppConstant._init();
+
+  //Home View Characters
+  final String HOME_VIEW_CHARACTER_BOX_TITLE = 'Characters';
+  final String HOME_VIEW_CHARACTER_BOX_TITLE2 = 'All Characters';
 }
