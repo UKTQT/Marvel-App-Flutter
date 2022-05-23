@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
           SizedBox(height: context.highHeightPadding2),
           AspectRatio(
             aspectRatio: 16 / 2,
-            child: HomeSearchWidget(homeViewModel: _homeViewModel),
+            child: homeSearch(homeViewModel: _homeViewModel),
           ),
           SizedBox(height: context.highHeightPadding2),
           Observer(
@@ -46,18 +46,23 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         AspectRatio(
                           aspectRatio: 16 / 10,
-                          child: HomeCharacter(
+                          child: homeCharacter(
+                              context: context,
                               characterViewModel: _characterViewModel),
                         ),
                         SizedBox(height: context.mediumHeightPadding2),
                         AspectRatio(
                           aspectRatio: 16 / 9,
-                          child: HomeSeries(seriesViewModel: _seriesViewModel),
+                          child: homeSeries(
+                              context: context,
+                              seriesViewModel: _seriesViewModel),
                         ),
                         SizedBox(height: context.mediumHeightPadding2),
                         AspectRatio(
                           aspectRatio: 16 / 10,
-                          child: HomeComic(comicViewModel: _comicViewModel),
+                          child: homeComic(
+                              context: context,
+                              comicViewModel: _comicViewModel),
                         ),
                       ],
                     );
