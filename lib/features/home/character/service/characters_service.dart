@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:dio/dio.dart';
 
-import '../../../../model/characters_model.dart';
-import '../../../../model/comics_model.dart';
+import '../model/characters_model.dart';
+import '../../comic/model/comics_model.dart';
 import '../../../../model/events_model.dart';
 import '../../../../model/series_model.dart';
 import '../../../../service/config.dart';
