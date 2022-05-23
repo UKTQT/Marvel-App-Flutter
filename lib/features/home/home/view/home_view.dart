@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:marvel/features/home/comic/view/comic_view.dart';
 
-import '../../../../core/extensions/padding_extension/padding_extension.dart';
+import '../../../../extension/padding_extension.dart';
 //import '../extension/color_extension.dart';
 import '../../character/viewModel/character_view_model.dart';
 import '../../comic/viewModel/comic_view_model.dart';
