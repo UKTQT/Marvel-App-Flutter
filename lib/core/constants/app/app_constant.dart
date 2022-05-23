@@ -7,6 +7,9 @@ class AppConstant {
 
   AppConstant._init();
 
+  //Main Constants
+  final String PROJECT_TITLE = 'Marvel';
+
   //Home View Characters
   final String HOME_VIEW_CHARACTER_BOX_TITLE = 'Characters';
   final String HOME_VIEW_CHARACTER_BOX_TITLE2 = 'All Characters';

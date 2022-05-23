@@ -5,6 +5,9 @@ extension ColorExtension on BuildContext {
   Color get marvelRed => const Color(0xffED1D24);
   Color get whiteColor => Colors.white;
 
+  //Theme Color
+  Color get themeMainColor1 => const Color(0xff121212);
+
   //HomePage
   Color get homePageSearchInputTextColor => Colors.white60;
   Color get characterBoxCardColor => const Color(0xff202020);

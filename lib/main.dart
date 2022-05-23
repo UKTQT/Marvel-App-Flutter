@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'core/constants/app/app_constant.dart';
 import 'core/extensions/padding_extension/padding_extension.dart';
-import 'features/home/comic/view/comic_view.dart';
-import 'features/home/character/view/character_view.dart';
+import 'core/extensions/color_extension/color_extension.dart';
+
 import 'features/home/home/view/home_view.dart';
+import 'features/home/character/view/character_view.dart';
+import 'features/home/comic/view/comic_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,14 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Marvel',
+      title: AppConstant.instance!.PROJECT_TITLE,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Color(0xff121212),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff121212),
+        scaffoldBackgroundColor: context.themeMainColor1,
+        appBarTheme: AppBarTheme(
+          backgroundColor: context.themeMainColor1,
         ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Color(0xff121212),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: context.themeMainColor1,
         ),
       ),
       initialRoute: '/',
@@ -79,9 +82,9 @@ class _MainAppState extends State<MainApp> {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: context.mediumWidthPadding2),
-          child: const Icon(
+          child: Icon(
             Icons.settings_outlined,
-            color: Colors.red,
+            color: context.marvelRed,
           ),
         ),
       ],
