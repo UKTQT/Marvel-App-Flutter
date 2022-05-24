@@ -38,7 +38,41 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBarCustom(context),
+      body: HomeView(),
+      //bottomNavigationBar: bottomNavBar(),
+    );
+  }
+
+  AppBar appBarCustom(BuildContext context) {
+    return AppBar(
+      elevation: 5,
+      title: Image(
+        image: const AssetImage(
+          'assets/images/marvel-logo.png',
+        ),
+        width: MediaQuery.of(context).size.width * 0.35,
+      ),
+      actions: [
+        Padding(
+          padding: EdgeInsets.only(right: context.mediumWidthPadding2),
+          child: Icon(
+            Icons.settings_outlined,
+            color: context.marvelRed,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/* class MainApp extends StatefulWidget {
   const MainApp({Key? key}) : super(key: key);
 
   @override
@@ -123,4 +157,4 @@ class _MainAppState extends State<MainApp> {
       ],
     );
   } */
-}
+} */
