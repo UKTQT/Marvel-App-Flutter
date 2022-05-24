@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:marvel/features/home/home/viewModel/home_view_model.dart';
 
-import '../../../../../core/constants/app/app_constant.dart';
+import '../../../../../core/constants/app/app_constants.dart';
 import '../../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../../comic/viewModel/comic_view_model.dart';

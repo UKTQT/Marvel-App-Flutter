@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/app/app_constant.dart';
+import '../../../../../core/constants/app/app_constants.dart';
 import '../../../../../core/extensions/padding_extension/padding_extension.dart';
 
 Padding characterBoxTitle(BuildContext context) {

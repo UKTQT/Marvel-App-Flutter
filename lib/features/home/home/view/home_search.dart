@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/app/app_constant.dart';
+import '../../../../core/constants/app/app_constants.dart';
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 
 import '../viewModel/home_view_model.dart';

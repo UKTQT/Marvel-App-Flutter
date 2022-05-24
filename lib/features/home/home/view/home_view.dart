@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../viewModel/home_view_model.dart';
 import '../../../../core/base/view/base_view.dart';
-import '../../../../core/constants/app/app_constant.dart';
+import '../../../../core/constants/app/app_constants.dart';
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../../../core/extensions/color_extension/color_extension.dart';
 
