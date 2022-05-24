@@ -50,17 +50,20 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
     characterItems = await _homeService.fetchCharacterItems() ?? [];
+    changeLoading();
   }
 
   @action
   Future<List<ComicResult>?> fetchComicItems() async {
     changeLoading();
     comicItems = await _homeService.fetchComicItems() ?? [];
+    changeLoading();
   }
 
   @action
   Future<List<SeriesResult>?> fetchSeriesItems() async {
     changeLoading();
     seriesItems = await _homeService.fetchSeriesItems() ?? [];
+    changeLoading();
   }
 }
