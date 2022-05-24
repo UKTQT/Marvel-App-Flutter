@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'core/constants/app/app_constant.dart';
-import 'core/extensions/padding_extension/padding_extension.dart';
 import 'core/extensions/color_extension/color_extension.dart';
-
 import 'features/home/home/view/home_view.dart';
 import 'features/home/character/view/character_view.dart';
-import 'features/home/comic/view/comic_view.dart';
 
 void main() {
   runApp(const MyApp());

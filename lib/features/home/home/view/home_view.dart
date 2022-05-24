@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:marvel/core/base/view/base_view.dart';
 
 import '../viewModel/home_view_model.dart';
-import '../../character/viewModel/character_view_model.dart';
-import '../../series/viewModel/series_view_model.dart';
-import '../../comic/viewModel/comic_view_model.dart';
-
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/constants/app/app_constant.dart';
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../../../core/extensions/color_extension/color_extension.dart';
 
@@ -45,7 +42,7 @@ class HomeView extends StatelessWidget {
                 Observer(
                   builder: (_) {
                     return _homeViewModel.searchItems.isNotEmpty
-                        ? const Text('ewq')
+                        ? const Text('Search View')
                         : Column(
                             children: [
                               AspectRatio(
@@ -85,8 +82,8 @@ class HomeView extends StatelessWidget {
     return AppBar(
       elevation: 5,
       title: Image(
-        image: const AssetImage(
-          'assets/images/marvel-logo.png',
+        image: AssetImage(
+          AppConstant.instance!.PROJECT_LOGO_PATH,
         ),
         width: MediaQuery.of(context).size.width * 0.35,
       ),
