@@ -25,22 +25,6 @@ mixin _$ComicViewModel on _ComicViewModelBase, Store {
     });
   }
 
-  late final _$comicItemsAtom =
-      Atom(name: '_ComicViewModelBase.comicItems', context: context);
-
-  @override
-  List<ComicResult>? get comicItems {
-    _$comicItemsAtom.reportRead();
-    return super.comicItems;
-  }
-
-  @override
-  set comicItems(List<ComicResult>? value) {
-    _$comicItemsAtom.reportWrite(value, super.comicItems, () {
-      super.comicItems = value;
-    });
-  }
-
   late final _$_ComicViewModelBaseActionController =
       ActionController(name: '_ComicViewModelBase', context: context);
 
@@ -58,8 +42,7 @@ mixin _$ComicViewModel on _ComicViewModelBase, Store {
   @override
   String toString() {
     return '''
-isLoading: ${isLoading},
-comicItems: ${comicItems}
+isLoading: ${isLoading}
     ''';
   }
 }

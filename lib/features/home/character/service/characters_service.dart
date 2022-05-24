@@ -18,7 +18,7 @@ abstract class ICharacterService {
     _dio = Dio(BaseOptions(baseUrl: 'http://gateway.marvel.com/v1/public/'));
   }
 
-  Future<List<CharacterResult>?> fetchCharacterItems();
+  //Future<List<CharacterResult>?> fetchCharacterItems();
   // Future<List<CharacterResult>?> fetchSingleCharacterItems({int? id});
   Future<List<ComicResult>?> fetchCharacterComics({required int id});
   Future<List<SeriesResult>?> fetchCharacterSeries({required int id});
@@ -26,34 +26,6 @@ abstract class ICharacterService {
 }
 
 class CharacterService extends ICharacterService {
-  @override
-  Future<List<CharacterResult>?> fetchCharacterItems() async {
-    try {
-      var rndOffset = Random().nextInt(1000);
-      final response = await _dio.get(
-        _ServicePaths.characters.name,
-        queryParameters: {
-          'apikey': Config.publicKey,
-          'ts': Config.timeStamp,
-          'hash': Config.md5Hash,
-          'limit': 100,
-          'offset': rndOffset
-        },
-      );
-
-      if (response.statusCode == HttpStatus.ok) {
-        final _datas = response.data;
-
-        if (_datas is Map<String, dynamic>) {
-          return CharacterData.fromMap(_datas['data']).results;
-        }
-      }
-    } on DioError catch (e) {
-      //
-    }
-    return null;
-  }
-
   /*  @override
   Future<List<CharacterResult>?> fetchSingleCharacterItems({int? id}) async {
     try {

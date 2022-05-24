@@ -16,18 +16,13 @@ class CharacterViewModel = _CharacterViewModelBase with _$CharacterViewModel;
 abstract class _CharacterViewModelBase with Store {
   final CharacterService characterService = CharacterService();
 
-  _CharacterViewModelBase() {
-    fetchCharacterItems();
-  }
+  _CharacterViewModelBase() {}
 
   @observable //Değişebilir
   bool isLoading = false;
 
-  @observable
-  List<CharacterResult>? characterItems = [];
-
-  @observable
-  List<CharacterResult>? singleCharacterItems = [];
+  /* @observable
+  List<CharacterResult>? singleCharacterItems = []; */
 
   @observable
   List<ComicResult>? characterComicsItems = [];
@@ -41,12 +36,6 @@ abstract class _CharacterViewModelBase with Store {
   @action //Ekrana haber verecek
   void changeLoading() {
     isLoading = !isLoading;
-  }
-
-  @action
-  Future<List<CharacterResult>?> fetchCharacterItems() async {
-    changeLoading();
-    characterItems = await characterService.fetchCharacterItems() ?? [];
   }
 
   /*  @action

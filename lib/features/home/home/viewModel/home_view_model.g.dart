@@ -9,6 +9,22 @@ part of 'home_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeViewModel on _HomeViewModelBase, Store {
+  late final _$isLoadingAtom =
+      Atom(name: '_HomeViewModelBase.isLoading', context: context);
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   late final _$searchItemsAtom =
       Atom(name: '_HomeViewModelBase.searchItems', context: context);
 
@@ -25,10 +41,101 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  late final _$characterItemsAtom =
+      Atom(name: '_HomeViewModelBase.characterItems', context: context);
+
+  @override
+  List<CharacterResult>? get characterItems {
+    _$characterItemsAtom.reportRead();
+    return super.characterItems;
+  }
+
+  @override
+  set characterItems(List<CharacterResult>? value) {
+    _$characterItemsAtom.reportWrite(value, super.characterItems, () {
+      super.characterItems = value;
+    });
+  }
+
+  late final _$comicItemsAtom =
+      Atom(name: '_HomeViewModelBase.comicItems', context: context);
+
+  @override
+  List<ComicResult>? get comicItems {
+    _$comicItemsAtom.reportRead();
+    return super.comicItems;
+  }
+
+  @override
+  set comicItems(List<ComicResult>? value) {
+    _$comicItemsAtom.reportWrite(value, super.comicItems, () {
+      super.comicItems = value;
+    });
+  }
+
+  late final _$seriesItemsAtom =
+      Atom(name: '_HomeViewModelBase.seriesItems', context: context);
+
+  @override
+  List<SeriesResult>? get seriesItems {
+    _$seriesItemsAtom.reportRead();
+    return super.seriesItems;
+  }
+
+  @override
+  set seriesItems(List<SeriesResult>? value) {
+    _$seriesItemsAtom.reportWrite(value, super.seriesItems, () {
+      super.seriesItems = value;
+    });
+  }
+
+  late final _$fetchCharacterItemsAsyncAction =
+      AsyncAction('_HomeViewModelBase.fetchCharacterItems', context: context);
+
+  @override
+  Future<List<CharacterResult>?> fetchCharacterItems() {
+    return _$fetchCharacterItemsAsyncAction
+        .run(() => super.fetchCharacterItems());
+  }
+
+  late final _$fetchComicItemsAsyncAction =
+      AsyncAction('_HomeViewModelBase.fetchComicItems', context: context);
+
+  @override
+  Future<List<ComicResult>?> fetchComicItems() {
+    return _$fetchComicItemsAsyncAction.run(() => super.fetchComicItems());
+  }
+
+  late final _$fetchSeriesItemsAsyncAction =
+      AsyncAction('_HomeViewModelBase.fetchSeriesItems', context: context);
+
+  @override
+  Future<List<SeriesResult>?> fetchSeriesItems() {
+    return _$fetchSeriesItemsAsyncAction.run(() => super.fetchSeriesItems());
+  }
+
+  late final _$_HomeViewModelBaseActionController =
+      ActionController(name: '_HomeViewModelBase', context: context);
+
+  @override
+  void changeLoading() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.changeLoading');
+    try {
+      return super.changeLoading();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-searchItems: ${searchItems}
+isLoading: ${isLoading},
+searchItems: ${searchItems},
+characterItems: ${characterItems},
+comicItems: ${comicItems},
+seriesItems: ${seriesItems}
     ''';
   }
 }

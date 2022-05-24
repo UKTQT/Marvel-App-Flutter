@@ -10,24 +10,13 @@ class SeriesViewModel = _SeriesViewModelBase with _$SeriesViewModel;
 abstract class _SeriesViewModelBase with Store {
   final SeriesService seriesService = SeriesService();
 
-  _SeriesViewModelBase() {
-    fetchSeriesItems();
-  }
+  _SeriesViewModelBase() {}
 
   @observable //Değişebilir
   bool isLoading = false;
 
-  @observable
-  List<SeriesResult>? seriesItems = [];
-
   @action //Ekrana haber verecek
   void changeLoading() {
     isLoading = !isLoading;
-  }
-
-  @action
-  Future<List<SeriesResult>?> fetchSeriesItems() async {
-    changeLoading();
-    seriesItems = await seriesService.fetchSeriesItems() ?? [];
   }
 }

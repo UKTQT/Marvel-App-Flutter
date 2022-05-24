@@ -25,30 +25,6 @@ mixin _$SeriesViewModel on _SeriesViewModelBase, Store {
     });
   }
 
-  late final _$seriesItemsAtom =
-      Atom(name: '_SeriesViewModelBase.seriesItems', context: context);
-
-  @override
-  List<SeriesResult>? get seriesItems {
-    _$seriesItemsAtom.reportRead();
-    return super.seriesItems;
-  }
-
-  @override
-  set seriesItems(List<SeriesResult>? value) {
-    _$seriesItemsAtom.reportWrite(value, super.seriesItems, () {
-      super.seriesItems = value;
-    });
-  }
-
-  late final _$fetchSeriesItemsAsyncAction =
-      AsyncAction('_SeriesViewModelBase.fetchSeriesItems', context: context);
-
-  @override
-  Future<List<SeriesResult>?> fetchSeriesItems() {
-    return _$fetchSeriesItemsAsyncAction.run(() => super.fetchSeriesItems());
-  }
-
   late final _$_SeriesViewModelBaseActionController =
       ActionController(name: '_SeriesViewModelBase', context: context);
 
@@ -66,8 +42,7 @@ mixin _$SeriesViewModel on _SeriesViewModelBase, Store {
   @override
   String toString() {
     return '''
-isLoading: ${isLoading},
-seriesItems: ${seriesItems}
+isLoading: ${isLoading}
     ''';
   }
 }

@@ -25,39 +25,6 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
     });
   }
 
-  late final _$characterItemsAtom =
-      Atom(name: '_CharacterViewModelBase.characterItems', context: context);
-
-  @override
-  List<CharacterResult>? get characterItems {
-    _$characterItemsAtom.reportRead();
-    return super.characterItems;
-  }
-
-  @override
-  set characterItems(List<CharacterResult>? value) {
-    _$characterItemsAtom.reportWrite(value, super.characterItems, () {
-      super.characterItems = value;
-    });
-  }
-
-  late final _$singleCharacterItemsAtom = Atom(
-      name: '_CharacterViewModelBase.singleCharacterItems', context: context);
-
-  @override
-  List<CharacterResult>? get singleCharacterItems {
-    _$singleCharacterItemsAtom.reportRead();
-    return super.singleCharacterItems;
-  }
-
-  @override
-  set singleCharacterItems(List<CharacterResult>? value) {
-    _$singleCharacterItemsAtom.reportWrite(value, super.singleCharacterItems,
-        () {
-      super.singleCharacterItems = value;
-    });
-  }
-
   late final _$characterComicsItemsAtom = Atom(
       name: '_CharacterViewModelBase.characterComicsItems', context: context);
 
@@ -107,16 +74,6 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
         () {
       super.characterEventsItems = value;
     });
-  }
-
-  late final _$fetchCharacterItemsAsyncAction = AsyncAction(
-      '_CharacterViewModelBase.fetchCharacterItems',
-      context: context);
-
-  @override
-  Future<List<CharacterResult>?> fetchCharacterItems() {
-    return _$fetchCharacterItemsAsyncAction
-        .run(() => super.fetchCharacterItems());
   }
 
   late final _$fetchCharacterComicsItemsAsyncAction = AsyncAction(
@@ -170,8 +127,6 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-characterItems: ${characterItems},
-singleCharacterItems: ${singleCharacterItems},
 characterComicsItems: ${characterComicsItems},
 characterSeriesItems: ${characterSeriesItems},
 characterEventsItems: ${characterEventsItems}
