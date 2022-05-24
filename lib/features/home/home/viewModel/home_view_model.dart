@@ -29,6 +29,8 @@ abstract class _HomeViewModelBase with Store {
   @observable
   String searchItems = '';
 
+  //There are 3 sections on the homepage; Characters, Comics, Series
+
   @observable
   List<CharacterResult>? characterItems = [];
 
