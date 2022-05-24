@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:marvel/features/home/home/viewModel/home_view_model.dart';
 
 import '../../../../../core/constants/app/app_constant.dart';
 import '../../../../../core/extensions/padding_extension/padding_extension.dart';
@@ -7,7 +8,9 @@ import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../../character/viewModel/character_view_model.dart';
 
 Padding characterCard(
-    BuildContext context, CharacterViewModel characterViewModel, int index) {
+    {required BuildContext context,
+    required HomeViewModel homeViewModel,
+    required int index}) {
   return Padding(
     padding: EdgeInsets.symmetric(
         horizontal: context.lowWidthPadding,
@@ -17,7 +20,7 @@ Padding characterCard(
         Navigator.pushNamed(
           context,
           '/characterView',
-          arguments: characterNavigatorArguments(characterViewModel, index),
+          arguments: characterNavigatorArguments(homeViewModel, index),
         );
       },
       child: Container(
@@ -35,11 +38,13 @@ Padding characterCard(
           children: [
             Expanded(
               flex: 9,
-              child: characterImage(context, characterViewModel, index),
+              child: characterImage(
+                  context: context, homeViewModel: homeViewModel, index: index),
             ),
             Expanded(
               flex: 4,
-              child: characterTitle(context, characterViewModel, index),
+              child: characterTitle(
+                  context: context, homeViewModel: homeViewModel, index: index),
             ),
           ],
         ),
@@ -49,41 +54,42 @@ Padding characterCard(
 }
 
 Map<String, Object?> characterNavigatorArguments(
-    CharacterViewModel characterViewModel, int index) {
+    HomeViewModel homeViewModel, int index) {
   return {
-    'characterId': characterViewModel.characterItems![index].id,
-    'characterName': characterViewModel.characterItems![index].name,
+    'characterId': homeViewModel.characterItems![index].id,
+    'characterName': homeViewModel.characterItems![index].name,
     'characterDescription':
-        characterViewModel.characterItems![index].description!.isEmpty
+        homeViewModel.characterItems![index].description!.isEmpty
             ? 'Description not available'
-            : characterViewModel.characterItems![index].description,
-    'characterModified': characterViewModel.characterItems![index].modified,
-    'characterPath': characterViewModel.characterItems![index].thumbnail?.path,
-    'characterExt':
-        characterViewModel.characterItems![index].thumbnail?.extension,
+            : homeViewModel.characterItems![index].description,
+    'characterModified': homeViewModel.characterItems![index].modified,
+    'characterPath': homeViewModel.characterItems![index].thumbnail?.path,
+    'characterExt': homeViewModel.characterItems![index].thumbnail?.extension,
     'characterComics':
-        characterViewModel.characterItems![index].comics?.collectionUri,
+        homeViewModel.characterItems![index].comics?.collectionUri,
     'characterSeries':
-        characterViewModel.characterItems![index].series?.collectionUri,
+        homeViewModel.characterItems![index].series?.collectionUri,
     'characterStories':
-        characterViewModel.characterItems![index].stories?.collectionUri,
+        homeViewModel.characterItems![index].stories?.collectionUri,
     'characterEvents':
-        characterViewModel.characterItems![index].events?.collectionUri,
+        homeViewModel.characterItems![index].events?.collectionUri,
   };
 }
 
 SizedBox characterImage(
-    BuildContext context, CharacterViewModel characterViewModel, int index) {
+    {required BuildContext context,
+    required HomeViewModel homeViewModel,
+    required int index}) {
   return SizedBox(
     width: MediaQuery.of(context).size.width * 0.35,
     child: FittedBox(
       fit: BoxFit.fill,
       child: Hero(
-        tag: '${characterViewModel.characterItems![index].id}',
-        child: characterViewModel.characterItems![index].thumbnail != null
+        tag: '${homeViewModel.characterItems![index].id}',
+        child: homeViewModel.characterItems![index].thumbnail != null
             ? CachedNetworkImage(
                 imageUrl:
-                    '${characterViewModel.characterItems![index].thumbnail?.path}.${characterViewModel.characterItems![index].thumbnail?.extension}',
+                    '${homeViewModel.characterItems![index].thumbnail?.path}.${homeViewModel.characterItems![index].thumbnail?.extension}',
                 placeholder: (context, url) => const Placeholder(),
                 errorWidget: (context, url, error) =>
                     Icon(Icons.error, color: context.marvelRed),
@@ -95,14 +101,16 @@ SizedBox characterImage(
 }
 
 Padding characterTitle(
-    BuildContext context, CharacterViewModel characterViewModel, int index) {
+    {required BuildContext context,
+    required HomeViewModel homeViewModel,
+    required int index}) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: context.lowWidthPadding2),
     child: SizedBox(
       width: double.maxFinite,
       child: Center(
         child: Text(
-          characterViewModel.characterItems![index].name ?? '',
+          homeViewModel.characterItems![index].name ?? '',
           style: Theme.of(context).textTheme.bodyText1,
           softWrap: false,
         ),

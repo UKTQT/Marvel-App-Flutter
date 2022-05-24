@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:marvel/features/home/home/viewModel/home_view_model.dart';
 
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../series/viewModel/series_view_model.dart';
 
 Column homeSeries(
-    {required BuildContext context, required SeriesViewModel seriesViewModel}) {
+    {required BuildContext context, required HomeViewModel homeViewModel}) {
   return Column(
     children: [
       Padding(
@@ -34,7 +35,7 @@ Column homeSeries(
       Expanded(
         child: Observer(
           builder: (_) {
-            return !seriesViewModel.isLoading
+            return !homeViewModel.isLoading
                 ? const Center(
                     child: CircularProgressIndicator(
                       color: Colors.red,
@@ -42,7 +43,7 @@ Column homeSeries(
                   )
                 : ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: seriesViewModel.seriesItems!.isNotEmpty ? 20 : 0,
+                    itemCount: homeViewModel.seriesItems!.isNotEmpty ? 20 : 0,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -61,7 +62,7 @@ Column homeSeries(
                                 );
                               },
                               imageUrl:
-                                  '${seriesViewModel.seriesItems![index].thumbnail!.path}.${seriesViewModel.seriesItems![index].thumbnail!.extension}',
+                                  '${homeViewModel.seriesItems![index].thumbnail!.path}.${homeViewModel.seriesItems![index].thumbnail!.extension}',
                               errorWidget: (context, url, error) =>
                                   const CircularProgressIndicator(
                                 color: Colors.white,

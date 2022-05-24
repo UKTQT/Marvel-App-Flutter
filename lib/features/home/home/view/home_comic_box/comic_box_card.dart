@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:marvel/features/home/home/viewModel/home_view_model.dart';
 
 import '../../../../../core/constants/app/app_constant.dart';
 import '../../../../../core/extensions/padding_extension/padding_extension.dart';
@@ -7,13 +8,15 @@ import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../../comic/viewModel/comic_view_model.dart';
 
 Padding comicCard(
-    BuildContext context, ComicViewModel comicViewModel, int index) {
+    {required BuildContext context,
+    required HomeViewModel homeViewModel,
+    required int index}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
     child: GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/comicView', arguments: {
-          'comicId': comicViewModel.comicItems![index].id,
+          'comicId': homeViewModel.comicItems![index].id,
         });
       },
       child: Container(
@@ -25,7 +28,7 @@ Padding comicCard(
         child: FittedBox(
           fit: BoxFit.fill,
           child: Hero(
-            tag: '${comicViewModel.comicItems![index].id}',
+            tag: '${homeViewModel.comicItems![index].id}',
             child: CachedNetworkImage(
               placeholder: (context, index) {
                 return const CircularProgressIndicator(
@@ -33,7 +36,7 @@ Padding comicCard(
                 );
               },
               imageUrl:
-                  '${comicViewModel.comicItems![index].thumbnail!.path}.${comicViewModel.comicItems![index].thumbnail!.extension}',
+                  '${homeViewModel.comicItems![index].thumbnail!.path}.${homeViewModel.comicItems![index].thumbnail!.extension}',
               errorWidget: (context, url, error) =>
                   const CircularProgressIndicator(
                 color: Colors.white,

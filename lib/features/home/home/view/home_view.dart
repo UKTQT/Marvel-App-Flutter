@@ -14,9 +14,9 @@ import 'home_comic_box/home_comic_box.dart';
 import 'home_search.dart';
 import 'home_series.dart';
 
-final CharacterViewModel _characterViewModel = CharacterViewModel();
+/* final CharacterViewModel _characterViewModel = CharacterViewModel();
 final SeriesViewModel _seriesViewModel = SeriesViewModel();
-final ComicViewModel _comicViewModel = ComicViewModel();
+final ComicViewModel _comicViewModel = ComicViewModel(); */
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -27,6 +27,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final HomeViewModel _homeViewModel = HomeViewModel();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,22 +48,19 @@ class _HomeViewState extends State<HomeView> {
                         AspectRatio(
                           aspectRatio: 16 / 10,
                           child: homeCharacter(
-                              context: context,
-                              characterViewModel: _characterViewModel),
+                              context: context, homeViewModel: _homeViewModel),
                         ),
                         SizedBox(height: context.mediumHeightPadding2),
                         AspectRatio(
                           aspectRatio: 16 / 10,
                           child: homeComic(
-                              context: context,
-                              comicViewModel: _comicViewModel),
+                              context: context, homeViewModel: _homeViewModel),
                         ),
                         SizedBox(height: context.mediumHeightPadding2),
                         AspectRatio(
                           aspectRatio: 16 / 9,
                           child: homeSeries(
-                              context: context,
-                              seriesViewModel: _seriesViewModel),
+                              context: context, homeViewModel: _homeViewModel),
                         ),
                       ],
                     );
