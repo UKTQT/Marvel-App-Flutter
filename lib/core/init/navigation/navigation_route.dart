@@ -10,7 +10,8 @@ class NavigationRoute {
 
   NavigationRoute._init();
 
-  Route<dynamic> generateRoute(RouteSettings path) {
+  Route<dynamic> generateRoute(RouteSettings path,
+      {Map<String, Object?>? navigateArguments}) {
     switch (path.name) {
       case NavigationConstants.DEFAULT:
         return normalNavigate(
@@ -18,10 +19,15 @@ class NavigationRoute {
       case NavigationConstants.HOME_VIEW:
         return normalNavigate(
             widget: HomeView(), pageName: NavigationConstants.HOME_VIEW);
+      case NavigationConstants.CHARACTER_VIEW:
+        return argsNavigate(
+            widget: HomeView(),
+            pageName: NavigationConstants.CHARACTER_VIEW,
+            navigateArguments: navigateArguments);
 
       default:
         return MaterialPageRoute(
-          builder: (context) => NotFoundNavigationWidget(),
+          builder: (context) => SplashView(),
         );
     }
   }
