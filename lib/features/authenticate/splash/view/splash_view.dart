@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/features/authenticate/splash/viewModel/splash_view_model.dart';
 
+import '../viewModel/splash_view_model.dart';
 import '../../../../core/base/view/base_view.dart';
+import '../../../../core/constants/app/app_constants.dart';
+import '../../../../core/extensions/color_extension/color_extension.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -15,15 +17,28 @@ class SplashView extends StatelessWidget {
         model.init();
       },
       onPageBuilder: (BuildContext context, SplashViewModel) {
-        return splashScaffold();
+        return splashScaffold(context: context);
       },
     );
   }
 
-  Scaffold splashScaffold() {
+  Scaffold splashScaffold({required BuildContext context}) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(child: Center(child: Text('Marvel'))),
+      backgroundColor: context.themeMainColor1,
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image(
+              image: AssetImage(
+                AppConstant.instance!.SPLASH_VIEW_GIF_PATH,
+              ),
+            ),
+            CircularProgressIndicator(color: context.marvelRed)
+          ],
+        ),
+      ),
     );
   }
 }

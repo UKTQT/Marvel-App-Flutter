@@ -10,6 +10,8 @@ class AppConstant {
   //Main Constants
   final String PROJECT_TITLE = 'Marvel';
   final String PROJECT_LOGO_PATH = 'assets/images/marvel-logo.png';
+  //SplashView
+  final String SPLASH_VIEW_GIF_PATH = 'assets/splash/splash_gif.gif';
   //HomeView
   final String HOME_VIEW_SEARCH_INPUT_TEXT = 'Characters, Comics, Series..';
   //Home View Characters

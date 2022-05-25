@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/features/authenticate/splash/view/splash_view.dart';
 
 import 'core/constants/app/app_constants.dart';
 import 'core/extensions/color_extension/color_extension.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeView(),
+        '/': (context) => SplashView(),
+        '/homeView': (context) => HomeView(),
         '/characterView': (context) => const CharacterView(),
         //'/comicView': (context) => const ComicView(),
       },
