@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../viewModel/splash_view_model.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/app/app_constants.dart';
 import '../../../../core/extensions/color_extension/color_extension.dart';
+import '../viewModel/splash_view_model.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);

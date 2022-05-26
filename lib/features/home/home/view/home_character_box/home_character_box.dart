@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:marvel/features/home/home/viewModel/home_view_model.dart';
+import '../../viewModel/home_view_model.dart';
 
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 

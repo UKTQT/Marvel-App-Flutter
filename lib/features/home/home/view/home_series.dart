@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:marvel/features/home/home/viewModel/home_view_model.dart';
+import '../viewModel/home_view_model.dart';
 
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../series/viewModel/series_view_model.dart';

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../viewModel/home_view_model.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/app/app_constants.dart';
-import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../../../core/extensions/color_extension/color_extension.dart';
-
+import '../../../../core/extensions/padding_extension/padding_extension.dart';
+import '../viewModel/home_view_model.dart';
 import 'home_character_box/home_character_box.dart';
 import 'home_comic_box/home_comic_box.dart';
 import 'home_search.dart';

@@ -1,6 +1,5 @@
 import 'package:mobx/mobx.dart';
 
-import '../model/comics_model.dart';
 import '../service/comics_service.dart';
 
 part 'comic_view_model.g.dart';

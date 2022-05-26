@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/core/init/navigation/navigation_service.dart';
-import 'package:marvel/features/authenticate/splash/service/splash_service.dart';
-import 'package:marvel/features/home/home/view/home_view.dart';
+import 'package:marvel/core/constants/navigation/navigation_constants.dart';
+import '../../../../core/init/navigation/navigation_service.dart';
+import '../service/splash_service.dart';
+import '../../../home/home/view/home_view.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../home/home/viewModel/home_view_model.dart';
@@ -13,16 +14,18 @@ class SplashViewModel = _SplashViewModelBase with _$SplashViewModel;
 
 abstract class _SplashViewModelBase with Store, BaseViewModel {
   late final HomeViewModel _homeViewModel;
-  final NavigationService _navigationService = NavigationService.instance;
+  //final NavigationService _navigationService = NavigationService.instance;
 
   final removeAllOldRoutes = (Route<dynamic> route) => false;
 
   @override
   void init() {
-    _homeViewModel = HomeViewModel();
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      _homeViewModel = HomeViewModel();
 
-    _homeViewModel.init();
-    militaryGateControl();
+      _homeViewModel.init();
+      militaryGateControl();
+    });
   }
 
   @override
@@ -35,7 +38,9 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
     if (_homeViewModel.characterItems != []) {
       if (_homeViewModel.comicItems != []) {
         if (_homeViewModel.seriesItems != []) {
-          _navigationService.navigateToPage(path: '/homeView');
+          Future.delayed(Duration(seconds: 3), () {
+            navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
+          });
         }
       }
     }

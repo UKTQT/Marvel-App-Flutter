@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/features/home/home/view/home_view.dart';
+import '../../../features/home/home/view/home_view.dart';
 
 import '../../constants/navigation/navigation_constants.dart';
 import '../../../features/authenticate/splash/view/splash_view.dart';

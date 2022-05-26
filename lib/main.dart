@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/core/init/navigation/navigation_route.dart';
-import 'package:marvel/features/authenticate/splash/service/splash_service.dart';
-import 'package:marvel/features/authenticate/splash/view/splash_view.dart';
-import 'package:marvel/features/authenticate/splash/viewModel/splash_view_model.dart';
+import 'core/init/navigation/navigation_route.dart';
+import 'features/authenticate/splash/service/splash_service.dart';
+import 'features/authenticate/splash/view/splash_view.dart';
+import 'features/authenticate/splash/viewModel/splash_view_model.dart';
 
 import 'core/constants/app/app_constants.dart';
 import 'core/extensions/color_extension/color_extension.dart';
