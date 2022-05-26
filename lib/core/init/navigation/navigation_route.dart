@@ -16,8 +16,10 @@ class NavigationRoute {
         return normalNavigate(
             widget: SplashView(), pageName: NavigationConstants.DEFAULT);
       case NavigationConstants.HOME_VIEW:
-        return normalNavigate(
-            widget: HomeView(), pageName: NavigationConstants.HOME_VIEW);
+        return argsNavigate(
+          widget: HomeView(args: path.arguments),
+          pageName: NavigationConstants.HOME_VIEW,
+        );
       /*   case NavigationConstants.CHARACTER_VIEW:
         return argsNavigate(
             widget: HomeView(),
@@ -44,7 +46,8 @@ class NavigationRoute {
   MaterialPageRoute argsNavigate(
       {required Widget widget,
       required String pageName,
-      Map<String, Object?>? navigateArguments}) {
+      Map<String, dynamic>? navigateArguments}) {
+    print(navigateArguments);
     return MaterialPageRoute(
       builder: (context) => widget,
       settings: RouteSettings(name: pageName, arguments: navigateArguments),

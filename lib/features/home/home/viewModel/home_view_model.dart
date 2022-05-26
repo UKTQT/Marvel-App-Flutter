@@ -47,9 +47,18 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   List<SeriesResult>? seriesItems = [];
 
   @action
+  void deneme(List<CharacterResult>? args) {
+    print(args);
+    characterItems = args;
+  }
+
+  @action
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
-    characterItems = await _homeService.fetchCharacterItems() ?? [];
+    if (characterItems!.isEmpty) {
+      characterItems = await _homeService.fetchCharacterItems() ?? [];
+    }
+
     changeLoading();
   }
 

@@ -20,7 +20,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _homeViewModel = HomeViewModel();
 
       _homeViewModel.init();
@@ -38,8 +38,14 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
     if (_homeViewModel.characterItems != []) {
       if (_homeViewModel.comicItems != []) {
         if (_homeViewModel.seriesItems != []) {
+          Map<String, dynamic> deneme = {
+            'character': _homeViewModel.characterItems,
+            'comic': _homeViewModel.comicItems,
+            'series': _homeViewModel.seriesItems,
+          };
           Future.delayed(Duration(seconds: 3), () {
-            navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
+            navigation.navigateToPage(
+                path: NavigationConstants.HOME_VIEW, data: deneme);
           });
         }
       }
