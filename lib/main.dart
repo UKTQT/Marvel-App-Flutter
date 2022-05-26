@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/core/init/navigation/navigation_route.dart';
 import 'package:marvel/features/authenticate/splash/view/splash_view.dart';
 
 import 'core/constants/app/app_constants.dart';
@@ -27,13 +28,14 @@ class MyApp extends StatelessWidget {
           backgroundColor: context.themeMainColor1,
         ),
       ),
-      initialRoute: '/',
+      /* initialRoute: '/',
       routes: {
         '/': (context) => SplashView(),
         '/homeView': (context) => HomeView(),
         '/characterView': (context) => const CharacterView(),
         //'/comicView': (context) => const ComicView(),
-      },
+      }, */
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
