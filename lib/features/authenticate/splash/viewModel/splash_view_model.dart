@@ -34,8 +34,8 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
     if (_homeViewModel.characterItems != []) {
       if (_homeViewModel.comicItems != []) {
         if (_homeViewModel.seriesItems != []) {
-          navkey.currentState
-              ?.push(MaterialPageRoute(builder: (context) => HomeView()));
+          /*  navkey.currentState
+              ?.push(MaterialPageRoute(builder: (context) => HomeView())); */
         }
       }
     }
