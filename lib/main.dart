@@ -3,6 +3,7 @@ import 'package:marvel/features/authenticate/splash/view/splash_view.dart';
 
 import 'core/constants/app/app_constants.dart';
 import 'core/extensions/color_extension/color_extension.dart';
+import 'core/init/navigation/navigation_service.dart';
 import 'features/home/home/view/home_view.dart';
 import 'features/home/character/view/character_view.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/characterView': (context) => const CharacterView(),
         //'/comicView': (context) => const ComicView(),
       },
+      navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
 }
