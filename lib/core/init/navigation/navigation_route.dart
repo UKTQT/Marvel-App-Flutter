@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/features/home/character/view/character_view.dart';
 import '../../../features/home/home/view/home_view.dart';
 
 import '../../constants/navigation/navigation_constants.dart';
@@ -15,10 +16,12 @@ class NavigationRoute {
       case NavigationConstants.DEFAULT:
         return normalNavigate(
             widget: SplashView(), pageName: NavigationConstants.DEFAULT);
-
       case NavigationConstants.HOME_VIEW:
         return normalNavigate(
             widget: HomeView(), pageName: NavigationConstants.HOME_VIEW);
+      case NavigationConstants.CHARACTER_VIEW:
+        return argsNavigate(
+            widget: CharacterView(), pageName: NavigationConstants.HOME_VIEW);
 
       default:
         return MaterialPageRoute(builder: (context) => SplashView());
