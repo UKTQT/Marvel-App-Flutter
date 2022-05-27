@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'core/init/navigation/navigation_route.dart';
-import 'features/authenticate/splash/service/splash_service.dart';
-import 'features/authenticate/splash/view/splash_view.dart';
-import 'features/authenticate/splash/viewModel/splash_view_model.dart';
 
 import 'core/constants/app/app_constants.dart';
 import 'core/extensions/color_extension/color_extension.dart';
 import 'core/init/navigation/navigation_service.dart';
-import 'features/home/home/view/home_view.dart';
-import 'features/home/character/view/character_view.dart';
+import 'core/init/navigation/navigation_route.dart';
 
 void main() {
   runApp(const MyApp());

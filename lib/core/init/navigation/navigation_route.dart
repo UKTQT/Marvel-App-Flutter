@@ -15,21 +15,13 @@ class NavigationRoute {
       case NavigationConstants.DEFAULT:
         return normalNavigate(
             widget: SplashView(), pageName: NavigationConstants.DEFAULT);
+
       case NavigationConstants.HOME_VIEW:
-        return argsNavigate(
-          widget: HomeView(),
-          pageName: NavigationConstants.HOME_VIEW,
-        );
-      /*   case NavigationConstants.CHARACTER_VIEW:
-        return argsNavigate(
-            widget: HomeView(),
-            pageName: NavigationConstants.CHARACTER_VIEW,
-            navigateArguments: navigateArguments); */
+        return normalNavigate(
+            widget: HomeView(), pageName: NavigationConstants.HOME_VIEW);
 
       default:
-        return MaterialPageRoute(
-          builder: (context) => SplashView(),
-        );
+        return MaterialPageRoute(builder: (context) => SplashView());
     }
   }
 
@@ -37,9 +29,7 @@ class NavigationRoute {
       {required Widget widget, required String pageName}) {
     return MaterialPageRoute(
       builder: (context) => widget,
-      settings: RouteSettings(
-        name: pageName,
-      ),
+      settings: RouteSettings(name: pageName),
     );
   }
 
@@ -47,7 +37,6 @@ class NavigationRoute {
       {required Widget widget,
       required String pageName,
       Map<String, dynamic>? navigateArguments}) {
-    print(navigateArguments);
     return MaterialPageRoute(
       builder: (context) => widget,
       settings: RouteSettings(name: pageName, arguments: navigateArguments),

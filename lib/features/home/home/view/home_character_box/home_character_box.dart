@@ -21,12 +21,10 @@ Column homeCharacter({
         child: Observer(
           builder: (_) {
             return homeViewModel.isLoading
-                ? ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return emptyCharacterCard(context: context);
-                    },
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: context.marvelRed,
+                    ),
                   )
                 : ListView.builder(
                     scrollDirection: Axis.horizontal,

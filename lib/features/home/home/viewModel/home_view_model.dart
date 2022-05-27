@@ -49,30 +49,21 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @action
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
-    if (characterItems!.isEmpty) {
-      characterItems = await _homeService.fetchCharacterItems() ?? [];
-    } else {}
-
+    characterItems = await _homeService.fetchCharacterItems() ?? [];
     changeLoading();
   }
 
   @action
   Future<List<ComicResult>?> fetchComicItems() async {
     changeLoading();
-    if (characterItems!.isEmpty) {
-      comicItems = await _homeService.fetchComicItems() ?? [];
-    }
-
+    comicItems = await _homeService.fetchComicItems() ?? [];
     changeLoading();
   }
 
   @action
   Future<List<SeriesResult>?> fetchSeriesItems() async {
     changeLoading();
-    if (characterItems!.isEmpty) {
-      seriesItems = await _homeService.fetchSeriesItems() ?? [];
-    }
-
+    seriesItems = await _homeService.fetchSeriesItems() ?? [];
     changeLoading();
   }
 }

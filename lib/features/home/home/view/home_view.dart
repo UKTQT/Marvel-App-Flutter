@@ -18,8 +18,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ModalRoute.of(context)!.settings.arguments as Map;
-
     return BaseView<HomeViewModel>(
       viewModel: HomeViewModel(),
       onModelReady: (model) {
@@ -27,51 +25,57 @@ class HomeView extends StatelessWidget {
         model.init();
       },
       onPageBuilder: (BuildContext context, HomeViewModel _homeViewModel) {
-        return Scaffold(
-          appBar: appBarCustom(context),
-          //bottomNavigationBar: bottomNavBar(),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: context.highHeightPadding2),
-                AspectRatio(
-                  aspectRatio: 16 / 2,
-                  child: homeSearch(
-                      context: context, homeViewModel: _homeViewModel),
-                ),
-                SizedBox(height: context.highHeightPadding2),
-                Observer(
-                  builder: (_) {
-                    return _homeViewModel.searchItems.isNotEmpty
-                        ? const Text('Search View')
-                        : Column(
-                            children: [
-                              AspectRatio(
-                                aspectRatio: 16 / 10,
-                                child: homeCharacter(
-                                    context: context,
-                                    homeViewModel: _homeViewModel),
-                              ),
-                              SizedBox(height: context.mediumHeightPadding2),
-                              AspectRatio(
-                                aspectRatio: 16 / 10,
-                                child: homeComic(
-                                    context: context,
-                                    homeViewModel: _homeViewModel),
-                              ),
-                              SizedBox(height: context.mediumHeightPadding2),
-                              AspectRatio(
-                                aspectRatio: 16 / 9,
-                                child: homeSeries(
-                                    context: context,
-                                    homeViewModel: _homeViewModel),
-                              ),
-                            ],
-                          );
-                  },
-                ),
-                SizedBox(height: context.highHeightPadding),
-              ],
+        return RefreshIndicator(
+          onRefresh: () async {
+            _homeViewModel.init();
+          },
+          color: context.marvelRed,
+          child: Scaffold(
+            appBar: appBarCustom(context),
+            //bottomNavigationBar: bottomNavBar(),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: context.highHeightPadding2),
+                  AspectRatio(
+                    aspectRatio: 16 / 2,
+                    child: homeSearch(
+                        context: context, homeViewModel: _homeViewModel),
+                  ),
+                  SizedBox(height: context.highHeightPadding2),
+                  Observer(
+                    builder: (_) {
+                      return _homeViewModel.searchItems.isNotEmpty
+                          ? const Text('Search View')
+                          : Column(
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: 16 / 10,
+                                  child: homeCharacter(
+                                      context: context,
+                                      homeViewModel: _homeViewModel),
+                                ),
+                                SizedBox(height: context.mediumHeightPadding2),
+                                AspectRatio(
+                                  aspectRatio: 16 / 10,
+                                  child: homeComic(
+                                      context: context,
+                                      homeViewModel: _homeViewModel),
+                                ),
+                                SizedBox(height: context.mediumHeightPadding2),
+                                AspectRatio(
+                                  aspectRatio: 16 / 9,
+                                  child: homeSeries(
+                                      context: context,
+                                      homeViewModel: _homeViewModel),
+                                ),
+                              ],
+                            );
+                    },
+                  ),
+                  SizedBox(height: context.highHeightPadding),
+                ],
+              ),
             ),
           ),
         );
