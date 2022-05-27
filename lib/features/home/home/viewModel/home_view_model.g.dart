@@ -129,17 +129,6 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   }
 
   @override
-  void deneme(List<CharacterResult>? args) {
-    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
-        name: '_HomeViewModelBase.deneme');
-    try {
-      return super.deneme(args);
-    } finally {
-      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 isLoading: ${isLoading},

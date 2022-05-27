@@ -30,13 +30,6 @@ class MyApp extends StatelessWidget {
           backgroundColor: context.themeMainColor1,
         ),
       ),
-      /* initialRoute: '/',
-      routes: {
-        '/': (context) => SplashView(),
-        '/homeView': (context) => HomeView(),
-        '/characterView': (context) => const CharacterView(),
-        //'/comicView': (context) => const ComicView(),
-      }, */
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

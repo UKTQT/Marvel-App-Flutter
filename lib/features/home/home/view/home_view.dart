@@ -13,9 +13,8 @@ import 'home_series.dart';
 
 class HomeView extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  final args;
 
-  HomeView({Key? key, this.args}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +24,6 @@ class HomeView extends StatelessWidget {
       viewModel: HomeViewModel(),
       onModelReady: (model) {
         model.setContext(context);
-        model.deneme(args['character']);
-        //model.characterItems = args['character'];
-        model.comicItems = args['comic'];
-        model.seriesItems = args['series'];
         model.init();
       },
       onPageBuilder: (BuildContext context, HomeViewModel _homeViewModel) {

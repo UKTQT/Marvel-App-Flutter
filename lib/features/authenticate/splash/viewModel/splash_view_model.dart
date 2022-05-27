@@ -22,7 +22,6 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   void init() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _homeViewModel = HomeViewModel();
-
       _homeViewModel.init();
       militaryGateControl();
     });
@@ -44,8 +43,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
             'series': _homeViewModel.seriesItems,
           };
           Future.delayed(Duration(seconds: 3), () {
-            navigation.navigateToPage(
-                path: NavigationConstants.HOME_VIEW, data: deneme);
+            navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
           });
         }
       }

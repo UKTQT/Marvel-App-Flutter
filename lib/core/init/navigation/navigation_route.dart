@@ -17,7 +17,7 @@ class NavigationRoute {
             widget: SplashView(), pageName: NavigationConstants.DEFAULT);
       case NavigationConstants.HOME_VIEW:
         return argsNavigate(
-          widget: HomeView(args: path.arguments),
+          widget: HomeView(),
           pageName: NavigationConstants.HOME_VIEW,
         );
       /*   case NavigationConstants.CHARACTER_VIEW:

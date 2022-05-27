@@ -35,7 +35,7 @@ class SplashView extends StatelessWidget {
                 AppConstant.instance!.SPLASH_VIEW_GIF_PATH,
               ),
             ),
-            CircularProgressIndicator(color: context.marvelRed)
+            // CircularProgressIndicator(color: context.marvelRed)
           ],
         ),
       ),

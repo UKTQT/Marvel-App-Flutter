@@ -47,17 +47,11 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   List<SeriesResult>? seriesItems = [];
 
   @action
-  void deneme(List<CharacterResult>? args) {
-    print(args);
-    characterItems = args;
-  }
-
-  @action
   Future<List<CharacterResult>?> fetchCharacterItems() async {
     changeLoading();
     if (characterItems!.isEmpty) {
       characterItems = await _homeService.fetchCharacterItems() ?? [];
-    }
+    } else {}
 
     changeLoading();
   }
@@ -65,14 +59,20 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @action
   Future<List<ComicResult>?> fetchComicItems() async {
     changeLoading();
-    comicItems = await _homeService.fetchComicItems() ?? [];
+    if (characterItems!.isEmpty) {
+      comicItems = await _homeService.fetchComicItems() ?? [];
+    }
+
     changeLoading();
   }
 
   @action
   Future<List<SeriesResult>?> fetchSeriesItems() async {
     changeLoading();
-    seriesItems = await _homeService.fetchSeriesItems() ?? [];
+    if (characterItems!.isEmpty) {
+      seriesItems = await _homeService.fetchSeriesItems() ?? [];
+    }
+
     changeLoading();
   }
 }
