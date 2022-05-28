@@ -4,7 +4,7 @@ import '../../../../core/base/view/base_view.dart';
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../../../core/extensions/color_extension/color_extension.dart';
 import '../viewModel/character_view_model.dart';
-import 'character_view_description_box/character_view_description_box.dart';
+import 'character_view_items_box/character_view_items_box.dart';
 import 'character_view_image_box/character_view_image_box.dart';
 
 class CharacterView extends StatelessWidget {
