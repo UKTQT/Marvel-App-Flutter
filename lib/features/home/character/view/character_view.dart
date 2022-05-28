@@ -40,7 +40,7 @@ class CharacterView extends StatelessWidget {
                     child: Padding(
                         padding:
                             EdgeInsets.only(top: context.mediumHeightPadding2),
-                        child: character_view_description_box(
+                        child: characterViewDescriptionBox(
                             context, args, _characterViewModel))))
           ])));
         });

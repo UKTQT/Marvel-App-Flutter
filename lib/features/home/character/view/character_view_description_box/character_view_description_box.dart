@@ -6,7 +6,7 @@ import '../../../../../core/extensions/padding_extension/padding_extension.dart'
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../viewModel/character_view_model.dart';
 
-Column character_view_description_box(BuildContext context,
+Column characterViewDescriptionBox(BuildContext context,
     Map<dynamic, dynamic> args, CharacterViewModel _characterViewModel) {
   return Column(
     children: [
@@ -55,34 +55,33 @@ Column character_view_description_box(BuildContext context,
                     left: context.highWidthPadding,
                     right: context.highWidthPadding,
                   ),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Text(
-                        'Description',
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: const Color(0xffED1D24),
+                      Row(
+                        children: [
+                          Text(
+                            'Description',
+                            style:
+                                Theme.of(context).textTheme.headline6?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: const Color(0xffED1D24),
+                                    ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: context.lowHeightPadding2),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              args['characterDescription'],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  ?.copyWith(color: Colors.white),
                             ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: context.highWidthPadding,
-                    right: context.highWidthPadding,
-                    top: context.lowHeightPadding2,
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          args['characterDescription'],
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle1
-                              ?.copyWith(color: Colors.white),
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -104,7 +103,7 @@ Column character_view_description_box(BuildContext context,
                     ],
                   ),
                 ),
-                SizedBox(height: context.lowHeightPadding),
+                SizedBox(height: context.lowHeightPadding2),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.28,
                   width: double.maxFinite,
