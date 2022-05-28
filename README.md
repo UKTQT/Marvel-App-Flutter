@@ -28,6 +28,7 @@ The Custom Marvel App project is a project coded using the API opened by the <a 
 
 #### Responsive Screen ✓
 #### Clean Code ✓
+#### MVVM ✓
 
 
 </br>
