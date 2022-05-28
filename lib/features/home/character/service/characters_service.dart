@@ -1,12 +1,11 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 
-import '../model/characters_model.dart';
+import '../../../../core/init/network/config.dart';
 import '../../comic/model/comics_model.dart';
 import '../../event/model/events_model.dart';
 import '../../series/model/series_model.dart';
-import '../../../../core/init/network/config.dart';
+import '../model/characters_model.dart';
 
 enum _ServicePaths { characters, comics, series, events }
 

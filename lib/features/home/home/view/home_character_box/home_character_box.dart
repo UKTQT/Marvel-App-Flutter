@@ -3,9 +3,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../viewModel/home_view_model.dart';
-import 'character_box_card.dart';
-import 'character_box_title.dart';
-import 'empty_character_card.dart';
+import 'home_character_box_card.dart';
+import 'home_character_box_title.dart';
+import 'home_empty_character_card.dart';
 
 Column homeCharacter({
   required BuildContext context,

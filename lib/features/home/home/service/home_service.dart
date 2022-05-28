@@ -3,13 +3,12 @@ import 'dart:math';
 
 import 'package:dio/dio.dart';
 
+import '../../../../core/init/network/config.dart';
 import '../../character/model/characters_model.dart';
 import '../../comic/model/comics_model.dart';
-import '../../event/model/events_model.dart';
 import '../../series/model/series_model.dart';
-import '../../../../core/init/network/config.dart';
 
-enum _ServicePaths { characters, comics, series, events }
+enum _ServicePaths { characters, comics, series }
 
 abstract class IHomeService {
   late final Dio _dio;
