@@ -100,7 +100,7 @@ Column characterViewAllElements(BuildContext context,
     Container(
         height: MediaQuery.of(context).size.height * 0.30,
         width: double.maxFinite,
-        child: characterViewSeriesBox(_characterViewModel)),
+        child: characterViewSeriesBox(context, _characterViewModel)),
     // --- Events Title And Contents
     Padding(
         padding: EdgeInsets.only(
