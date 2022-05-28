@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/features/home/character/view/character_view.dart';
-import '../../../features/home/home/view/home_view.dart';
 
-import '../../constants/navigation/navigation_constants.dart';
+import '../../../features/home/character/view/character_view.dart';
+import '../../../features/home/home/view/home_view.dart';
 import '../../../features/authenticate/splash/view/splash_view.dart';
+import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._init();
@@ -21,7 +21,9 @@ class NavigationRoute {
             widget: HomeView(), pageName: NavigationConstants.HOME_VIEW);
       case NavigationConstants.CHARACTER_VIEW:
         return argsNavigate(
-            widget: CharacterView(), pageName: NavigationConstants.HOME_VIEW);
+            widget: CharacterView(),
+            pageName: NavigationConstants.CHARACTER_VIEW,
+            navigateArguments: path.arguments);
 
       default:
         return MaterialPageRoute(builder: (context) => SplashView());
@@ -39,7 +41,7 @@ class NavigationRoute {
   MaterialPageRoute argsNavigate(
       {required Widget widget,
       required String pageName,
-      Map<String, dynamic>? navigateArguments}) {
+      dynamic? navigateArguments}) {
     return MaterialPageRoute(
       builder: (context) => widget,
       settings: RouteSettings(name: pageName, arguments: navigateArguments),
