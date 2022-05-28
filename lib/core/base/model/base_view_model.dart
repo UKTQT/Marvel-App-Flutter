@@ -7,5 +7,5 @@ abstract class BaseViewModel {
   NavigationService navigation = NavigationService.instance;
 
   void setContext(BuildContext context);
-  void init();
+  void init({int? id});
 }

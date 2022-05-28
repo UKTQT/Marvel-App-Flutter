@@ -15,7 +15,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   final HomeService _homeService = HomeService();
 
   @override
-  void init() {
+  void init({int? id}) {
     fetchCharacterItems();
     fetchComicItems();
     fetchSeriesItems();

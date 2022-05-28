@@ -4,8 +4,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/extensions/padding_extension/padding_extension.dart';
-import '../../comic/viewModel/comic_view_model.dart';
-import '../model/characters_model.dart';
 import '../viewModel/character_view_model.dart';
 
 class CharacterView extends StatelessWidget {
@@ -26,7 +24,7 @@ class CharacterView extends StatelessWidget {
       viewModel: CharacterViewModel(),
       onModelReady: (model) {
         model.setContext(context);
-        model.init();
+        model.init(id: args['characterId']);
       },
       onPageBuilder:
           (BuildContext context, CharacterViewModel _characterViewModel) {

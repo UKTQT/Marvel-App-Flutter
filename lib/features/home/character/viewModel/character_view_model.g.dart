@@ -82,7 +82,7 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
 
   @override
   Future<List<ComicResult>?> fetchCharacterComicsItems(
-      {required int characterId}) {
+      {required int? characterId}) {
     return _$fetchCharacterComicsItemsAsyncAction
         .run(() => super.fetchCharacterComicsItems(characterId: characterId));
   }
@@ -93,7 +93,7 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
 
   @override
   Future<List<SeriesResult>?> fetchCharacterSeriesItems(
-      {required int characterId}) {
+      {required int? characterId}) {
     return _$fetchCharacterSeriesItemsAsyncAction
         .run(() => super.fetchCharacterSeriesItems(characterId: characterId));
   }
@@ -104,7 +104,7 @@ mixin _$CharacterViewModel on _CharacterViewModelBase, Store {
 
   @override
   Future<List<EventResult>?> fetchCharacterEventsItems(
-      {required int characterId}) {
+      {required int? characterId}) {
     return _$fetchCharacterEventsItemsAsyncAction
         .run(() => super.fetchCharacterEventsItems(characterId: characterId));
   }

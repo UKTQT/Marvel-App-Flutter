@@ -16,7 +16,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.baseViewContext = context;
 
   @override
-  void init() {
+  void init({int? id}) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       militaryGateControl();
     });

@@ -18,9 +18,9 @@ abstract class ICharacterService {
 
   //Future<List<CharacterResult>?> fetchCharacterItems();
   // Future<List<CharacterResult>?> fetchSingleCharacterItems({int? id});
-  Future<List<ComicResult>?> fetchCharacterComics({required int id});
-  Future<List<SeriesResult>?> fetchCharacterSeries({required int id});
-  Future<List<EventResult>?> fetchCharacterEvents({required int id});
+  Future<List<ComicResult>?> fetchCharacterComics({required int? id});
+  Future<List<SeriesResult>?> fetchCharacterSeries({required int? id});
+  Future<List<EventResult>?> fetchCharacterEvents({required int? id});
 }
 
 class CharacterService extends ICharacterService {
@@ -50,7 +50,7 @@ class CharacterService extends ICharacterService {
   } */
 
   @override
-  Future<List<ComicResult>?> fetchCharacterComics({required int id}) async {
+  Future<List<ComicResult>?> fetchCharacterComics({required int? id}) async {
     try {
       final response = await _dio.get(
         _ServicePaths.characters.name +
@@ -77,7 +77,7 @@ class CharacterService extends ICharacterService {
   }
 
   @override
-  Future<List<SeriesResult>?> fetchCharacterSeries({required int id}) async {
+  Future<List<SeriesResult>?> fetchCharacterSeries({required int? id}) async {
     try {
       final response = await _dio.get(
         _ServicePaths.characters.name +
@@ -106,7 +106,7 @@ class CharacterService extends ICharacterService {
   }
 
   @override
-  Future<List<EventResult>?> fetchCharacterEvents({required int id}) async {
+  Future<List<EventResult>?> fetchCharacterEvents({required int? id}) async {
     try {
       final response = await _dio.get(
         _ServicePaths.characters.name +
