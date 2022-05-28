@@ -25,23 +25,23 @@ class ComicsModel {
   String toJson() => json.encode(toMap());
 
   factory ComicsModel.fromMap(Map<String, dynamic> json) => ComicsModel(
-        code: json["code"],
-        status: json["status"],
-        copyright: json["copyright"],
-        attributionText: json["attributionText"],
-        attributionHtml: json["attributionHTML"],
-        data: ComicData.fromMap(json["data"]),
-        etag: json["etag"],
+        code: json['code'],
+        status: json['status'],
+        copyright: json['copyright'],
+        attributionText: json['attributionText'],
+        attributionHtml: json['attributionHTML'],
+        data: ComicData.fromMap(json['data']),
+        etag: json['etag'],
       );
 
   Map<String, dynamic> toMap() => {
-        "code": code,
-        "status": status,
-        "copyright": copyright,
-        "attributionText": attributionText,
-        "attributionHTML": attributionHtml,
-        "data": data?.toMap(),
-        "etag": etag,
+        'code': code,
+        'status': status,
+        'copyright': copyright,
+        'attributionText': attributionText,
+        'attributionHTML': attributionHtml,
+        'data': data?.toMap(),
+        'etag': etag,
       };
 }
 
@@ -65,20 +65,20 @@ class ComicData {
   String toJson() => json.encode(toMap());
 
   factory ComicData.fromMap(Map<String, dynamic> json) => ComicData(
-        offset: json["offset"],
-        limit: json["limit"],
-        total: json["total"],
-        count: json["count"],
+        offset: json['offset'],
+        limit: json['limit'],
+        total: json['total'],
+        count: json['count'],
         results: List<ComicResult>.from(
-            json["results"].map((x) => ComicResult.fromMap(x))),
+            json['results'].map((x) => ComicResult.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "offset": offset,
-        "limit": limit,
-        "total": total,
-        "count": count,
-        "results": List<dynamic>.from(results!.map((x) => x.toMap())),
+        'offset': offset,
+        'limit': limit,
+        'total': total,
+        'count': count,
+        'results': List<dynamic>.from(results!.map((x) => x.toMap())),
       };
 }
 
@@ -151,73 +151,73 @@ class ComicResult {
   String toJson() => json.encode(toMap());
 
   factory ComicResult.fromMap(Map<String, dynamic> json) => ComicResult(
-        id: json["id"],
-        digitalId: json["digitalId"],
-        title: json["title"],
-        //  issueNumber: json["issueNumber"],
-        variantDescription: json["variantDescription"],
-        description: json["description"],
-        modified: json["modified"],
-        isbn: json["isbn"],
-        upc: json["upc"],
-        diamondCode: json["diamondCode"],
-        ean: json["ean"],
-        issn: json["issn"],
-        format: json["format"],
-        pageCount: json["pageCount"],
+        id: json['id'],
+        digitalId: json['digitalId'],
+        title: json['title'],
+        //  issueNumber: json['issueNumber'],
+        variantDescription: json['variantDescription'],
+        description: json['description'],
+        modified: json['modified'],
+        isbn: json['isbn'],
+        upc: json['upc'],
+        diamondCode: json['diamondCode'],
+        ean: json['ean'],
+        issn: json['issn'],
+        format: json['format'],
+        pageCount: json['pageCount'],
         textObjects: List<TextObject>.from(
-            json["textObjects"].map((x) => TextObject.fromMap(x))),
-        resourceUri: json["resourceURI"],
-        urls: List<Url>.from(json["urls"].map((x) => Url.fromMap(x))),
-        series: Series.fromMap(json["series"]),
+            json['textObjects'].map((x) => TextObject.fromMap(x))),
+        resourceUri: json['resourceURI'],
+        urls: List<Url>.from(json['urls'].map((x) => Url.fromMap(x))),
+        series: Series.fromMap(json['series']),
         variants:
-            List<Series>.from(json["variants"].map((x) => Series.fromMap(x))),
+            List<Series>.from(json['variants'].map((x) => Series.fromMap(x))),
         collections: List<Series>.from(
-            json["collections"].map((x) => Series.fromMap(x))),
+            json['collections'].map((x) => Series.fromMap(x))),
         collectedIssues: List<Series>.from(
-            json["collectedIssues"].map((x) => Series.fromMap(x))),
-        dates: List<Date>.from(json["dates"].map((x) => Date.fromMap(x))),
-        prices: List<Price>.from(json["prices"].map((x) => Price.fromMap(x))),
-        thumbnail: Thumbnail.fromMap(json["thumbnail"]),
+            json['collectedIssues'].map((x) => Series.fromMap(x))),
+        dates: List<Date>.from(json['dates'].map((x) => Date.fromMap(x))),
+        prices: List<Price>.from(json['prices'].map((x) => Price.fromMap(x))),
+        thumbnail: Thumbnail.fromMap(json['thumbnail']),
         images: List<Thumbnail>.from(
-            json["images"].map((x) => Thumbnail.fromMap(x))),
-        creators: Characters.fromMap(json["creators"]),
-        characters: Characters.fromMap(json["characters"]),
-        stories: Stories.fromMap(json["stories"]),
-        events: Events.fromMap(json["events"]),
+            json['images'].map((x) => Thumbnail.fromMap(x))),
+        creators: Characters.fromMap(json['creators']),
+        characters: Characters.fromMap(json['characters']),
+        stories: Stories.fromMap(json['stories']),
+        events: Events.fromMap(json['events']),
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
-        "digitalId": digitalId,
-        "title": title,
-        //"issueNumber": issueNumber,
-        "variantDescription": variantDescription,
-        "description": description,
-        "modified": modified,
-        "isbn": isbn,
-        "upc": upc,
-        "diamondCode": diamondCode,
-        "ean": ean,
-        "issn": issn,
-        "format": format,
-        "pageCount": pageCount,
-        "textObjects": List<dynamic>.from(textObjects!.map((x) => x.toMap())),
-        "resourceURI": resourceUri,
-        "urls": List<dynamic>.from(urls!.map((x) => x.toMap())),
-        "series": series!.toMap(),
-        "variants": List<dynamic>.from(variants!.map((x) => x.toMap())),
-        "collections": List<dynamic>.from(collections!.map((x) => x.toMap())),
-        "collectedIssues":
+        'id': id,
+        'digitalId': digitalId,
+        'title': title,
+        //'issueNumber': issueNumber,
+        'variantDescription': variantDescription,
+        'description': description,
+        'modified': modified,
+        'isbn': isbn,
+        'upc': upc,
+        'diamondCode': diamondCode,
+        'ean': ean,
+        'issn': issn,
+        'format': format,
+        'pageCount': pageCount,
+        'textObjects': List<dynamic>.from(textObjects!.map((x) => x.toMap())),
+        'resourceURI': resourceUri,
+        'urls': List<dynamic>.from(urls!.map((x) => x.toMap())),
+        'series': series!.toMap(),
+        'variants': List<dynamic>.from(variants!.map((x) => x.toMap())),
+        'collections': List<dynamic>.from(collections!.map((x) => x.toMap())),
+        'collectedIssues':
             List<dynamic>.from(collectedIssues!.map((x) => x.toMap())),
-        "dates": List<dynamic>.from(dates!.map((x) => x.toMap())),
-        "prices": List<dynamic>.from(prices!.map((x) => x.toMap())),
-        "thumbnail": thumbnail!.toMap(),
-        "images": List<dynamic>.from(images!.map((x) => x.toMap())),
-        "creators": creators!.toMap(),
-        "characters": characters!.toMap(),
-        "stories": stories!.toMap(),
-        "events": events!.toMap(),
+        'dates': List<dynamic>.from(dates!.map((x) => x.toMap())),
+        'prices': List<dynamic>.from(prices!.map((x) => x.toMap())),
+        'thumbnail': thumbnail!.toMap(),
+        'images': List<dynamic>.from(images!.map((x) => x.toMap())),
+        'creators': creators!.toMap(),
+        'characters': characters!.toMap(),
+        'stories': stories!.toMap(),
+        'events': events!.toMap(),
       };
 }
 
@@ -240,18 +240,18 @@ class Characters {
   String toJson() => json.encode(toMap());
 
   factory Characters.fromMap(Map<String, dynamic> json) => Characters(
-        available: json["available"],
-        returned: json["returned"],
-        collectionUri: json["collectionURI"],
+        available: json['available'],
+        returned: json['returned'],
+        collectionUri: json['collectionURI'],
         items: List<CharactersItem>.from(
-            json["items"].map((x) => CharactersItem.fromMap(x))),
+            json['items'].map((x) => CharactersItem.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "available": available,
-        "returned": returned,
-        "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
+        'available': available,
+        'returned': returned,
+        'collectionURI': collectionUri,
+        'items': List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
@@ -272,15 +272,15 @@ class CharactersItem {
   String toJson() => json.encode(toMap());
 
   factory CharactersItem.fromMap(Map<String, dynamic> json) => CharactersItem(
-        resourceUri: json["resourceURI"],
-        name: json["name"],
-        role: json["role"],
+        resourceUri: json['resourceURI'],
+        name: json['name'],
+        role: json['role'],
       );
 
   Map<String, dynamic> toMap() => {
-        "resourceURI": resourceUri,
-        "name": name,
-        "role": role,
+        'resourceURI': resourceUri,
+        'name': name,
+        'role': role,
       };
 }
 
@@ -298,13 +298,13 @@ class Series {
   String toJson() => json.encode(toMap());
 
   factory Series.fromMap(Map<String, dynamic> json) => Series(
-        resourceUri: json["resourceURI"],
-        name: json["name"],
+        resourceUri: json['resourceURI'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toMap() => {
-        "resourceURI": resourceUri,
-        "name": name,
+        'resourceURI': resourceUri,
+        'name': name,
       };
 }
 
@@ -322,13 +322,13 @@ class Date {
   String toJson() => json.encode(toMap());
 
   factory Date.fromMap(Map<String, dynamic> json) => Date(
-        type: json["type"],
-        date: json["date"],
+        type: json['type'],
+        date: json['date'],
       );
 
   Map<String, dynamic> toMap() => {
-        "type": type,
-        "date": date,
+        'type': type,
+        'date': date,
       };
 }
 
@@ -350,17 +350,17 @@ class Events {
   String toJson() => json.encode(toMap());
 
   factory Events.fromMap(Map<String, dynamic> json) => Events(
-        available: json["available"],
-        returned: json["returned"],
-        collectionUri: json["collectionURI"],
-        items: List<Series>.from(json["items"].map((x) => Series.fromMap(x))),
+        available: json['available'],
+        returned: json['returned'],
+        collectionUri: json['collectionURI'],
+        items: List<Series>.from(json['items'].map((x) => Series.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "available": available,
-        "returned": returned,
-        "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
+        'available': available,
+        'returned': returned,
+        'collectionURI': collectionUri,
+        'items': List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
@@ -378,13 +378,13 @@ class Thumbnail {
   String toJson() => json.encode(toMap());
 
   factory Thumbnail.fromMap(Map<String, dynamic> json) => Thumbnail(
-        path: json["path"],
-        extension: json["extension"],
+        path: json['path'],
+        extension: json['extension'],
       );
 
   Map<String, dynamic> toMap() => {
-        "path": path,
-        "extension": extension,
+        'path': path,
+        'extension': extension,
       };
 }
 
@@ -402,13 +402,13 @@ class Price {
   String toJson() => json.encode(toMap());
 
   factory Price.fromMap(Map<String, dynamic> json) => Price(
-        type: json["type"],
-        price: json["price"],
+        type: json['type'],
+        price: json['price'],
       );
 
   Map<String, dynamic> toMap() => {
-        "type": type,
-        "price": price,
+        'type': type,
+        'price': price,
       };
 }
 
@@ -430,18 +430,18 @@ class Stories {
   String toJson() => json.encode(toMap());
 
   factory Stories.fromMap(Map<String, dynamic> json) => Stories(
-        available: json["available"],
-        returned: json["returned"],
-        collectionUri: json["collectionURI"],
+        available: json['available'],
+        returned: json['returned'],
+        collectionUri: json['collectionURI'],
         items: List<StoriesItem>.from(
-            json["items"].map((x) => StoriesItem.fromMap(x))),
+            json['items'].map((x) => StoriesItem.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "available": available,
-        "returned": returned,
-        "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
+        'available': available,
+        'returned': returned,
+        'collectionURI': collectionUri,
+        'items': List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
@@ -462,15 +462,15 @@ class StoriesItem {
   String toJson() => json.encode(toMap());
 
   factory StoriesItem.fromMap(Map<String, dynamic> json) => StoriesItem(
-        resourceUri: json["resourceURI"],
-        name: json["name"],
-        type: json["type"],
+        resourceUri: json['resourceURI'],
+        name: json['name'],
+        type: json['type'],
       );
 
   Map<String, dynamic> toMap() => {
-        "resourceURI": resourceUri,
-        "name": name,
-        "type": type,
+        'resourceURI': resourceUri,
+        'name': name,
+        'type': type,
       };
 }
 
@@ -491,15 +491,15 @@ class TextObject {
   String toJson() => json.encode(toMap());
 
   factory TextObject.fromMap(Map<String, dynamic> json) => TextObject(
-        type: json["type"],
-        language: json["language"],
-        text: json["text"],
+        type: json['type'],
+        language: json['language'],
+        text: json['text'],
       );
 
   Map<String, dynamic> toMap() => {
-        "type": type,
-        "language": language,
-        "text": text,
+        'type': type,
+        'language': language,
+        'text': text,
       };
 }
 
@@ -517,12 +517,12 @@ class Url {
   String toJson() => json.encode(toMap());
 
   factory Url.fromMap(Map<String, dynamic> json) => Url(
-        type: json["type"],
-        url: json["url"],
+        type: json['type'],
+        url: json['url'],
       );
 
   Map<String, dynamic> toMap() => {
-        "type": type,
-        "url": url,
+        'type': type,
+        'url': url,
       };
 }

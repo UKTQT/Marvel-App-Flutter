@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:dio/dio.dart';
 
@@ -74,9 +73,7 @@ class CharacterService extends ICharacterService {
           return ComicData.fromMap(_datas['data']).results;
         }
       }
-    } on DioError catch (e) {
-      //
-    }
+    } on DioError catch (e) {}
     return null;
   }
 

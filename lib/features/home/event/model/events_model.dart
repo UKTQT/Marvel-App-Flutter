@@ -29,23 +29,23 @@ class EventModel {
   String toJson() => json.encode(toMap());
 
   factory EventModel.fromMap(Map<String, dynamic> json) => EventModel(
-        code: json["code"],
-        status: json["status"],
-        copyright: json["copyright"],
-        attributionText: json["attributionText"],
-        attributionHtml: json["attributionHTML"],
-        data: EventData.fromMap(json["data"]),
-        etag: json["etag"],
+        code: json['code'],
+        status: json['status'],
+        copyright: json['copyright'],
+        attributionText: json['attributionText'],
+        attributionHtml: json['attributionHTML'],
+        data: EventData.fromMap(json['data']),
+        etag: json['etag'],
       );
 
   Map<String, dynamic> toMap() => {
-        "code": code,
-        "status": status,
-        "copyright": copyright,
-        "attributionText": attributionText,
-        "attributionHTML": attributionHtml,
-        "data": data!.toMap(),
-        "etag": etag,
+        'code': code,
+        'status': status,
+        'copyright': copyright,
+        'attributionText': attributionText,
+        'attributionHTML': attributionHtml,
+        'data': data!.toMap(),
+        'etag': etag,
       };
 }
 
@@ -69,20 +69,20 @@ class EventData {
   String toJson() => json.encode(toMap());
 
   factory EventData.fromMap(Map<String, dynamic> json) => EventData(
-        offset: json["offset"],
-        limit: json["limit"],
-        total: json["total"],
-        count: json["count"],
+        offset: json['offset'],
+        limit: json['limit'],
+        total: json['total'],
+        count: json['count'],
         results: List<EventResult>.from(
-            json["results"].map((x) => EventResult.fromMap(x))),
+            json['results'].map((x) => EventResult.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "offset": offset,
-        "limit": limit,
-        "total": total,
-        "count": count,
-        "results": List<dynamic>.from(results!.map((x) => x.toMap())),
+        'offset': offset,
+        'limit': limit,
+        'total': total,
+        'count': count,
+        'results': List<dynamic>.from(results!.map((x) => x.toMap())),
       };
 }
 
@@ -129,41 +129,41 @@ class EventResult {
   String toJson() => json.encode(toMap());
 
   factory EventResult.fromMap(Map<String, dynamic> json) => EventResult(
-        id: json["id"],
-        title: json["title"],
-        description: json["description"],
-        resourceUri: json["resourceURI"],
-        urls: List<Url>.from(json["urls"].map((x) => Url.fromMap(x))),
-        modified: json["modified"],
-        start: json["start"],
-        end: json["end"],
-        thumbnail: Thumbnail.fromMap(json["thumbnail"]),
-        comics: Comics.fromMap(json["comics"]),
-        stories: Stories.fromMap(json["stories"]),
-        series: Comics.fromMap(json["series"]),
-        characters: Characters.fromMap(json["characters"]),
-        creators: Characters.fromMap(json["creators"]),
-        next: Next.fromMap(json["next"]),
-        previous: Next.fromMap(json["previous"]),
+        id: json['id'],
+        title: json['title'],
+        description: json['description'],
+        resourceUri: json['resourceURI'],
+        urls: List<Url>.from(json['urls'].map((x) => Url.fromMap(x))),
+        modified: json['modified'],
+        start: json['start'],
+        end: json['end'],
+        thumbnail: Thumbnail.fromMap(json['thumbnail']),
+        comics: Comics.fromMap(json['comics']),
+        stories: Stories.fromMap(json['stories']),
+        series: Comics.fromMap(json['series']),
+        characters: Characters.fromMap(json['characters']),
+        creators: Characters.fromMap(json['creators']),
+        next: Next.fromMap(json['next']),
+        previous: Next.fromMap(json['previous']),
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
-        "title": title,
-        "description": description,
-        "resourceURI": resourceUri,
-        "urls": List<dynamic>.from(urls!.map((x) => x.toMap())),
-        "modified": modified,
-        "start": start,
-        "end": end,
-        "thumbnail": thumbnail!.toMap(),
-        "comics": comics!.toMap(),
-        "stories": stories!.toMap(),
-        "series": series!.toMap(),
-        "characters": characters!.toMap(),
-        "creators": creators!.toMap(),
-        "next": next!.toMap(),
-        "previous": previous!.toMap(),
+        'id': id,
+        'title': title,
+        'description': description,
+        'resourceURI': resourceUri,
+        'urls': List<dynamic>.from(urls!.map((x) => x.toMap())),
+        'modified': modified,
+        'start': start,
+        'end': end,
+        'thumbnail': thumbnail!.toMap(),
+        'comics': comics!.toMap(),
+        'stories': stories!.toMap(),
+        'series': series!.toMap(),
+        'characters': characters!.toMap(),
+        'creators': creators!.toMap(),
+        'next': next!.toMap(),
+        'previous': previous!.toMap(),
       };
 }
 
@@ -186,18 +186,18 @@ class Characters {
   String toJson() => json.encode(toMap());
 
   factory Characters.fromMap(Map<String, dynamic> json) => Characters(
-        available: json["available"],
-        returned: json["returned"],
-        collectionUri: json["collectionURI"],
+        available: json['available'],
+        returned: json['returned'],
+        collectionUri: json['collectionURI'],
         items: List<CharactersItem>.from(
-            json["items"].map((x) => CharactersItem.fromMap(x))),
+            json['items'].map((x) => CharactersItem.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "available": available,
-        "returned": returned,
-        "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
+        'available': available,
+        'returned': returned,
+        'collectionURI': collectionUri,
+        'items': List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
@@ -218,15 +218,15 @@ class CharactersItem {
   String toJson() => json.encode(toMap());
 
   factory CharactersItem.fromMap(Map<String, dynamic> json) => CharactersItem(
-        resourceUri: json["resourceURI"],
-        name: json["name"],
-        role: json["role"],
+        resourceUri: json['resourceURI'],
+        name: json['name'],
+        role: json['role'],
       );
 
   Map<String, dynamic> toMap() => {
-        "resourceURI": resourceUri,
-        "name": name,
-        "role": role,
+        'resourceURI': resourceUri,
+        'name': name,
+        'role': role,
       };
 }
 
@@ -248,17 +248,17 @@ class Comics {
   String toJson() => json.encode(toMap());
 
   factory Comics.fromMap(Map<String, dynamic> json) => Comics(
-        available: json["available"],
-        returned: json["returned"],
-        collectionUri: json["collectionURI"],
-        items: List<Next>.from(json["items"].map((x) => Next.fromMap(x))),
+        available: json['available'],
+        returned: json['returned'],
+        collectionUri: json['collectionURI'],
+        items: List<Next>.from(json['items'].map((x) => Next.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "available": available,
-        "returned": returned,
-        "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
+        'available': available,
+        'returned': returned,
+        'collectionURI': collectionUri,
+        'items': List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
@@ -276,13 +276,13 @@ class Next {
   String toJson() => json.encode(toMap());
 
   factory Next.fromMap(Map<String, dynamic> json) => Next(
-        resourceUri: json["resourceURI"],
-        name: json["name"],
+        resourceUri: json['resourceURI'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toMap() => {
-        "resourceURI": resourceUri,
-        "name": name,
+        'resourceURI': resourceUri,
+        'name': name,
       };
 }
 
@@ -304,18 +304,18 @@ class Stories {
   String toJson() => json.encode(toMap());
 
   factory Stories.fromMap(Map<String, dynamic> json) => Stories(
-        available: json["available"],
-        returned: json["returned"],
-        collectionUri: json["collectionURI"],
+        available: json['available'],
+        returned: json['returned'],
+        collectionUri: json['collectionURI'],
         items: List<StoriesItem>.from(
-            json["items"].map((x) => StoriesItem.fromMap(x))),
+            json['items'].map((x) => StoriesItem.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "available": available,
-        "returned": returned,
-        "collectionURI": collectionUri,
-        "items": List<dynamic>.from(items!.map((x) => x.toMap())),
+        'available': available,
+        'returned': returned,
+        'collectionURI': collectionUri,
+        'items': List<dynamic>.from(items!.map((x) => x.toMap())),
       };
 }
 
@@ -336,15 +336,15 @@ class StoriesItem {
   String toJson() => json.encode(toMap());
 
   factory StoriesItem.fromMap(Map<String, dynamic> json) => StoriesItem(
-        resourceUri: json["resourceURI"],
-        name: json["name"],
-        type: json["type"],
+        resourceUri: json['resourceURI'],
+        name: json['name'],
+        type: json['type'],
       );
 
   Map<String, dynamic> toMap() => {
-        "resourceURI": resourceUri,
-        "name": name,
-        "type": type,
+        'resourceURI': resourceUri,
+        'name': name,
+        'type': type,
       };
 }
 
@@ -362,13 +362,13 @@ class Thumbnail {
   String toJson() => json.encode(toMap());
 
   factory Thumbnail.fromMap(Map<String, dynamic> json) => Thumbnail(
-        path: json["path"],
-        extension: json["extension"],
+        path: json['path'],
+        extension: json['extension'],
       );
 
   Map<String, dynamic> toMap() => {
-        "path": path,
-        "extension": extension,
+        'path': path,
+        'extension': extension,
       };
 }
 
@@ -386,12 +386,12 @@ class Url {
   String toJson() => json.encode(toMap());
 
   factory Url.fromMap(Map<String, dynamic> json) => Url(
-        type: json["type"],
-        url: json["url"],
+        type: json['type'],
+        url: json['url'],
       );
 
   Map<String, dynamic> toMap() => {
-        "type": type,
-        "url": url,
+        'type': type,
+        'url': url,
       };
 }
