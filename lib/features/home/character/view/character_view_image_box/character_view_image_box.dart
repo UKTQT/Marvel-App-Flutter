@@ -5,19 +5,10 @@ import '../../../../../core/extensions/padding_extension/padding_extension.dart'
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 
 Stack characterViewImageBox(Map<dynamic, dynamic> args, BuildContext context) {
-  return Stack(
-    children: [
-      SizedBox(
-        width: double.maxFinite,
-        child: characterImage(args),
-      ),
-      Row(
-        children: [
-          backIcon(context),
-        ],
-      )
-    ],
-  );
+  return Stack(children: [
+    SizedBox(width: double.maxFinite, child: characterImage(args)),
+    Row(children: [backIcon(context)])
+  ]);
 }
 
 FittedBox characterImage(Map<dynamic, dynamic> args) {
