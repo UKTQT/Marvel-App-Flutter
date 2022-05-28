@@ -41,7 +41,7 @@ class NavigationRoute {
   MaterialPageRoute argsNavigate(
       {required Widget widget,
       required String pageName,
-      dynamic? navigateArguments}) {
+      dynamic navigateArguments}) {
     return MaterialPageRoute(
       builder: (context) => widget,
       settings: RouteSettings(name: pageName, arguments: navigateArguments),

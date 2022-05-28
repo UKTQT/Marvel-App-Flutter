@@ -18,7 +18,7 @@ Column characterViewDescriptionBox(BuildContext context,
                 left: context.highWidthPadding,
                 right: context.highWidthPadding,
                 bottom: context.mediumHeightPadding),
-            child: characterViewDescriptions(args, context))),
+            child: characterViewName(args, context))),
     Expanded(
         flex: 5,
         child: SingleChildScrollView(
@@ -29,8 +29,7 @@ Column characterViewDescriptionBox(BuildContext context,
   ]);
 }
 
-Row characterViewDescriptions(
-    Map<dynamic, dynamic> args, BuildContext context) {
+Row characterViewName(Map<dynamic, dynamic> args, BuildContext context) {
   return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
     Expanded(
         child: Text(args['characterName'],
