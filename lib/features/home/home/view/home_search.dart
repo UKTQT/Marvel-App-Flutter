@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app/app_constants.dart';
 import '../../../../../core/extensions/color_extension/color_extension.dart';
-
+import '../../../../core/constants/app/app_constants.dart';
 import '../viewModel/home_view_model.dart';
 
 Padding homeSearch(

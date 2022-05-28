@@ -1,11 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../viewModel/home_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../../core/constants/app/app_constants.dart';
 import '../../../../../core/extensions/padding_extension/padding_extension.dart';
 import '../../../../../core/extensions/color_extension/color_extension.dart';
-import '../../../comic/viewModel/comic_view_model.dart';
+import '../../viewModel/home_view_model.dart';
 
 Padding comicCard(
     {required BuildContext context,
