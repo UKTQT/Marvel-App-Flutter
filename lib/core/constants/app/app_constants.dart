@@ -20,4 +20,9 @@ class AppConstant {
   //Home View Characters
   final String HOME_VIEW_COMIC_BOX_TITLE = 'Comics';
   final String HOME_VIEW_COMIC_BOX_TITLE2 = 'All Comics';
+  //Character View All Text
+  final String CHARACTER_VIEW_DESCRIPTION_TEXT = 'Description';
+  final String CHARACTER_VIEW_COMICS_TEXT = 'Comics';
+  final String CHARACTER_VIEW_SERIES_TEXT = 'Series';
+  final String CHARACTER_VIEW_EVENTS_TEXT = 'Events';
 }
