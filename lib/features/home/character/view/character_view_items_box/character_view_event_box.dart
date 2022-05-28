@@ -10,7 +10,9 @@ Observer characterViewEventBox(
     BuildContext context, CharacterViewModel _characterViewModel) {
   return Observer(builder: (_) {
     return _characterViewModel.characterEventsItems!.isEmpty
-        ? CircularProgressIndicator(color: context.marvelRed)
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [CircularProgressIndicator(color: context.marvelRed)])
         : ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: _characterViewModel.characterEventsItems?.length ?? 1,
@@ -55,8 +57,7 @@ Padding eventItem(
                             fit: BoxFit.fill,
                             child: CachedNetworkImage(
                               placeholder: (context, index) {
-                                return CircularProgressIndicator(
-                                    color: context.whiteColor);
+                                return const Placeholder();
                               },
                               imageUrl:
                                   '${_characterViewModel.characterEventsItems?[index].thumbnail!.path}.${_characterViewModel.characterEventsItems?[index].thumbnail!.extension}',

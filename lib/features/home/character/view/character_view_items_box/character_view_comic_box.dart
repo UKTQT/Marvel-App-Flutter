@@ -9,7 +9,9 @@ Observer characterViewComicBox(
     BuildContext context, CharacterViewModel _characterViewModel) {
   return Observer(builder: (_) {
     return _characterViewModel.characterComicsItems!.isEmpty
-        ? CircularProgressIndicator(color: context.marvelRed)
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [CircularProgressIndicator(color: context.marvelRed)])
         : ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: _characterViewModel.characterComicsItems?.length ?? 1,
@@ -42,8 +44,7 @@ Padding comicItem(
                   fit: BoxFit.fill,
                   child: CachedNetworkImage(
                       placeholder: (context, index) {
-                        return CircularProgressIndicator(
-                            color: context.whiteColor);
+                        return const Placeholder();
                       },
                       imageUrl:
                           '${_characterViewModel.characterComicsItems?[index].thumbnail?.path}.${_characterViewModel.characterComicsItems?[index].thumbnail?.extension}',

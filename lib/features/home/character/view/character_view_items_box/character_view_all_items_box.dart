@@ -36,7 +36,7 @@ Row characterViewName(Map<dynamic, dynamic> args, BuildContext context) {
             overflow: TextOverflow.clip,
             style: Theme.of(context).textTheme.headline4?.copyWith(
                 fontFamily: 'RaleWay',
-                color: Colors.white,
+                color: context.whiteColor,
                 fontWeight: FontWeight.bold))),
     Text(
         DateTime.parse('${args['characterModified']}')
