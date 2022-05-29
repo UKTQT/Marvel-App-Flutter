@@ -24,7 +24,9 @@ class CharacterView extends StatelessWidget {
           return Scaffold(
               body: SafeArea(
                   child: Column(children: [
+            // --- Character Image Box
             Expanded(flex: 6, child: characterViewImageBox(args, context)),
+            // --- Character Items Box
             Expanded(
                 flex: 8,
                 child: Container(
@@ -40,7 +42,7 @@ class CharacterView extends StatelessWidget {
                     child: Padding(
                         padding:
                             EdgeInsets.only(top: context.mediumHeightPadding2),
-                        child: characterViewDescriptionBox(
+                        child: characterViewItemsBox(
                             context, args, _characterViewModel))))
           ])));
         });

@@ -8,9 +8,10 @@ import 'character_view_comic_box.dart';
 import 'character_view_event_box.dart';
 import 'character_view_series_box.dart';
 
-Column characterViewDescriptionBox(BuildContext context,
-    Map<dynamic, dynamic> args, CharacterViewModel _characterViewModel) {
+Column characterViewItemsBox(BuildContext context, Map<dynamic, dynamic> args,
+    CharacterViewModel _characterViewModel) {
   return Column(children: [
+    // --- Character Name
     Expanded(
         flex: 0,
         child: Padding(
@@ -19,6 +20,7 @@ Column characterViewDescriptionBox(BuildContext context,
                 right: context.highWidthPadding,
                 bottom: context.mediumHeightPadding),
             child: characterViewName(args, context))),
+    // --- Character All Items
     Expanded(
         flex: 5,
         child: SingleChildScrollView(
@@ -49,7 +51,7 @@ Row characterViewName(Map<dynamic, dynamic> args, BuildContext context) {
 Column characterViewAllElements(BuildContext context,
     Map<dynamic, dynamic> args, CharacterViewModel _characterViewModel) {
   return Column(children: [
-    // --- Description Title And Contents
+    // ----------- Description Title And Contents
     Padding(
         padding: EdgeInsets.only(
             left: context.highWidthPadding, right: context.highWidthPadding),
@@ -69,7 +71,7 @@ Column characterViewAllElements(BuildContext context,
                         ?.copyWith(color: context.whiteColor)))
           ])
         ])),
-    // --- Comics Title And Contents
+    // ----------- Comics Title And Contents
     Padding(
         padding: EdgeInsets.only(
             left: context.highWidthPadding,
@@ -85,7 +87,7 @@ Column characterViewAllElements(BuildContext context,
         height: MediaQuery.of(context).size.height * 0.28,
         width: double.maxFinite,
         child: characterViewComicBox(context, _characterViewModel)),
-    // --- Series Title And Contents
+    // ----------- Series Title And Contents
     Padding(
         padding: EdgeInsets.only(
             top: context.lowHeightPadding2,
@@ -100,7 +102,7 @@ Column characterViewAllElements(BuildContext context,
         height: MediaQuery.of(context).size.height * 0.30,
         width: double.maxFinite,
         child: characterViewSeriesBox(context, _characterViewModel)),
-    // --- Events Title And Contents
+    // ----------- Events Title And Contents
     Padding(
         padding: EdgeInsets.only(
             top: context.lowHeightPadding2,

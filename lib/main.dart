@@ -15,18 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppConstant.instance!.PROJECT_TITLE,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: context.themeMainColor1,
-        appBarTheme: AppBarTheme(
-          backgroundColor: context.themeMainColor1,
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: context.themeMainColor1,
-        ),
-      ),
-      onGenerateRoute: NavigationRoute.instance.generateRoute,
-      navigatorKey: NavigationService.instance.navigatorKey,
-    );
+        title: AppConstant.instance!.PROJECT_TITLE,
+        theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: context.themeMainColor1,
+            appBarTheme: AppBarTheme(backgroundColor: context.themeMainColor1),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                backgroundColor: context.themeMainColor1)),
+        onGenerateRoute: NavigationRoute.instance.generateRoute,
+        navigatorKey: NavigationService.instance.navigatorKey);
   }
 }

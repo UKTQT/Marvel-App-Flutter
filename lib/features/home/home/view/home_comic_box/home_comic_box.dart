@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../../core/extensions/color_extension/color_extension.dart';
 import '../../viewModel/home_view_model.dart';
-import 'comic_box_card.dart';
-import 'comic_box_title.dart';
+import 'home_comic_box_card.dart';
+import 'home_comic_box_title.dart';
 
 Column homeComic(
     {required BuildContext context, required HomeViewModel homeViewModel}) {

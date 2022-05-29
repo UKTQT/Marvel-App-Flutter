@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/features/home/comic/view/comic_view.dart';
 
 import '../../../features/home/character/view/character_view.dart';
 import '../../../features/home/home/view/home_view.dart';
@@ -23,6 +24,11 @@ class NavigationRoute {
         return argsNavigate(
             widget: CharacterView(),
             pageName: NavigationConstants.CHARACTER_VIEW,
+            navigateArguments: path.arguments);
+      case NavigationConstants.COMIC_VIEW:
+        return argsNavigate(
+            widget: ComicView(),
+            pageName: NavigationConstants.COMIC_VIEW,
             navigateArguments: path.arguments);
 
       default:

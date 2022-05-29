@@ -19,7 +19,7 @@ FittedBox characterImage(Map<dynamic, dynamic> args) {
           child: CachedNetworkImage(
               imageUrl: args['characterPath'] + '.' + args['characterExt'],
               placeholder: (context, index) {
-                return const CircularProgressIndicator();
+                return Placeholder();
               },
               errorWidget: (context, url, error) => const Icon(Icons.add))));
 }

@@ -16,6 +16,23 @@ Padding comicCard(
       onTap: () {
         Navigator.pushNamed(context, '/comicView', arguments: {
           'comicId': homeViewModel.comicItems![index].id,
+          'comicTitle': homeViewModel.comicItems![index].title,
+          'comicDescription':
+              homeViewModel.comicItems![index].description!.isEmpty
+                  ? 'Description not available'
+                  : homeViewModel.comicItems![index].description,
+          'comicModified': homeViewModel.comicItems![index].modified,
+          'comicPrice': homeViewModel.comicItems![index].prices?[1].price,
+          'comicPath': homeViewModel.comicItems![index].thumbnail?.path,
+          'comicExt': homeViewModel.comicItems![index].thumbnail?.extension,
+          'characterComics':
+              homeViewModel.characterItems![index].comics?.collectionUri,
+          'characterSeries':
+              homeViewModel.characterItems![index].series?.collectionUri,
+          'characterStories':
+              homeViewModel.characterItems![index].stories?.collectionUri,
+          'characterEvents':
+              homeViewModel.characterItems![index].events?.collectionUri,
         });
       },
       child: Container(

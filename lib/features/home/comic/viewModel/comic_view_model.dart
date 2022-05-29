@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:marvel/core/base/model/base_view_model.dart';
 import 'package:mobx/mobx.dart';
 
 import '../service/comics_service.dart';
@@ -6,15 +8,19 @@ part 'comic_view_model.g.dart';
 
 class ComicViewModel = _ComicViewModelBase with _$ComicViewModel;
 
-abstract class _ComicViewModelBase with Store {
+abstract class _ComicViewModelBase with Store, BaseViewModel {
   final ComicService comicService = ComicService();
 
-  _ComicViewModelBase() {}
+  @override
+  void init({int? id}) {}
 
-  @observable //Değişebilir
+  @override
+  void setContext(BuildContext context) => this.baseViewContext = context;
+
+  @observable
   bool isLoading = false;
 
-  @action //Ekrana haber verecek
+  @action
   void changeLoading() {
     isLoading = !isLoading;
   }
