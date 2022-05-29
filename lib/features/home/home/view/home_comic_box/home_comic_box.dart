@@ -14,7 +14,7 @@ Column homeComic(
       Expanded(
         child: Observer(
           builder: (_) {
-            return homeViewModel.isLoading
+            return homeViewModel.comicItemsIsLoading
                 ? Center(
                     child: CircularProgressIndicator(
                       color: context.marvelRed,

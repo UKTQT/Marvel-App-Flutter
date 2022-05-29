@@ -9,22 +9,6 @@ part of 'home_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeViewModel on _HomeViewModelBase, Store {
-  late final _$isLoadingAtom =
-      Atom(name: '_HomeViewModelBase.isLoading', context: context);
-
-  @override
-  bool get isLoading {
-    _$isLoadingAtom.reportRead();
-    return super.isLoading;
-  }
-
-  @override
-  set isLoading(bool value) {
-    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
-      super.isLoading = value;
-    });
-  }
-
   late final _$searchItemsAtom =
       Atom(name: '_HomeViewModelBase.searchItems', context: context);
 
@@ -38,6 +22,23 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   set searchItems(String value) {
     _$searchItemsAtom.reportWrite(value, super.searchItems, () {
       super.searchItems = value;
+    });
+  }
+
+  late final _$characterItemsIsLoadingAtom = Atom(
+      name: '_HomeViewModelBase.characterItemsIsLoading', context: context);
+
+  @override
+  bool get characterItemsIsLoading {
+    _$characterItemsIsLoadingAtom.reportRead();
+    return super.characterItemsIsLoading;
+  }
+
+  @override
+  set characterItemsIsLoading(bool value) {
+    _$characterItemsIsLoadingAtom
+        .reportWrite(value, super.characterItemsIsLoading, () {
+      super.characterItemsIsLoading = value;
     });
   }
 
@@ -57,6 +58,22 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  late final _$comicItemsIsLoadingAtom =
+      Atom(name: '_HomeViewModelBase.comicItemsIsLoading', context: context);
+
+  @override
+  bool get comicItemsIsLoading {
+    _$comicItemsIsLoadingAtom.reportRead();
+    return super.comicItemsIsLoading;
+  }
+
+  @override
+  set comicItemsIsLoading(bool value) {
+    _$comicItemsIsLoadingAtom.reportWrite(value, super.comicItemsIsLoading, () {
+      super.comicItemsIsLoading = value;
+    });
+  }
+
   late final _$comicItemsAtom =
       Atom(name: '_HomeViewModelBase.comicItems', context: context);
 
@@ -70,6 +87,23 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   set comicItems(List<ComicResult>? value) {
     _$comicItemsAtom.reportWrite(value, super.comicItems, () {
       super.comicItems = value;
+    });
+  }
+
+  late final _$seriesItemsIsLoadingAtom =
+      Atom(name: '_HomeViewModelBase.seriesItemsIsLoading', context: context);
+
+  @override
+  bool get seriesItemsIsLoading {
+    _$seriesItemsIsLoadingAtom.reportRead();
+    return super.seriesItemsIsLoading;
+  }
+
+  @override
+  set seriesItemsIsLoading(bool value) {
+    _$seriesItemsIsLoadingAtom.reportWrite(value, super.seriesItemsIsLoading,
+        () {
+      super.seriesItemsIsLoading = value;
     });
   }
 
@@ -114,27 +148,15 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     return _$fetchSeriesItemsAsyncAction.run(() => super.fetchSeriesItems());
   }
 
-  late final _$_HomeViewModelBaseActionController =
-      ActionController(name: '_HomeViewModelBase', context: context);
-
-  @override
-  void changeLoading() {
-    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
-        name: '_HomeViewModelBase.changeLoading');
-    try {
-      return super.changeLoading();
-    } finally {
-      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
-isLoading: ${isLoading},
 searchItems: ${searchItems},
+characterItemsIsLoading: ${characterItemsIsLoading},
 characterItems: ${characterItems},
+comicItemsIsLoading: ${comicItemsIsLoading},
 comicItems: ${comicItems},
+seriesItemsIsLoading: ${seriesItemsIsLoading},
 seriesItems: ${seriesItems}
     ''';
   }

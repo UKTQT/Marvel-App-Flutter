@@ -34,7 +34,7 @@ Column homeSeries(
       Expanded(
         child: Observer(
           builder: (_) {
-            return homeViewModel.isLoading
+            return homeViewModel.seriesItemsIsLoading
                 ? const Center(
                     child: CircularProgressIndicator(
                       color: Colors.red,

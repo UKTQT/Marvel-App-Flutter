@@ -17,7 +17,7 @@ Column homeCharacter({
       Expanded(
         child: Observer(
           builder: (_) {
-            return homeViewModel.isLoading
+            return homeViewModel.characterItemsIsLoading
                 ? Center(
                     child: CircularProgressIndicator(
                       color: context.marvelRed,

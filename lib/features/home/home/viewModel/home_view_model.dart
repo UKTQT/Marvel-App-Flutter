@@ -24,13 +24,13 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @override
   void setContext(BuildContext context) => this.baseViewContext = context;
 
-  @observable
+  /* @observable
   bool isLoading = false;
 
   @action
   void changeLoading() {
     isLoading = !isLoading;
-  }
+  } */
 
   @observable
   String searchItems = '';
@@ -38,32 +38,38 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   //There are 3 sections on the homepage; Characters, Comics, Series
 
   @observable
+  bool characterItemsIsLoading = false;
+  @observable
   List<CharacterResult>? characterItems = [];
 
   @observable
+  bool comicItemsIsLoading = false;
+  @observable
   List<ComicResult>? comicItems = [];
 
+  @observable
+  bool seriesItemsIsLoading = false;
   @observable
   List<SeriesResult>? seriesItems = [];
 
   @action
   Future<List<CharacterResult>?> fetchCharacterItems() async {
-    changeLoading();
+    characterItemsIsLoading = true;
     characterItems = await _homeService.fetchCharacterItems() ?? [];
-    changeLoading();
+    characterItemsIsLoading = false;
   }
 
   @action
   Future<List<ComicResult>?> fetchComicItems() async {
-    changeLoading();
+    comicItemsIsLoading = true;
     comicItems = await _homeService.fetchComicItems() ?? [];
-    changeLoading();
+    comicItemsIsLoading = false;
   }
 
   @action
   Future<List<SeriesResult>?> fetchSeriesItems() async {
-    changeLoading();
+    seriesItemsIsLoading = true;
     seriesItems = await _homeService.fetchSeriesItems() ?? [];
-    changeLoading();
+    seriesItemsIsLoading = false;
   }
 }
