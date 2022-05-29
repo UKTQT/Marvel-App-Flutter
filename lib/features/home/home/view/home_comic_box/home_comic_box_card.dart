@@ -28,17 +28,11 @@ Padding comicCard(
           child: Hero(
             tag: '${homeViewModel.comicItems![index].id}',
             child: CachedNetworkImage(
-              placeholder: (context, index) {
-                return const CircularProgressIndicator(
-                  color: Colors.white,
-                );
-              },
               imageUrl:
                   '${homeViewModel.comicItems![index].thumbnail!.path}.${homeViewModel.comicItems![index].thumbnail!.extension}',
+              placeholder: (context, url) => const Placeholder(),
               errorWidget: (context, url, error) =>
-                  const CircularProgressIndicator(
-                color: Colors.white,
-              ),
+                  Icon(Icons.error, color: context.marvelRed),
             ),
           ),
         ),
@@ -52,14 +46,15 @@ Map<String, dynamic> comicNavigatorArguments(
   return {
     'comicId': homeViewModel.comicItems![index].id,
     'comicTitle': homeViewModel.comicItems![index].title,
-    'comicDescription': homeViewModel.comicItems![index].description!.isEmpty
+    'comicDescription': homeViewModel.comicItems![index].description == '' ||
+            homeViewModel.comicItems![index].description == null
         ? 'Description not available'
         : homeViewModel.comicItems![index].description,
     'comicModified': homeViewModel.comicItems![index].modified,
-    'comicPrice': homeViewModel.comicItems![index].prices?[1].price,
+    'comicPrice': homeViewModel.comicItems![index].prices![0].price,
     'comicPath': homeViewModel.comicItems![index].thumbnail?.path,
     'comicExt': homeViewModel.comicItems![index].thumbnail?.extension,
-    'comicDetail': homeViewModel.comicItems![index].urls?[1].url,
+    'comicDetail': homeViewModel.comicItems![index].urls?[0].url,
     'comicSeries': homeViewModel.comicItems![index].series!.resourceUri,
     'comicCreators': homeViewModel.comicItems![index].creators?.collectionUri,
     'comicCharacters':
