@@ -14,26 +14,8 @@ Padding comicCard(
     padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
     child: GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/comicView', arguments: {
-          'comicId': homeViewModel.comicItems![index].id,
-          'comicTitle': homeViewModel.comicItems![index].title,
-          'comicDescription':
-              homeViewModel.comicItems![index].description!.isEmpty
-                  ? 'Description not available'
-                  : homeViewModel.comicItems![index].description,
-          'comicModified': homeViewModel.comicItems![index].modified,
-          'comicPrice': homeViewModel.comicItems![index].prices?[1].price,
-          'comicPath': homeViewModel.comicItems![index].thumbnail?.path,
-          'comicExt': homeViewModel.comicItems![index].thumbnail?.extension,
-          'characterComics':
-              homeViewModel.characterItems![index].comics?.collectionUri,
-          'characterSeries':
-              homeViewModel.characterItems![index].series?.collectionUri,
-          'characterStories':
-              homeViewModel.characterItems![index].stories?.collectionUri,
-          'characterEvents':
-              homeViewModel.characterItems![index].events?.collectionUri,
-        });
+        Navigator.pushNamed(context, '/comicView',
+            arguments: comicNavigatorArguments(homeViewModel, index));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -63,4 +45,26 @@ Padding comicCard(
       ),
     ),
   );
+}
+
+Map<String, dynamic> comicNavigatorArguments(
+    HomeViewModel homeViewModel, int index) {
+  return {
+    'comicId': homeViewModel.comicItems![index].id,
+    'comicTitle': homeViewModel.comicItems![index].title,
+    'comicDescription': homeViewModel.comicItems![index].description!.isEmpty
+        ? 'Description not available'
+        : homeViewModel.comicItems![index].description,
+    'comicModified': homeViewModel.comicItems![index].modified,
+    'comicPrice': homeViewModel.comicItems![index].prices?[1].price,
+    'comicPath': homeViewModel.comicItems![index].thumbnail?.path,
+    'comicExt': homeViewModel.comicItems![index].thumbnail?.extension,
+    'comicDetail': homeViewModel.comicItems![index].urls?[1].url,
+    'comicSeries': homeViewModel.comicItems![index].series!.resourceUri,
+    'comicCreators': homeViewModel.comicItems![index].creators?.collectionUri,
+    'comicCharacters':
+        homeViewModel.comicItems![index].characters?.collectionUri,
+    'comicStories': homeViewModel.comicItems![index].stories?.collectionUri,
+    'comicEvents': homeViewModel.comicItems![index].events?.collectionUri,
+  };
 }
