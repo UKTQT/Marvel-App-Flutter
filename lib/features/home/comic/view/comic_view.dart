@@ -20,28 +20,39 @@ class ComicView extends StatelessWidget {
       onPageBuilder: (BuildContext context, ComicViewModel _comicViewModel) {
         return Scaffold(
           body: SafeArea(
-            child: Stack(
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Hero(
-                      tag: args['comicId'],
-                      child: CachedNetworkImage(
-                          imageUrl: args['comicPath'] + '.' + args['comicExt'],
-                          placeholder: (context, index) {
-                            return Placeholder();
-                          },
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.add)),
-                    ),
+            child: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: Hero(
+                            tag: args['comicId'],
+                            child: CachedNetworkImage(
+                                imageUrl:
+                                    args['comicPath'] + '.' + args['comicExt'],
+                                placeholder: (context, index) {
+                                  return Placeholder();
+                                },
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.add)),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        color: Colors.white,
+                        child: Column(
+                          children: [Text('ewq')],
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Container(
-                  color: Colors.white24,
-                  child: Row(
+                  Row(
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -49,6 +60,9 @@ class ComicView extends StatelessWidget {
                           vertical: context.lowHeightPadding2,
                         ),
                         child: IconButton(
+                          splashColor: Colors.white,
+                          highlightColor: Colors.white,
+                          color: Colors.white,
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -61,8 +75,8 @@ class ComicView extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -70,69 +84,3 @@ class ComicView extends StatelessWidget {
     );
   }
 }
-
-
-/* class ComicView extends StatefulWidget {
-  const ComicView({Key? key}) : super(key: key);
-
-  @override
-  State<ComicView> createState() => _ComicViewState();
-}
-
-class _ComicViewState extends State<ComicView> {
-  @override
-  Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map;
-    final comicAllItems = ComicViewModel.comicItems
-        ?.firstWhere((element) => element.id == args['comicId']);
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Hero(
-                  tag: '${comicAllItems?.id}',
-                  child: CachedNetworkImage(
-                      placeholder: (context, index) {
-                        return const CircularProgressIndicator();
-                      },
-                      imageUrl:
-                          '${comicAllItems!.thumbnail!.path}.${comicAllItems.thumbnail!.extension}',
-                      errorWidget: (context, url, error) =>
-                          const CircularProgressIndicator()),
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.white24,
-              child: Row(
-                children: [
-                  Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: context.mediumWidthPadding2,
-                        vertical: context.lowHeightPadding2,
-                      ),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                      )),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
- */
