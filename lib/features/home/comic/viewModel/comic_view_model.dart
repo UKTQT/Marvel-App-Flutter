@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/core/base/model/base_view_model.dart';
+import 'package:marvel/features/home/character/model/characters_model.dart';
 import 'package:mobx/mobx.dart';
 
 import '../service/comics_service.dart';
@@ -24,4 +25,9 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   void changeLoading() {
     isLoading = !isLoading;
   }
+
+  @observable
+  bool characterItemsIsLoading = false;
+  @observable
+  List<CharacterResult>? comicCharacterItems = [];
 }

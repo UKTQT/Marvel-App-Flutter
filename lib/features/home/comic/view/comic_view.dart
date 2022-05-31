@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:marvel/core/extensions/color_extension/color_extension.dart';
 import 'package:marvel/core/extensions/padding_extension/padding_extension.dart';
 
@@ -74,9 +75,9 @@ class ComicView extends StatelessWidget {
                   DraggableScrollableSheet(
                     initialChildSize: 0.1,
                     minChildSize: 0.1,
-                    maxChildSize: 0.6,
+                    maxChildSize: 0.7,
                     snap: true,
-                    snapSizes: [.6],
+                    snapSizes: [.7],
                     builder: (context, scrollController) {
                       return Container(
                         decoration: BoxDecoration(
@@ -166,6 +167,76 @@ class ComicView extends StatelessWidget {
                                                     color: context.whiteColor)))
                                   ]),
                                   SizedBox(height: context.highHeightPadding),
+                                  Observer(
+                                    builder: (_) {
+                                      return _comicViewModel
+                                              .comicCharacterItems!.isEmpty
+                                          ? Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                  CircularProgressIndicator(
+                                                      color: context.marvelRed)
+                                                ])
+                                          : ListView.builder(
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: _comicViewModel
+                                                      .comicCharacterItems
+                                                      ?.length ??
+                                                  1,
+                                              itemBuilder: (context, index) {
+                                                return Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10.0,
+                                                      vertical: 10.0),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      /*  Navigator.pushNamed(context, '/comicView',
+                                      arguments: {
+                                        'comicId': ComicViewModel
+                                            .comicItems!
+                                            .elementAt(index)
+                                            .id,
+                                      }); */
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                          color: context
+                                                              .whiteColor,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15.0)),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.35,
+                                                      child: FittedBox(
+                                                        fit: BoxFit.fill,
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          placeholder:
+                                                              (context, index) {
+                                                            return const Placeholder();
+                                                          },
+                                                          imageUrl:
+                                                              '${_comicViewModel.comicCharacterItems?[index].thumbnail?.path}.${_comicViewModel.comicCharacterItems?[index].thumbnail?.extension}',
+                                                          errorWidget: (context,
+                                                                  url, error) =>
+                                                              CircularProgressIndicator(
+                                                                  color: context
+                                                                      .whiteColor),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
