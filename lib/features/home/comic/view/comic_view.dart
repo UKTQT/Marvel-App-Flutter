@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:marvel/core/extensions/color_extension/color_extension.dart';
 import 'package:marvel/core/extensions/padding_extension/padding_extension.dart';
 
 import '../../../../core/base/view/base_view.dart';
@@ -78,7 +79,7 @@ class ComicView extends StatelessWidget {
                     builder: (context, scrollController) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.black,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30.0),
                             topRight: Radius.circular(30.0),
@@ -86,22 +87,50 @@ class ComicView extends StatelessWidget {
                         ),
                         child: SingleChildScrollView(
                           controller: scrollController,
-                          child: Column(
-                            children: [
-                              SizedBox(height: context.lowHeightPadding),
-                              Center(
-                                child: Icon(
-                                  Icons.bakery_dining,
-                                  size: 40.0,
-                                  color: Color(0xff121212),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: context.highWidthPadding),
+                            child: Column(
+                              children: [
+                                SizedBox(height: context.lowHeightPadding),
+                                Center(
+                                  child: Icon(
+                                    Icons.bakery_dining,
+                                    size: 40.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: context.mediumHeightPadding),
-                              Text(
-                                'Ewq',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ],
+                                SizedBox(height: context.mediumHeightPadding2),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 9,
+                                      child: Text(args['comicTitle'],
+                                          overflow: TextOverflow.clip,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6
+                                              ?.copyWith(
+                                                  fontFamily: 'RaleWay',
+                                                  color: context.whiteColor,
+                                                  fontWeight: FontWeight.bold)),
+                                    ),
+                                    Expanded(flex: 1, child: SizedBox.shrink()),
+                                    Expanded(
+                                      flex: 0,
+                                      child: Text(args['comicPrice'].toString(),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle2),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: context.mediumHeightPadding),
+                                Row(
+                                  children: [],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

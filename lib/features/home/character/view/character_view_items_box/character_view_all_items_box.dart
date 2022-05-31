@@ -36,7 +36,7 @@ Row characterViewName(Map<dynamic, dynamic> args, BuildContext context) {
     Expanded(
         child: Text(args['characterName'],
             overflow: TextOverflow.clip,
-            style: Theme.of(context).textTheme.headline4?.copyWith(
+            style: Theme.of(context).textTheme.headline5?.copyWith(
                 fontFamily: 'RaleWay',
                 color: context.whiteColor,
                 fontWeight: FontWeight.bold))),
