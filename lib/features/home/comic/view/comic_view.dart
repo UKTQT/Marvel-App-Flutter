@@ -4,6 +4,7 @@ import 'package:marvel/core/extensions/color_extension/color_extension.dart';
 import 'package:marvel/core/extensions/padding_extension/padding_extension.dart';
 
 import '../../../../core/base/view/base_view.dart';
+import '../../../../core/constants/app/app_constants.dart';
 import '../viewModel/comic_view_model.dart';
 
 class ComicView extends StatelessWidget {
@@ -85,51 +86,88 @@ class ComicView extends StatelessWidget {
                             topRight: Radius.circular(30.0),
                           ),
                         ),
-                        child: SingleChildScrollView(
-                          controller: scrollController,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: context.highWidthPadding),
-                            child: Column(
-                              children: [
-                                SizedBox(height: context.lowHeightPadding),
-                                Center(
-                                  child: Icon(
-                                    Icons.bakery_dining,
-                                    size: 40.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                SizedBox(height: context.mediumHeightPadding2),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 9,
-                                      child: Text(args['comicTitle'],
-                                          overflow: TextOverflow.clip,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline6
-                                              ?.copyWith(
-                                                  fontFamily: 'RaleWay',
-                                                  color: context.whiteColor,
-                                                  fontWeight: FontWeight.bold)),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: context.lowHeightPadding2),
+                          child: SingleChildScrollView(
+                            controller: scrollController,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: context.highWidthPadding),
+                              child: Column(
+                                children: [
+                                  //SizedBox(height: context.lowHeightPadding),
+                                  Center(
+                                    child: Icon(
+                                      Icons.bakery_dining,
+                                      size: 40.0,
+                                      color: Colors.white,
                                     ),
-                                    Expanded(flex: 1, child: SizedBox.shrink()),
+                                  ),
+                                  SizedBox(
+                                      height: context.mediumHeightPadding2),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 9,
+                                        child: Text(args['comicTitle'],
+                                            overflow: TextOverflow.clip,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline5
+                                                ?.copyWith(
+                                                    fontFamily: 'RaleWay',
+                                                    color: context.whiteColor,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                      ),
+                                      Expanded(
+                                          flex: 1, child: SizedBox.shrink()),
+                                      Expanded(
+                                        flex: 0,
+                                        child: Text(
+                                            args['comicPrice'].toString(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle2),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: context.highHeightPadding),
+                                  Row(children: [
                                     Expanded(
-                                      flex: 0,
-                                      child: Text(args['comicPrice'].toString(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subtitle2),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(height: context.mediumHeightPadding),
-                                Row(
-                                  children: [],
-                                ),
-                              ],
+                                        child: Text(args['comicModified'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle1
+                                                ?.copyWith(
+                                                    color: context.whiteColor)))
+                                  ]),
+                                  SizedBox(height: context.mediumHeightPadding),
+                                  Row(children: [
+                                    Text(
+                                        AppConstant.instance!
+                                            .CHARACTER_VIEW_DESCRIPTION_TEXT,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: context.marvelRed))
+                                  ]),
+                                  SizedBox(height: context.lowHeightPadding2),
+                                  Row(children: [
+                                    Expanded(
+                                        child: Text(args['comicDescription'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle1
+                                                ?.copyWith(
+                                                    color: context.whiteColor)))
+                                  ]),
+                                  SizedBox(height: context.highHeightPadding),
+                                ],
+                              ),
                             ),
                           ),
                         ),
