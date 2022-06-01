@@ -6,7 +6,7 @@ import '../../../features/home/home/viewModel/home_view_model.dart';
 import '../../extensions/color_extension/color_extension.dart';
 import '../../extensions/padding_extension/padding_extension.dart';
 
-Observer deneme(HomeViewModel _viewModel, BuildContext context) {
+Observer deneme(HomeViewModel _viewModel, List items, BuildContext context) {
   return Observer(
     builder: (_) {
       return _viewModel.comicItemsIsLoading

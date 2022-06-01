@@ -73,18 +73,18 @@ class ComicView extends StatelessWidget {
                     ],
                   ),
                   DraggableScrollableSheet(
-                    initialChildSize: 0.1,
-                    minChildSize: 0.1,
+                    initialChildSize: 0.2,
+                    minChildSize: 0.2,
                     maxChildSize: 0.7,
                     snap: true,
                     snapSizes: [.7],
                     builder: (context, scrollController) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: context.blackColor,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
                           ),
                         ),
                         child: Padding(
@@ -191,15 +191,7 @@ class ComicView extends StatelessWidget {
                                                       horizontal: 10.0,
                                                       vertical: 10.0),
                                                   child: GestureDetector(
-                                                    onTap: () {
-                                                      /*  Navigator.pushNamed(context, '/comicView',
-                                      arguments: {
-                                        'comicId': ComicViewModel
-                                            .comicItems!
-                                            .elementAt(index)
-                                            .id,
-                                      }); */
-                                                    },
+                                                    onTap: () {},
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                           color: context
