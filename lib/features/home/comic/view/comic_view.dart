@@ -17,7 +17,7 @@ class ComicView extends StatelessWidget {
     return BaseView<ComicViewModel>(
       viewModel: ComicViewModel(),
       onModelReady: (model) {
-        model.init();
+        model.init(id: args['comicId']);
         model.setContext(context);
       },
       onPageBuilder: (BuildContext context, ComicViewModel _comicViewModel) {
@@ -167,6 +167,16 @@ class ComicView extends StatelessWidget {
                                                     color: context.whiteColor)))
                                   ]),
                                   SizedBox(height: context.highHeightPadding),
+                                  Row(children: [
+                                    Text('Characters',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: context.marvelRed))
+                                  ]),
+                                  SizedBox(height: context.lowHeightPadding2),
                                   Observer(
                                     builder: (_) {
                                       return _comicViewModel
@@ -175,57 +185,151 @@ class ComicView extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                  CircularProgressIndicator(
-                                                      color: context.marvelRed)
-                                                ])
-                                          : ListView.builder(
-                                              scrollDirection: Axis.horizontal,
-                                              itemCount: _comicViewModel
-                                                      .comicCharacterItems
-                                                      ?.length ??
-                                                  1,
-                                              itemBuilder: (context, index) {
-                                                return Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 10.0,
-                                                      vertical: 10.0),
-                                                  child: GestureDetector(
-                                                    onTap: () {},
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                          color: context
-                                                              .whiteColor,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.0)),
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.35,
-                                                      child: FittedBox(
-                                                        fit: BoxFit.fill,
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          placeholder:
-                                                              (context, index) {
-                                                            return const Placeholder();
-                                                          },
-                                                          imageUrl:
-                                                              '${_comicViewModel.comicCharacterItems?[index].thumbnail?.path}.${_comicViewModel.comicCharacterItems?[index].thumbnail?.extension}',
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              CircularProgressIndicator(
-                                                                  color: context
-                                                                      .whiteColor),
+                                                Text(
+                                                    'Characters are not available')
+                                              ],
+                                            )
+                                          : Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.28,
+                                              width: double.maxFinite,
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: _comicViewModel
+                                                        .comicCharacterItems
+                                                        ?.length ??
+                                                    1,
+                                                itemBuilder: (context, index) {
+                                                  return Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 10.0,
+                                                        vertical: 10.0),
+                                                    child: GestureDetector(
+                                                      onTap: () {},
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color: context
+                                                                .whiteColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15.0)),
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.35,
+                                                        child: FittedBox(
+                                                          fit: BoxFit.fill,
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            placeholder:
+                                                                (context,
+                                                                    index) {
+                                                              return const Placeholder();
+                                                            },
+                                                            imageUrl:
+                                                                '${_comicViewModel.comicCharacterItems?[index].thumbnail?.path}.${_comicViewModel.comicCharacterItems?[index].thumbnail?.extension}',
+                                                            errorWidget: (context,
+                                                                    url,
+                                                                    error) =>
+                                                                CircularProgressIndicator(
+                                                                    color: context
+                                                                        .whiteColor),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                );
-                                              },
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                    },
+                                  ),
+                                  SizedBox(height: context.highHeightPadding),
+                                  Row(children: [
+                                    Text('Events',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: context.marvelRed))
+                                  ]),
+                                  SizedBox(height: context.lowHeightPadding2),
+                                  Observer(
+                                    builder: (_) {
+                                      return _comicViewModel
+                                              .comicEventItems!.isEmpty
+                                          ? Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text('Events are not available')
+                                              ],
+                                            )
+                                          : Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.28,
+                                              width: double.maxFinite,
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: _comicViewModel
+                                                        .comicEventItems
+                                                        ?.length ??
+                                                    1,
+                                                itemBuilder: (context, index) {
+                                                  return Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 10.0,
+                                                        vertical: 10.0),
+                                                    child: GestureDetector(
+                                                      onTap: () {},
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color: context
+                                                                .whiteColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15.0)),
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.35,
+                                                        child: FittedBox(
+                                                          fit: BoxFit.fill,
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            placeholder:
+                                                                (context,
+                                                                    index) {
+                                                              return const Placeholder();
+                                                            },
+                                                            imageUrl:
+                                                                '${_comicViewModel.comicEventItems?[index].thumbnail?.path}.${_comicViewModel.comicEventItems?[index].thumbnail?.extension}',
+                                                            errorWidget: (context,
+                                                                    url,
+                                                                    error) =>
+                                                                CircularProgressIndicator(
+                                                                    color: context
+                                                                        .whiteColor),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
                                             );
                                     },
                                   ),
