@@ -22,6 +22,7 @@ abstract class IComicService {
 }
 
 class ComicService extends IComicService {
+  //---------------
   @override
   Future<List<CharacterResult>?> fetchComicCharacterItems(
       {required int? id}) async {
@@ -52,6 +53,7 @@ class ComicService extends IComicService {
     return null;
   }
 
+  //---------------
   @override
   Future<List<EventResult>?> fetchComicEventsItems({required int? id}) async {
     try {
@@ -70,6 +72,7 @@ class ComicService extends IComicService {
 
       if (response.statusCode == HttpStatus.ok) {
         final _datas = response.data;
+        print(_datas);
 
         if (_datas is Map<String, dynamic>) {
           return EventData.fromMap(_datas['data']).results;
@@ -80,4 +83,5 @@ class ComicService extends IComicService {
     }
     return null;
   }
+  //---------------
 }

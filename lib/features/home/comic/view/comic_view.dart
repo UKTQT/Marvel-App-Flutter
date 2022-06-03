@@ -72,6 +72,7 @@ class ComicView extends StatelessWidget {
                       ),
                     ],
                   ),
+                  //--------------------------------------------------------------------
                   DraggableScrollableSheet(
                     initialChildSize: 0.2,
                     minChildSize: 0.2,
@@ -89,7 +90,8 @@ class ComicView extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              vertical: context.lowHeightPadding2),
+                            vertical: context.lowHeightPadding2,
+                          ),
                           child: SingleChildScrollView(
                             controller: scrollController,
                             child: Padding(
@@ -105,8 +107,11 @@ class ComicView extends StatelessWidget {
                                       color: Colors.white,
                                     ),
                                   ),
+
                                   SizedBox(
-                                      height: context.mediumHeightPadding2),
+                                    height: context.mediumHeightPadding2,
+                                  ),
+                                  //--------------------------------------------------------------------
                                   Row(
                                     children: [
                                       Expanded(
@@ -135,6 +140,7 @@ class ComicView extends StatelessWidget {
                                     ],
                                   ),
                                   SizedBox(height: context.highHeightPadding),
+                                  //--------------------------------------------------------------------
                                   Row(children: [
                                     Expanded(
                                         child: Text(args['comicModified'],
@@ -145,6 +151,7 @@ class ComicView extends StatelessWidget {
                                                     color: context.whiteColor)))
                                   ]),
                                   SizedBox(height: context.mediumHeightPadding),
+                                  //--------------------------------------------------------------------
                                   Row(children: [
                                     Text(
                                         AppConstant.instance!
@@ -157,6 +164,7 @@ class ComicView extends StatelessWidget {
                                                 color: context.marvelRed))
                                   ]),
                                   SizedBox(height: context.lowHeightPadding2),
+                                  //--------------------------------------------------------------------
                                   Row(children: [
                                     Expanded(
                                         child: Text(args['comicDescription'],
@@ -167,6 +175,7 @@ class ComicView extends StatelessWidget {
                                                     color: context.whiteColor)))
                                   ]),
                                   SizedBox(height: context.highHeightPadding),
+                                  //--------------------------------------------------------------------
                                   Row(children: [
                                     Text('Characters',
                                         style: Theme.of(context)
@@ -177,6 +186,7 @@ class ComicView extends StatelessWidget {
                                                 color: context.marvelRed))
                                   ]),
                                   SizedBox(height: context.lowHeightPadding2),
+                                  //--------------------------------------------------------------------
                                   Observer(
                                     builder: (_) {
                                       return _comicViewModel
@@ -251,6 +261,7 @@ class ComicView extends StatelessWidget {
                                     },
                                   ),
                                   SizedBox(height: context.highHeightPadding),
+                                  //--------------------------------------------------------------------
                                   Row(children: [
                                     Text('Events',
                                         style: Theme.of(context)
@@ -261,6 +272,7 @@ class ComicView extends StatelessWidget {
                                                 color: context.marvelRed))
                                   ]),
                                   SizedBox(height: context.lowHeightPadding2),
+                                  //--------------------------------------------------------------------
                                   Observer(
                                     builder: (_) {
                                       return _comicViewModel
@@ -333,6 +345,96 @@ class ComicView extends StatelessWidget {
                                             );
                                     },
                                   ),
+                                  //--------------------------------------------------------------------
+                                  SizedBox(height: context.highHeightPadding),
+                                  //--------------------------------------------------------------------
+                                  Row(children: [
+                                    Text('Creators',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: context.marvelRed))
+                                  ]),
+                                  SizedBox(height: context.lowHeightPadding2),
+                                  //--------------------------------------------------------------------
+                                  Observer(
+                                    builder: (_) {
+                                      return _comicViewModel
+                                              .comicEventItems!.isEmpty
+                                          ? Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                    'Creators are not available')
+                                              ],
+                                            )
+                                          : Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.28,
+                                              width: double.maxFinite,
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: _comicViewModel
+                                                        .comicEventItems
+                                                        ?.length ??
+                                                    1,
+                                                itemBuilder: (context, index) {
+                                                  return Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 10.0,
+                                                        vertical: 10.0),
+                                                    child: GestureDetector(
+                                                      onTap: () {},
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color: context
+                                                                .whiteColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15.0)),
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.35,
+                                                        child: FittedBox(
+                                                          fit: BoxFit.fill,
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            placeholder:
+                                                                (context,
+                                                                    index) {
+                                                              return const Placeholder();
+                                                            },
+                                                            imageUrl:
+                                                                '${_comicViewModel.comicEventItems?[index].thumbnail?.path}.${_comicViewModel.comicEventItems?[index].thumbnail?.extension}',
+                                                            errorWidget: (context,
+                                                                    url,
+                                                                    error) =>
+                                                                CircularProgressIndicator(
+                                                                    color: context
+                                                                        .whiteColor),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                    },
+                                  ),
+                                  //--------------------------------------------------------------------
+                                  SizedBox(height: context.highHeightPadding),
+                                  //--------------------------------------------------------------------
                                 ],
                               ),
                             ),

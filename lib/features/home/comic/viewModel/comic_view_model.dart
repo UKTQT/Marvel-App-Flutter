@@ -16,6 +16,7 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @override
   void init({int? id}) {
     fetchComicCharacterItems(comicId: id);
+    fetchComicEventItems(comicId: id);
   }
 
   @override
@@ -29,22 +30,25 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
     isLoading = !isLoading;
   }
 
+  //---------------
   @observable
   bool characterItemsIsLoading = false;
   @observable
   List<CharacterResult>? comicCharacterItems = [];
 
+  @action
+  Future<List<CharacterResult>?> fetchComicCharacterItems(
+      {required int? comicId}) async {
+    print(comicId);
+    comicCharacterItems =
+        await _comicService.fetchComicCharacterItems(id: comicId) ?? [];
+  }
+
+  //---------------
   @observable
   bool eventItemsIsLoading = false;
   @observable
   List<EventResult>? comicEventItems = [];
-
-  @action
-  Future<List<CharacterResult>?> fetchComicCharacterItems(
-      {required int? comicId}) async {
-    comicCharacterItems =
-        await _comicService.fetchComicCharacterItems(id: comicId) ?? [];
-  }
 
   @action
   Future<List<EventResult>?> fetchComicEventItems(
@@ -52,4 +56,18 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
     comicEventItems =
         await _comicService.fetchComicEventsItems(id: comicId) ?? [];
   }
+
+  //---------------
+  @observable
+  bool creatorItemsIsLoading = false;
+  @observable
+  List<EventResult>? comicCreatorItems = [];
+
+  @action
+  Future<List<EventResult>?> fetchComicCreatorItems(
+      {required int? comicId}) async {
+    comicEventItems =
+        await _comicService.fetchComicEventsItems(id: comicId) ?? [];
+  }
+  //---------------
 }
