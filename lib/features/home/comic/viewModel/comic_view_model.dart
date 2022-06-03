@@ -41,8 +41,10 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @action
   Future<List<CharacterResult>?> fetchComicCharacterItems(
       {required int? comicId}) async {
+    characterItemsIsLoading = true;
     comicCharacterItems =
         await _comicService.fetchComicCharacterItems(id: comicId) ?? [];
+    characterItemsIsLoading = false;
   }
 
   //---------------
@@ -54,8 +56,10 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @action
   Future<List<EventResult>?> fetchComicEventItems(
       {required int? comicId}) async {
+    eventItemsIsLoading = true;
     comicEventItems =
         await _comicService.fetchComicEventsItems(id: comicId) ?? [];
+    eventItemsIsLoading = false;
   }
 
   //---------------
@@ -67,8 +71,10 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @action
   Future<List<CreatorResult>?> fetchComicCreatorItems(
       {required int? comicId}) async {
+    creatorItemsIsLoading = true;
     comicCreatorItems =
         await _comicService.fetchComicCreatorItems(id: comicId) ?? [];
+    creatorItemsIsLoading = false;
   }
   //---------------
 }

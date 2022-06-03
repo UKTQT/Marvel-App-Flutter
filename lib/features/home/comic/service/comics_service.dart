@@ -90,6 +90,7 @@ class ComicService extends IComicService {
   Future<List<CreatorResult>?> fetchComicCreatorItems(
       {required int? id}) async {
     try {
+      print(id);
       final response = await _dio.get(
         _ServicePaths.comics.name +
             '/' +
