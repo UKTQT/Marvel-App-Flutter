@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/core/base/model/base_view_model.dart';
 import 'package:marvel/features/home/character/model/characters_model.dart';
+import 'package:marvel/features/home/creator/model/creators_model.dart';
 import 'package:marvel/features/home/event/model/events_model.dart';
 import 'package:mobx/mobx.dart';
 
@@ -17,6 +18,7 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   void init({int? id}) {
     fetchComicCharacterItems(comicId: id);
     fetchComicEventItems(comicId: id);
+    fetchComicCreatorItems(comicId: id);
   }
 
   @override
@@ -60,13 +62,13 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @observable
   bool creatorItemsIsLoading = false;
   @observable
-  List<EventResult>? comicCreatorItems = [];
+  List<CreatorResult>? comicCreatorItems = [];
 
   @action
-  Future<List<EventResult>?> fetchComicCreatorItems(
+  Future<List<CreatorResult>?> fetchComicCreatorItems(
       {required int? comicId}) async {
-    comicEventItems =
-        await _comicService.fetchComicEventsItems(id: comicId) ?? [];
+    comicCreatorItems =
+        await _comicService.fetchComicCreatorItems(id: comicId) ?? [];
   }
   //---------------
 }
