@@ -72,7 +72,6 @@ class ComicService extends IComicService {
 
       if (response.statusCode == HttpStatus.ok) {
         final _datas = response.data;
-        print(_datas);
 
         if (_datas is Map<String, dynamic>) {
           return EventData.fromMap(_datas['data']).results;

@@ -39,7 +39,6 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @action
   Future<List<CharacterResult>?> fetchComicCharacterItems(
       {required int? comicId}) async {
-    print(comicId);
     comicCharacterItems =
         await _comicService.fetchComicCharacterItems(id: comicId) ?? [];
   }
