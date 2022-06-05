@@ -17,8 +17,8 @@ class ComicView extends StatelessWidget {
     return BaseView<ComicViewModel>(
       viewModel: ComicViewModel(),
       onModelReady: (model) {
-        model.init(id: args['comicId']);
         model.setContext(context);
+        model.init(id: args['comicId']);
       },
       onPageBuilder: (BuildContext context, ComicViewModel _comicViewModel) {
         return Scaffold(

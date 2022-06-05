@@ -17,6 +17,7 @@ abstract class _ComicViewModelBase with Store, BaseViewModel {
   @override
   void init({int? id}) {
     fetchComicCharacterItems(comicId: id);
+    print(id);
     fetchComicEventItems(comicId: id);
     fetchComicCreatorItems(comicId: id);
   }
