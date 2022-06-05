@@ -9,22 +9,16 @@ import '../../viewModel/character_view_model.dart';
 Observer characterViewEventBox(
     BuildContext context, CharacterViewModel _characterViewModel) {
   return Observer(builder: (_) {
-    return _characterViewModel.comicsItemsIsLoading
+    return _characterViewModel.characterEventsItems!.isEmpty
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [CircularProgressIndicator(color: context.marvelRed)])
-        : _characterViewModel.characterEventsItems!.isEmpty
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text('Events are not available')],
-              )
-            : ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount:
-                    _characterViewModel.characterEventsItems?.length ?? 1,
-                itemBuilder: (context, index) {
-                  return eventItem(context, _characterViewModel, index);
-                });
+        : ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: _characterViewModel.characterEventsItems?.length ?? 1,
+            itemBuilder: (context, index) {
+              return eventItem(context, _characterViewModel, index);
+            });
   });
 }
 

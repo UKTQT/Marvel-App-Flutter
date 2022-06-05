@@ -102,8 +102,8 @@ class EventResult {
     this.series,
     this.characters,
     this.creators,
-    this.next,
-    this.previous,
+    //this.next,
+    //this.previous,
   });
 
   final int? id;
@@ -120,8 +120,8 @@ class EventResult {
   final Comics? series;
   final Characters? characters;
   final Characters? creators;
-  final Next? next;
-  final Next? previous;
+  //final Next? next;
+  //final Next? previous;
 
   factory EventResult.fromJson(String str) =>
       EventResult.fromMap(json.decode(str));
@@ -143,8 +143,8 @@ class EventResult {
         series: Comics.fromMap(json['series']),
         characters: Characters.fromMap(json['characters']),
         creators: Characters.fromMap(json['creators']),
-        next: Next.fromMap(json['next']),
-        previous: Next.fromMap(json['previous']),
+        //next: Next.fromMap(json['next']),
+        //previous: Next.fromMap(json['previous']),
       );
 
   Map<String, dynamic> toMap() => {
@@ -162,8 +162,8 @@ class EventResult {
         'series': series!.toMap(),
         'characters': characters!.toMap(),
         'creators': creators!.toMap(),
-        'next': next!.toMap(),
-        'previous': previous!.toMap(),
+        //'next': next!.toMap(),
+        //'previous': previous!.toMap(),
       };
 }
 

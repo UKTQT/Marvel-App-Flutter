@@ -11,6 +11,8 @@ part 'character_view_model.g.dart';
 
 class CharacterViewModel = _CharacterViewModelBase with _$CharacterViewModel;
 
+enum listStatus { LOADING, EMPTY, FULL }
+
 abstract class _CharacterViewModelBase with Store, BaseViewModel {
   final CharacterService _characterService = CharacterService();
 
