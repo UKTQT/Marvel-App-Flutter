@@ -388,17 +388,7 @@ class ComicView extends StatelessWidget {
                                                 color: context.marvelRed,
                                               ),
                                             )
-                                          : _comicViewModel
-                                                  .comicCreatorItems!.isEmpty
-                                              ? Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                        'Creators are not available')
-                                                  ],
-                                                )
-                                              : Container(
+                                          : Container(
                                                   height: MediaQuery.of(context)
                                                           .size
                                                           .height *
