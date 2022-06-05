@@ -37,32 +37,44 @@ abstract class _CharacterViewModelBase with Store, BaseViewModel {
 
   @observable
   List<ComicResult>? characterComicsItems = [];
+  @observable
+  bool comicsItemsIsLoading = false;
 
   @observable
   List<SeriesResult>? characterSeriesItems = [];
+  @observable
+  bool seriesItemsIsLoading = false;
 
   @observable
   List<EventResult>? characterEventsItems = [];
+  @observable
+  bool eventsItemsIsLoading = false;
 
   @action
   Future<List<ComicResult>?> fetchCharacterComicsItems(
       {required int? characterId}) async {
+    comicsItemsIsLoading = true;
     characterComicsItems =
         await _characterService.fetchCharacterComics(id: characterId) ?? [];
+    comicsItemsIsLoading = false;
   }
 
   @action
   Future<List<SeriesResult>?> fetchCharacterSeriesItems(
       {required int? characterId}) async {
+    seriesItemsIsLoading = true;
     characterSeriesItems =
         await _characterService.fetchCharacterSeries(id: characterId) ?? [];
+    seriesItemsIsLoading = false;
   }
 
   @action
   Future<List<EventResult>?> fetchCharacterEventsItems(
       {required int? characterId}) async {
+    eventsItemsIsLoading = true;
     characterEventsItems =
         await _characterService.fetchCharacterEvents(id: characterId) ?? [];
+    eventsItemsIsLoading = false;
   }
 
   /*  @action
